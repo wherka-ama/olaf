@@ -1,103 +1,143 @@
 ---
 name: propose-cloud-native-architecture
-description: Analyze legacy application modules and design modern, scalable cloud-native architectures for Kubernetes-based environments.
-tags: [cloud-architecture, kubernetes, modernization, microservices, infrastructure]
+description: Chapter-based cloud-native architecture proposal with legacy analysis, design, and migration planning across multiple sessions
+tags: [cloud-architecture, kubernetes, modernization, microservices, infrastructure, chapter-based]
 ---
 
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
-- **spec_path**: string - Path to the technical specification of the legacy module
-- **target_framework**: string - Target cloud-native framework (e.g., "Skube")
-- **goals**: array[scalability,resilience,maintainability,cost_optimization] - (Optional) Primary modernization goals
-- **constraints**: array[stateless,compliance,legacy_integration] - (Optional) Architectural constraints
+- **spec_path**: string - (Required) Path to the technical specification of the legacy module
+- **project_name**: string - (Required) Name of the project for report naming
+- **target_framework**: string - (Optional) Target cloud-native framework (e.g., "Skube")
+- **chapter**: string - (Optional) Specific chapter to execute (legacy-analysis, design, migration-planning, final-proposal)
 
-## Process
+## Chapter-Based Workflow
 
-1. **Legacy Analysis**:
-   - Review technical specification
-   - Identify core functionalities
-   - Map dependencies and data flows
-   - Document current limitations
+### Chapter 1: Legacy Analysis
+**Prerequisites**: None
+**Objective**: Analyze existing legacy system and identify modernization opportunities
 
-2. **Cloud-Native Design**:
-   - Decompose into microservices
-   - Design containerization strategy
-   - Plan state management
-   - Design communication patterns
-   - Select appropriate storage solutions
+**Process**:
+1. **Verify Prerequisites**: No previous chapters required
+2. **Initialize Report File**: Create `[id:findings_dir]cloud-native-architecture-for-<project_name>-YYYYMMDD-NNN.md`
+3. **Legacy System Analysis**:
+   - Review technical specification document
+   - Identify core functionalities and business logic
+   - Map current technology stack and dependencies
+   - Document data flows and integration points
+   - Identify current limitations and pain points
+   - Assess scalability and performance bottlenecks
+4. **Save Chapter Results**: Write legacy analysis findings to report file under "# Chapter 1: Legacy Analysis"
+5. **Chapter Status**: "Chapter 1 Done - Start new session and enter 'propose cna' to continue with Chapter 2"
 
-3. **Infrastructure Planning**:
-   - Design Kubernetes resources
-   - Plan networking and service mesh
-   - Configure monitoring and logging
-   - Design CI/CD pipeline
+### Chapter 2: Cloud-Native Design
+**Prerequisites**: Chapter 1 must be completed and saved
+**Objective**: Design cloud-native architecture based on legacy analysis
 
-4. **Migration Strategy**:
-   - Assess refactoring effort
-   - Plan incremental migration
-   - Design rollback procedures
-   - Document risk mitigation
+**Process**:
+1. **Verify Prerequisites**: Check that Chapter 1 exists in the report file
+2. **Load Previous Results**: Read legacy analysis findings from Chapter 1
+3. **Architecture Design**:
+   - Decompose monolith into microservices based on business domains
+   - Design containerization strategy for each service
+   - Plan state management (stateless vs stateful services)
+   - Design inter-service communication patterns (REST, gRPC, messaging)
+   - Select appropriate storage solutions for each service
+   - Design API contracts and data models
+   - Plan service discovery and load balancing
+4. **Save Chapter Results**: Append design findings to report file under "# Chapter 2: Cloud-Native Design"
+5. **Chapter Status**: "Chapter 2 Done - Start new session and enter 'propose cna' to continue with Chapter 3"
 
-## Output/Result Format
-Follow template structure: `[id:templates_dir]architect/cloud-native-architecture-template.md`
+### Chapter 3: Migration Planning
+**Prerequisites**: Chapters 1 and 2 must be completed and saved
+**Objective**: Create detailed migration strategy and implementation plan
 
-Structure with comprehensive sections:
-- Executive summary and legacy analysis
-- Cloud-native architecture design with microservices decomposition
-- Infrastructure components and data architecture
-- Security, observability, and CI/CD pipeline design
-- Migration strategy with phases and risk assessment
-- Success metrics and implementation roadmap
+**Process**:
+1. **Verify Prerequisites**: Check that Chapters 1 and 2 exist in the report file
+2. **Load Previous Results**: Read legacy analysis and design findings
+3. **Migration Strategy**:
+   - Assess refactoring effort for each component
+   - Plan incremental migration phases (strangler fig pattern)
+   - Design data migration strategy
+   - Plan rollback procedures and risk mitigation
+   - Identify dependencies and migration order
+   - Estimate effort and timeline for each phase
+4. **Save Chapter Results**: Append migration planning to report file under "# Chapter 3: Migration Planning"
+5. **Chapter Status**: "Chapter 3 Done - Start new session and enter 'propose cna' to continue with Chapter 4"
 
-## Output to USER
-1. **Architecture Proposal**:
-   - High-level design overview
-   - Component relationships
-   - Technology stack recommendations
+### Chapter 4: Final Proposal
+**Prerequisites**: Chapters 1, 2, and 3 must be completed and saved
+**Objective**: Generate comprehensive cloud-native architecture proposal
 
-2. **Technical Details**:
-   - Service specifications
-   - API contracts
-   - Data flow diagrams
-   - Infrastructure requirements
+**Process**:
+1. **Verify Prerequisites**: Check that Chapters 1, 2, and 3 exist in the report file
+2. **Load Previous Results**: Read all previous chapter findings
+3. **Proposal Generation**:
+   - Create executive summary with key recommendations
+   - Compile detailed architecture specifications
+   - Generate Kubernetes resource definitions
+   - Document infrastructure requirements
+   - Create implementation roadmap with milestones
+   - Include risk assessment and mitigation strategies
+4. **Save Chapter Results**: Append final proposal to file under "# Chapter 4: Final Proposal"
+5. **Use Template**: Follow the structure defined in `[id:templates_dir]architect/cloud-native-architecture-template.md`
+6. **Chapter Status**: "Chapter 4 Done - Cloud-native architecture proposal complete. Report available at: [id:findings_dir]cloud-native-architecture-for-<project_name>-YYYYMMDD-NNN.md"
 
-3. **Migration Guide**:
-   - Step-by-step migration plan
-   - Risk assessment
-   - Success metrics
-   - Validation criteria
+## Execution Logic
 
-## Domain-Specific Rules
-- Rule 1: Follow 12-factor app principles
-- Rule 2: Design for failure
-- Rule 3: Implement observability by design
-- Rule 4: Prioritize security and compliance
-- Rule 5: Optimize for cost and performance
+**Chapter Detection**:
+1. Check if report file exists for the project
+2. If file exists, determine last completed chapter
+3. Execute next chapter in sequence
+4. If no file exists, start with Chapter 1
 
-## Required Actions
-1. Analyze legacy architecture
-2. Design cloud-native solution
-3. Document technical specifications
-4. Create migration strategy
-5. Provide implementation guidance
+**Chapter Verification**:
+- Before starting any chapter (except Chapter 1), verify previous chapters are completed
+- Read the report file and check for chapter completion markers
+- If prerequisites not met, inform user and stop execution
 
-## Architecture Components
+## Output Format
 
-### Service Design
-```yaml
-services:
-  - name: user-service
-    type: stateless
-    language: [nodejs, python, go]
-    storage: [postgres, redis]
-    observability: [prometheus, jaeger, fluentd]
-    scaling: horizontal-pod-autoscaler
-    replicas: 3
+**Report File Structure**:
+```markdown
+# Cloud-Native Architecture Proposal for <project_name>
+**Generated**: YYYYMMDD-HHmm CEDT
+**Status**: [In Progress/Complete]
+
+## Executive Summary
+[Populated in Chapter 4]
+
+# Chapter 1: Legacy Analysis
+[Legacy system analysis findings]
+**Status**: Complete
+
+# Chapter 2: Cloud-Native Design
+[Architecture design findings]
+**Status**: Complete
+
+# Chapter 3: Migration Planning
+[Migration strategy and planning]
+**Status**: Complete
+
+# Chapter 4: Final Proposal
+[Complete architecture proposal]
+**Status**: Complete
 ```
 
-### Infrastructure Template
-```hcl
-resource "kubernetes_deployment" "example" {
+## Session Management
+- Each chapter should be executed in a separate session
+- User must start new session between chapters
+- Use command "propose cna" to continue workflow
+- System will automatically detect and execute next chapter
+## Domain-Specific Rules
+- Rule 1: Always verify chapter prerequisites before execution
+- Rule 2: Save results after each chapter completion
+- Rule 3: Provide clear status messages for session management
+- Rule 4: Never skip chapters or execute out of order
+- Rule 5: Always load previous chapter results before proceeding
+- Rule 6: Focus on discoverable elements from technical specifications
+- Rule 7: Follow cloud-native best practices (12-factor app, stateless design)
+- Rule 8: Design for observability and failure resilience
   metadata {
     name = "example-service"
     labels = {
