@@ -4,6 +4,13 @@ description: Generate a Python script to create and run a team of CrewAI agents 
 tags: [crewai, agent, generation, java, coding, workflow]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **java_task_description**: string - A clear and detailed description of the Java feature or application to build.

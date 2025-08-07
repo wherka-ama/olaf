@@ -4,6 +4,13 @@ description: Generate meaningful Git commits from changelog entries and reposito
 tags: [git, commits, changelog, version-control, documentation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **changelog_path**: string - (Optional) Path to the changelog file (default: `[id:changelog_register]`)

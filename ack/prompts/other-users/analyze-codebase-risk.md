@@ -4,6 +4,13 @@ description: Analyze a codebase for complexity, knowledge concentration, and bug
 tags: [analysis, code-quality, risk-assessment, refactoring]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **codebase_path**: string - Path to the codebase root directory

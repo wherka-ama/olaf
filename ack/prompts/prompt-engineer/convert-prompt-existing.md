@@ -4,6 +4,13 @@ description: Convert an existing prompt to follow proper template structure and 
 tags: [prompt, conversion, refactor, template]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **existing_prompt_path**: string - Path to the existing prompt file to convert

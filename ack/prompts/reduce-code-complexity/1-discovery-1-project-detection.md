@@ -4,6 +4,13 @@ description: Detect and analyze project type, programming languages, build syste
 tags: [discovery, project-detection, build-system, languages]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **project_path**: string - Path to project source code (defaults to [id:core_dir])

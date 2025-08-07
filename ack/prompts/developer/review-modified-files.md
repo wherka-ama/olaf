@@ -4,6 +4,13 @@ description: Gather and review modified and new files in current git branch with
 tags: [code review, git, modified files, quality, security, maintainability]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **branch_name**: string - Optional specific branch to review (defaults to current branch)

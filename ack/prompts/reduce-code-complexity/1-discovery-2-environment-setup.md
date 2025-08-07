@@ -4,6 +4,13 @@ description: Install and configure required development environments, runtimes, 
 tags: [discovery, environment-setup, dependencies, tools]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **project_detection_file**: string - Path to project detection results (1-discovery-1-project-detection.json)

@@ -4,6 +4,13 @@ description: Incrementally improve code based on specific goals (performance, ma
 tags: [refactoring, code-quality, optimization, iterative]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **code**: string - The code to be analyzed and evolved

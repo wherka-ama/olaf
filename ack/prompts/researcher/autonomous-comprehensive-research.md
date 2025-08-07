@@ -7,6 +7,13 @@ tags: [research, autonomous, comprehensive, iterative, technical, analysis]
 ## Purpose
 Perform comprehensive, autonomous research on any technical topic with minimal user guidance. The prompt automatically deepens research iteratively, identifies knowledge gaps, explores technical specifications, and produces complete technical reports without requiring detailed user direction.
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **research_topic**: string - Primary topic or technology to research (REQUIRED)

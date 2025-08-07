@@ -9,6 +9,13 @@ tags: [final-consolidation, comprehensive-report, complexity-reduction, project-
 ## Objective
 Consolidate all workflow outputs from the reduce-code-complexity orchestrator into a comprehensive final report. Generate a detailed markdown document that summarizes the entire complexity reduction journey, achievements, metrics, and recommendations.
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **orchestrator_state_file**: string - Path to orchestrator state file (reduce-code-complexity-current-state.md)

@@ -4,6 +4,13 @@ description: Perform a comprehensive code review of GitHub Pull Requests with au
 tags: [code-review, github, pull-request, automation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **pr_number**: number - (Optional) GitHub PR number (default: latest open PR)

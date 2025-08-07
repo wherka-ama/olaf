@@ -4,6 +4,13 @@ description: Capture the current error state of the project by documenting compi
 tags: [quality-baselining, error-baseline, static-analysis, warnings]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **discovery_results_file**: string - Path to discovery results (1-discovery-consolidated-results.json)

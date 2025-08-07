@@ -4,6 +4,13 @@ description: Create a comprehensive test plan based on functional specifications
 tags: [testing, quality-assurance, documentation, validation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **specification**: string - Path to functional specification document

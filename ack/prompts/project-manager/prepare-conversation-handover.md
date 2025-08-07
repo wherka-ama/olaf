@@ -4,6 +4,13 @@ description: Create a clear and concise handover document to ensure smooth trans
 tags: [handover, documentation, workflow, collaboration]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **author**: string - Name of the person preparing the handover

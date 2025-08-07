@@ -4,6 +4,13 @@ description: Perform comprehensive static code analysis to measure cyclomatic co
 tags: [quality-analysis, complexity-analysis, cyclomatic-complexity, halstead-analysis]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **foundation_report_file**: string - Path to foundation report (3-discovery-baselining-consolidation-report.json)

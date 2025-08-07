@@ -4,6 +4,13 @@ description: Archive changelog entries older than a specified number of days to 
 tags: [changelog, archive, maintenance, automation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **days_to_keep**: number - (Optional) Number of days of changelog entries to keep (default: 7)

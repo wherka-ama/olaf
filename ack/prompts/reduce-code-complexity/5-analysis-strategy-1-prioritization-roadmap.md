@@ -10,6 +10,13 @@ tags: [analysis-strategy, prioritization, roadmap-planning, complexity-reduction
 Analyze the outputs from git history analysis and complexity analysis (cyclomatic complexity and Halstead metrics) to create a prioritized refactoring roadmap. Focus on identifying and addressing typical high-complexity patterns such as complex switch cases, God classes, and other refactoring opportunities. Prioritize improvements from lowest to highest risk.
 
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **output_location**: string - Where to save error baseline results (defaults to [id:findings_dir]reduce-code-complexity/)

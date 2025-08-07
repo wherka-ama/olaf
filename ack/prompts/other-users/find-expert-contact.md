@@ -4,6 +4,13 @@ description: Analyze person registers and records to recommend appropriate conta
 tags: [contact-lookup, expertise-matching, team-directory, people-analysis]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **question_or_problem**: string - The specific question, problem, or type of assistance needed

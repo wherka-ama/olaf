@@ -4,12 +4,28 @@ description: Chapter-based cloud-native architecture proposal with legacy analys
 tags: [cloud-architecture, kubernetes, modernization, microservices, infrastructure, chapter-based]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **spec_path**: string - (Required) Path to the technical specification of the legacy module
 - **project_name**: string - (Required) Name of the project for report naming
 - **target_framework**: string - (Optional) Target cloud-native framework (e.g., "Skube")
 - **chapter**: string - (Optional) Specific chapter to execute (legacy-analysis, design, migration-planning, final-proposal)
+
+
 
 ## Chapter-Based Workflow
 

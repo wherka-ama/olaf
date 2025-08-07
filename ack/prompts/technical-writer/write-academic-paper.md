@@ -4,6 +4,13 @@ description: Generate well-structured academic-style papers in markdown format f
 tags: [academic, paper, markdown, technical, solution, documentation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **problem_statement**: string - Clear description of problem(s) the solution addresses

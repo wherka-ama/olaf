@@ -4,6 +4,13 @@ description: Analyze source code to extract and describe its functionalities fro
 tags: [generation, documentation, analysis, functional-spec]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **source_path**: string - Path to the application's source code or codebase directory

@@ -4,6 +4,13 @@ description: Create a new job file in the jobs directory following the job templ
 tags: [job, creation, template, project-management]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **job_title**: string - Concise description of the job (brief, clear title that describes the job's main purpose)

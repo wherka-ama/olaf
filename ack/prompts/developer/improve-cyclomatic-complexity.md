@@ -4,6 +4,13 @@ description: Systematically reduce cyclomatic complexity of code sections while 
 tags: [refactoring, complexity, code-quality, testing]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **target_code**: string - The method/function with high cyclomatic complexity (include containing class/module and file location)

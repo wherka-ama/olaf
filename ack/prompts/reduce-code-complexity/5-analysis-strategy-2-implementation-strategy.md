@@ -9,6 +9,13 @@ tags: [analysis-strategy, implementation-planning, execution-plan, task-manageme
 ## Objective
 Transform the prioritized refactoring roadmap into a detailed, actionable implementation plan. Generate a comprehensive markdown file with iteration-based structure, breaking down each refactoring opportunity into specific actions, tasks, and subtasks for execution.
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **output_location**: string - Where to save error baseline results (defaults to [id:findings_dir]reduce-code-complexity/)

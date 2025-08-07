@@ -4,6 +4,13 @@ description: Generate a complete, runnable Model Context Protocol (MCP) client a
 tags: [mcp, client, generation, api, agent, workflow]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **language**: `python`|`typescript` - The programming language for the client.

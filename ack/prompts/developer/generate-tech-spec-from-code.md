@@ -4,6 +4,13 @@ description: Create comprehensive technical specifications by analyzing existing
 tags: [documentation, technical-spec, code-analysis, reverse-engineering]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **application_name**: string - Name of the application

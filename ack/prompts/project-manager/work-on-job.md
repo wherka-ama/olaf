@@ -4,6 +4,13 @@ description: Guide the process of working on an existing job by identifying the 
 tags: [job-management, workflow, task-tracking, documentation]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **job_id**: string - (Optional) ID of the job to work on

@@ -4,6 +4,13 @@ description: Conduct a comprehensive work review to assess progress, identify ac
 tags: [review, progress, planning, assessment]
 ---
 
+## Time Retrieval
+Get current time in YYYYMMDD-HHmm format using terminal:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **review_period**: string - Time period to review (e.g., "past 7 days", "Q2 2025")
