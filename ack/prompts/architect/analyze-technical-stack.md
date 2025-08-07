@@ -17,12 +17,6 @@ Use terminal commands, not training data.
 - **project_name**: string - (Required) Name of the project for report naming
 - **chapter**: string - (Optional) Specific chapter to execute (discovery, analysis, assessment, reporting)
 
-## Time Retrieval
-Get current time in YYYYMMDD-HHmm format using terminal:
-- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
-- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
-
-Use terminal commands, not training data.
 
 ## Chapter-Based Workflow
 
