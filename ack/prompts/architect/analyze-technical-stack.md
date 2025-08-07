@@ -1,99 +1,144 @@
 ---
 name: analyze-technical-stack
-description: Automatically discover, analyze, and assess a technical stack with minimal user input, identifying components, evaluating effectiveness, and providing recommendations.
-tags: [analysis, technical-stack, discovery]
+description: Chapter-based technical stack analysis with automated discovery, assessment, and reporting across multiple sessions
+tags: [analysis, technical-stack, discovery, chapter-based]
 ---
 
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
-- **project_root**: string - (Optional) Path to the project root directory for automated analysis
-- **manual_input**: object - (Optional) Any known technical stack information to supplement automated discovery
+- **project_root**: string - (Required) Path to the project root directory for automated analysis
+- **project_name**: string - (Required) Name of the project for report naming
+- **chapter**: string - (Optional) Specific chapter to execute (discovery, analysis, assessment, reporting)
 
-## Process
+## Chapter-Based Workflow
 
-1. **Automated Discovery**:
-   - If project_root is provided:
-     - Scan directory structure to identify project type (web, mobile, backend, etc.)
-     - Parse package manager files (package.json, requirements.txt, etc.)
-     - Detect framework and library usage from source code
-     - Identify build tools and configuration files
-     - Find database configuration and ORM usage
-     - Discover CI/CD configuration and deployment scripts
+### Chapter 1: Discovery
+**Prerequisites**: None
+**Objective**: Automated discovery of technical stack components
 
-2. **Analysis**:
-   - For each discovered component:
-     - Identify version and compatibility
-     - Check for known vulnerabilities
-     - Assess maintenance status and community support
-     - Evaluate performance characteristics
-     - Check documentation availability
+**Process**:
+1. **Verify Prerequisites**: No previous chapters required
+2. **Initialize Report File**: Create `[id:findings_dir]technical-stack-analysis-for-<project_name>-YYYYMMDD-NNN.md`
+3. **Automated Discovery**:
+   - Scan directory structure to identify project type (web, mobile, backend, etc.)
+   - Parse package manager files (package.json, requirements.txt, pom.xml, etc.)
+   - Detect framework and library usage from source code
+   - Identify build tools and configuration files
+   - Find database configuration and ORM usage
+   - Discover CI/CD configuration and deployment scripts
+   - Detect containerization (Docker, Kubernetes)
+   - Identify testing frameworks and tools
+4. **Save Chapter Results**: Write discovery findings to report file under "# Chapter 1: Discovery"
+5. **Chapter Status**: "Chapter 1 Done - Start new session and enter 'analyze tech stack' to continue with Chapter 2"
 
-3. **Intelligent Gap Analysis**:
-   - Identify any critical missing information
-   - Formulate minimal, targeted questions for user
-   - Only request information that couldn't be automatically determined
+### Chapter 2: Analysis
+**Prerequisites**: Chapter 1 must be completed and saved
+**Objective**: Deep analysis of discovered components
 
-4. **Comprehensive Assessment**:
-   - Evaluate architecture patterns
-   - Identify technical debt
-   - Assess security posture
-   - Evaluate scalability
+**Process**:
+1. **Verify Prerequisites**: Check that Chapter 1 exists in the report file
+2. **Load Previous Results**: Read discovery findings from Chapter 1
+3. **Component Analysis**:
+   - Identify version and compatibility for each component
+   - Check for known vulnerabilities (CVE database)
+   - Assess maintenance status and community support
+   - Evaluate performance characteristics
+   - Check documentation availability and quality
+   - Analyze dependency relationships and conflicts
+4. **Save Chapter Results**: Append analysis findings to report file under "# Chapter 2: Analysis"
+5. **Chapter Status**: "Chapter 2 Done - Start new session and enter 'analyze tech stack' to continue with Chapter 3"
+
+### Chapter 3: Assessment
+**Prerequisites**: Chapters 1 and 2 must be completed and saved
+**Objective**: Comprehensive assessment and gap analysis
+
+**Process**:
+1. **Verify Prerequisites**: Check that Chapters 1 and 2 exist in the report file
+2. **Load Previous Results**: Read discovery and analysis findings
+3. **Comprehensive Assessment**:
+   - Evaluate architecture patterns and design quality
+   - Identify technical debt and code quality issues
+   - Assess security posture and vulnerabilities
+   - Evaluate scalability and performance bottlenecks
    - Check test coverage and quality metrics
+   - Analyze deployment and operational readiness
+4. **Gap Analysis**:
+   - Identify missing components or capabilities
+   - Assess compliance with industry standards
+   - Evaluate team skill requirements
+5. **Save Chapter Results**: Append assessment findings to report file under "# Chapter 3: Assessment"
+6. **Chapter Status**: "Chapter 3 Done - Start new session and enter 'analyze tech stack' to continue with Chapter 4"
 
-5. **Report Generation**:
-   - Use template: `[id:templates_dir]architect/tech-stack-template.md`
-   - Populate all relevant sections with discovered information
-   - Generate architecture diagrams
-   - Include version compatibility matrix
-   - Document configuration requirements and recommendations
+### Chapter 4: Reporting
+**Prerequisites**: Chapters 1, 2, and 3 must be completed and saved
+**Objective**: Generate final comprehensive report with recommendations
 
-## Output/Result Format
-- Final report saved as: `[id:findings_dir]technical-stack-analysis-for-<project_name>-YYYYMMDD-NNN.md`
-  - `YYYYMMDD`: Current date in year-month-day format
-  - `NNN`: 3-digit serial number (001, 002, etc.) for multiple reports on same day
-- Interactive markdown report with collapsible sections
-- Visual dependency graph
-- Risk assessment matrix
-- Automated recommendations
-- Actionable insights
+**Process**:
+1. **Verify Prerequisites**: Check that Chapters 1, 2, and 3 exist in the report file
+2. **Load Previous Results**: Read all previous chapter findings
+3. **Report Generation**:
+   - Create executive summary
+   - Compile detailed technical analysis
+   - Generate recommendations and action items
+   - Create migration paths and upgrade strategies
+   - Document resource requirements
+   - Include visual dependency graphs
+   - Add risk assessment matrix
+4. **Save Chapter Results**: Append final report to file under "# Chapter 4: Final Report"
+5. **Use Template**: Follow the structure defined in `[id:templates_dir]architect/tech-stack-template.md`
+6. **Chapter Status**: "Chapter 4 Done - Technical stack analysis complete. Report available at: [id:findings_dir]technical-stack-analysis-for-<project_name>-YYYYMMDD-NNN.md"
 
-## Output to USER
-1. **Initial Scan Results** (immediate):
-   - Detected technologies
-   - Initial findings
-   - Any critical issues found
+## Execution Logic
 
-2. **Follow-up Questions** (if needed):
-   - Only for information that couldn't be discovered automatically
-   - Multiple-choice or yes/no when possible
-   - Context-aware based on already discovered information
+**Chapter Detection**:
+1. Check if report file exists for the project
+2. If file exists, determine last completed chapter
+3. Execute next chapter in sequence
+4. If no file exists, start with Chapter 1
 
-3. **Final Report**:
-   - Executive summary
-   - Detailed analysis
-   - Recommendations
-   - Migration paths
-   - Resource requirements
+**Chapter Verification**:
+- Before starting any chapter (except Chapter 1), verify previous chapters are completed
+- Read the report file and check for chapter completion markers
+- If prerequisites not met, inform user and stop execution
+
+## Output Format
+
+**Report File Structure**:
+```markdown
+# Technical Stack Analysis for <project_name>
+**Generated**: YYYYMMDD-HHmm CEDT
+**Status**: [In Progress/Complete]
+
+## Executive Summary
+[Populated in Chapter 4]
+
+# Chapter 1: Discovery
+[Discovery findings]
+**Status**: Complete
+
+# Chapter 2: Analysis
+[Analysis findings]
+**Status**: Complete
+
+# Chapter 3: Assessment
+[Assessment findings]
+**Status**: Complete
+
+# Chapter 4: Final Report
+[Final report and recommendations]
+**Status**: Complete
+```
+
+## Session Management
+- Each chapter should be executed in a separate session
+- User must start new session between chapters
+- Use command "analyze tech stack" to continue workflow
+- System will automatically detect and execute next chapter
 
 ## Domain-Specific Rules
-- Rule 1: Always prefer automated discovery over user input
-- Rule 2: Group related questions to minimize interactions
-- Rule 3: Provide context for any requested information
-- Rule 4: Validate user inputs against known patterns
-- Rule 5: Update analysis with new information dynamically
-
-## Required Actions
-1. Perform initial automated scan
-2. Analyze discovered components
-3. Identify information gaps
-4. Request minimal required input
-5. Generate comprehensive report
-
-⚠️ **Critical Notes**
-- Never ask for information that can be automatically determined
-- Always explain why specific information is needed
-- Provide clear examples when requesting input
-- Allow partial information and make reasonable assumptions
-- Clearly document any assumptions made
-- Provide a way to update or correct information
+- Rule 1: Always verify chapter prerequisites before execution
+- Rule 2: Save results after each chapter completion
+- Rule 3: Provide clear status messages for session management
+- Rule 4: Never skip chapters or execute out of order
+- Rule 5: Always load previous chapter results before proceeding
 
