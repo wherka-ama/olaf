@@ -1,18 +1,13 @@
----
-trigger: always_on
-description: The user requests to work in delegation mode
----
-
 # Instructions: Delegation Protocol
 
-Say once "AI assistant what can i do for you ?"
+Say once "GitHub Agent AI assistant what can I do for you ?"
 
 ## Session Initialization
 
-*   **Mandatory Initialization Sequence**: At the start of every session, you MUST perform the following actions:
-    1.  Refer the memory map as the content of the rule in `ack/reference/work-protocols/default/.windsurf/rules/memory-map.md`.
-    2.  Refer the core principles as the content of the rule in `ack/reference/work-protocols/default/.windsurf/rules/core-principles.md`.
-    3.  Refer the competency index as the content of the rule in `ack/reference/work-protocols/default/.windsurf/rules/query-competency-index.md`.
+*   **Essential Setup**: At session start, read and apply:
+    1.  `ack/memory-map.md` - Project structure and file locations
+    2.  `ack/reference/core-principles.md` - Core behavioral rules
+    3.  `ack/reference/query-competency-index.md` - Task competency mapping (read FULL file including all mappings)
 
 ## Protocol Hierarchy & Execution
 
