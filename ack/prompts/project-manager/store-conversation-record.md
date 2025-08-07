@@ -20,7 +20,7 @@ tags: [conversation, record, documentation, archive, history]
    - Do not attempt to infer or guess AI model - get this information directly from user
 
 2. **Get Timestamp**:
-   - Execute script: `[id:tools_dir]Get-ConversationTimestamp.ps1` for current timestamp
+   - Execute script: `[id:tools_dir]get-conversation-timestamp.ps1` for current timestamp
    - Use MCP server tool: `mcp_get-local-time_get_local_time` as alternative
    - Format timestamp as: `YYYYMMDD-HHMM`
    - Ensure unique timestamp for each conversation record

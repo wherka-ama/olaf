@@ -4,7 +4,7 @@ get-conversation-timestamp.ps1
 #
 # Usage:
 #   From PowerShell: `. .\ack\tools\get-conversation-timestamp.ps1`
-#   From CMD: `powershell -Command "& { . .\ack\tools\Get-ConversationTimestamp.ps1 }"`
+#   From CMD: `powershell -Command "& { . .\ack\tools\get-conversation-timestamp.ps1 }"`
 #
 # Purpose:
 #   This tool ensures consistent timestamp formatting for conversation record filenames,
