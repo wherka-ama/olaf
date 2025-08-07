@@ -1,7 +1,3 @@
----
-mode: agent
----
-
  **Essential Setup**:  read and apply:
     1.  `ack/memory-map.md` - Project structure and file locations
     2.  `ack/reference/core-principles.md` - Core behavioral rules
