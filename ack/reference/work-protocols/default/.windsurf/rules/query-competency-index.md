@@ -2,9 +2,10 @@
 trigger: always_on
 description: the index of competencies
 ---
+
 # Competency Index
 
-**Last Updated:** 20250804-1200 CEDT
+**Last Updated:** 20250807-1316 CEDT
 
 ## How to Use This Index
 
@@ -42,7 +43,7 @@ To remove a competency:
   [["store conversation", "save chat"], "project-manager/store-conversation-record.md", "Act"],
   [["decision record", "adr", "document decision"], "project-manager/create-decision-record.md", "Act"],
 
-  [["orchestrate refactoring", "driver refactoring"], "reduce-code-complexity/master-complexity-reduction-orchestrator.md", "Propose-Act"],
+  [["orchestrate refactoring", "driver refactoring"], "reduce-code-complexity/reduce-code-complexity-master-orchestrator.md", "Propose-Act"],
 
   [["progress", "status update", "how are we doing"], "project-manager/review-progress.md", "Act"],
   [["tasklist", "task list", "generate tasklist", "create tasklist"], "project-manager/generate-tasklist.md", "Act"],
@@ -51,14 +52,12 @@ To remove a competency:
   [["analyze changelog", "summarize changes"], "project-manager/analyze-changelog-and-report.md", "Act"],
   [["person record", "add team member"], "project-manager/create-person-record.md", "Act"],
   [["generate commits", "commits from changelog"], "project-manager/generate-commits-from-changelog.md", "Act"],
-   [["cve exposure", "cve analysis", "vulnerability analysis", "security vulnerability", "cve workflow"], "cve-verifier/cve-analysis-workflow.md", "Propose-Act"],
 
   [["review code", "check code", "code review", "examine code"], "developer/review-code.md", "Act"],
   [["review modified", "modified files", "review changes"], "developer/review-modified-files.md", "Act"],
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
   [["codebase risk", "code risk", "analyze codebase", "code quality analysis"], "other-users/analyze-codebase-risk.md", "Act"],
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
-  [["testing", "test framework", "test stack"], "core/analyze-test-stack.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
   [["evolve unit tests", "improve unit tests", "unit test evolution", "enhance test coverage"], "evolve-unit-tests/evolve-unit-tests-workflow.md", "Act"],
@@ -68,11 +67,13 @@ To remove a competency:
   [["controlled research", "supervised research", "step by step research"], "business-analyst/research-and-report.md", "Propose-Confirm-Act"],
   [["tech spec from code", "spec from code"], "developer/generate-tech-spec-from-code.md", "Act"],
 
-  [["bootstrap functional spec", "func spec from code"], "developer/bootstrap-functional-spec-from-code.md", "Act"],
+  [["bootstrap functional spec", "func spec from code"], "business-analyst/bootstrap-functional-spec-from-code.md", "Act"],
   [["user story", "story review"], "business-analyst/review-user-story.md", "Act"],
 
   [["questionnaire", "survey"], "business-analyst/generate-questionnaire.md", "Act"],
   [["write paper", "academic paper", "research paper"], "technical-writer/write-academic-paper.md", "Act"],
+  [["generate test plan", "test plan", "testing plan", "create test plan"], "tester/generate-test-plan.md", "Act"],
+  [["cve analysis", "cve workflow", "vulnerability analysis", "security analysis", "cve exposure"], "cve-verifier/cve-analysis-workflow.md", "Act"],
   [["create prompt", "new prompt", "write prompt"], "prompt-engineer/create-prompt.md", "Act"],
   [["convert prompt", "refactor prompt", "rewrite prompt"], "prompt-engineer/convert-prompt-existing.md", "Act"],
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],
@@ -81,8 +82,8 @@ To remove a competency:
   [["business analyst pipeline", "project assessment pipeline", "requirements to test plan", "end to end analysis"], "other-users/orchestrate-project-assessment-pipeline.md", "Propose-Act"],
   [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "project-manager/orchestrate-project-onboarding-analysis.md", "Propose-Act"],
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
-  [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "developer/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
-  [["log to source", "map logs to code", "trace logs", "source mapping", "debug with logs"], "developer/troubleshoot-logs-to-sources.md", "Act"],
+  [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "troubleshooting/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
+  [["log to source", "map logs to code", "trace logs", "source mapping", "debug with logs"], "troubleshooting/troubleshoot-logs-to-sources.md", "Act"],
 
 ]
 ```
