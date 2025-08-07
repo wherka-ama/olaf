@@ -3,9 +3,39 @@
 # Purpose: Parse files in prompts, templates, and tools directories to find file references and validate their existence
 
 param(
-    [string]$RootPath = "C:\Users\ppaccaud\coderepos\olaf-official\ack",
-    [string]$OutputFile = "C:\Users\ppaccaud\coderepos\olaf-official\ack\missing-file-references.txt"
+    [string]$RootPath,
+    [string]$OutputFile
 )
+
+# Auto-detect workspace root if not provided
+if (-not $RootPath) {
+    $currentDir = Get-Location
+    $searchDir = $currentDir
+    
+    # Look for workspace indicators (ack and ads folders)
+    while ($searchDir -and $searchDir.Path -ne $searchDir.Root) {
+        $ackPath = Join-Path $searchDir.Path "ack"
+        $adsPath = Join-Path $searchDir.Path "ads"
+        
+        if ((Test-Path $ackPath) -and (Test-Path $adsPath)) {
+            $RootPath = Join-Path $searchDir.Path "ack"
+            break
+        }
+        
+        $searchDir = $searchDir.Parent
+    }
+    
+    if (-not $RootPath) {
+        throw "Could not auto-detect workspace root. Please provide -RootPath parameter or run from within a workspace containing 'ack' and 'ads' folders."
+    }
+    
+    Write-Host "Auto-detected workspace root: $RootPath"
+}
+
+# Set default output file if not provided
+if (-not $OutputFile) {
+    $OutputFile = Join-Path $RootPath "missing-file-references.txt"
+}
 
 # Define the directories to scan
 $ScanDirectories = @(

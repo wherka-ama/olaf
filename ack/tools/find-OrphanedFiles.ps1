@@ -1,13 +1,42 @@
 # Find-OrphanedFiles.ps1
 # Finds files in tools_dir and templates_dir that are never referenced in prompts_dir .md files
 
+param(
+    [string]$WorkspaceRoot
+)
+
+# Auto-detect workspace root if not provided
+if (-not $WorkspaceRoot) {
+    $currentDir = Get-Location
+    $searchDir = $currentDir
+    
+    # Look for workspace indicators (ack and ads folders)
+    while ($searchDir -and $searchDir.Path -ne $searchDir.Root) {
+        $ackPath = Join-Path $searchDir.Path "ack"
+        $adsPath = Join-Path $searchDir.Path "ads"
+        
+        if ((Test-Path $ackPath) -and (Test-Path $adsPath)) {
+            $WorkspaceRoot = $searchDir.Path
+            break
+        }
+        
+        $searchDir = $searchDir.Parent
+    }
+    
+    if (-not $WorkspaceRoot) {
+        throw "Could not auto-detect workspace root. Please provide -WorkspaceRoot parameter or run from within a workspace containing 'ack' and 'ads' folders."
+    }
+    
+    Write-Host "Auto-detected workspace root: $WorkspaceRoot"
+}
+
 function Resolve-IdMapping {
     param([string]$Id)
     
     $idMappings = @{
-        'tools_dir' = 'c:\Users\ppaccaud\coderepos\olaf-official\ack\tools'
-        'templates_dir' = 'c:\Users\ppaccaud\coderepos\olaf-official\ack\templates'
-        'prompts_dir' = 'c:\Users\ppaccaud\coderepos\olaf-official\ack\prompts'
+        'tools_dir' = Join-Path $WorkspaceRoot "ack\tools"
+        'templates_dir' = Join-Path $WorkspaceRoot "ack\templates"
+        'prompts_dir' = Join-Path $WorkspaceRoot "ack\prompts"
     }
     
     return $idMappings[$Id]
@@ -16,7 +45,7 @@ function Resolve-IdMapping {
 function Get-RelativePathFromAck {
     param([string]$FullPath)
     
-    $ackBasePath = 'c:\Users\ppaccaud\coderepos\olaf-official\ack'
+    $ackBasePath = Join-Path $WorkspaceRoot "ack"
     if ($FullPath.StartsWith($ackBasePath, [System.StringComparison]::OrdinalIgnoreCase)) {
         $relativePath = $FullPath.Substring($ackBasePath.Length)
         # Remove leading slash/backslash and convert to forward slashes
