@@ -23,354 +23,98 @@ It can serve several needs:
 ## How to install
 To use OLAF, you need to copy the `/ack` and `/ads` folders side by side with your project.
 
-
 - **/ack for Assistant Core Knowledge** : this is the folder that contains all the artifacts that are used by the AI to perform their tasks. It is the core of OLAF.
 - **/ads for Assistant Data Store** : this is the folder that contains all the artifacts that are produced or used by OLAF to perform its tasks.
 
 Note: If you are working with a version control system (e.g.; GitLab, GitHub, etc.), you can (should) include this into your project.
 
-
-## Models tested
-
-As of 2025-06-27: we don't have a model that works perfectly with OLAF.
-
-Context management done by the agent is significantly interfering with the interaction, hence we strongly encourage testing the competencies, and even improving them for a duo: Agent + Model.
-
-
-**Good results**:
-- Claude Sonnet 4 and 4 Thinking
-
-**Satisfactory results**:
-- Anthropic Sonnet 3.7
-- Gemini 2.5 PRO (preview)
-
-**Limited results**:
-- OpenAI GPT 4.1 or 4o min. those models require "baby-sitting" most most prompts.
-
-**Not tested**:
-- OpenAI 0x models (Too expensive or not available)
-- DeepSeek Rx (Not available)
+**📖 For detailed installation instructions, see [docs/installation.md](docs/installation.md)**
 
 
 ## Key Features
 
-### Interaction Protocols
-Our interaction model is governed by distinct protocols.
+OLAF provides several key capabilities to enhance AI-human collaboration:
 
-We did that to assist users that are fearful of AI agents and to provide a safe environment for them to interact with AI agents.
+- **Interaction Protocols** - "Act", "Propose-Act", and "Propose-Confirm-Act" protocols for different safety levels
+- **Meta-prompting** - Generate custom prompts following OLAF structure
+- **Memory-map** - Project navigation aid for AI agents
+- **Competency-Driven Workflow** - Central dispatcher for mapping requests to workflows
+- **Chapter Mode** - Handle long-running processes with context management
 
-1. **"Act"**: In which case the Model, hence the Agent, is encouraged to carry out the action without any confirmation
-2. **"Propose-Act"**: The agent states the action it will do, may ask for an answer, and executes it in the same step
-3. **"Propose-Confirm-Act"**: This is encouraged for any action that modifies, creates, or deletes files. The agent must propose the action, ask for confirmation, and wait for user approval before proceeding
-
-Protocols are set per pre-recorded Workflow and prompt. Some prompts benefit from a "Propose-Act" protocol while others benefit from a "Act" protocol. It can be modified of set per repository.
-
-
-Note: The way the protocol reacts strongly depends on the agent and the model used. Some models may not be able to handle the "Propose-Act" protocol. Some models may not be able to handle the "Propose-Confirm-Act" protocol.
-
-### Meta-prompting
-Allowing users to generate they own prompt based on entries they provide and following the the structure of prompt-tools-templates in a consistent way.
-
-Note: we name this structure a "Competency"
-
-A prompt is provided that can be used to scaffold the Competency. Then it can be tested and refined by the users. 
-
-### Memory-map
-OLAF provides a Memory-map (a markdown file) that maps the important folders and files of the project. So prompt can be instructed to read input files and generate output files based in the right location of the project - especially for the /ads folder. The memory-map is present in /ack  for general pupose agents and in .windsurf/rules for Cascade agent.
-
-### Core principles
-OLAF allows to define core principles that are used by the AI to perform their tasks. These principles are defined in the `ack/reference/core-principles.md` file or in the corresponding .windsurf/rules/ files.
-
-Note: This file can be edited and also refer to Decision Record of the /ads folder, provided that those are in a format acceptable by a Model.
-
-### Competency-Driven Workflow
-The full set of competencies is defined in the `/ack/reference/query-competency-index.md` file, or the corresponding .windsurf/rules/ file.
-
-This file acts as a central dispatcher, mapping user requests to specific competencies and workflows. 
-
-Always refer to this file and update it for the authoritative and up-to-date list of competencies, workflows, and protocols.
+**📖 For detailed feature descriptions, see [docs/features.md](docs/features.md)**
 
 
-### Referencing tools (script) and templates from competencies
-OLAF allows to define tools (scripts) and templates (md , json or other files) that are used by the prompt to perform their tasks. These tools and templates are defined in the `/ack/tools/` and `/ack/templates/` folders.
+## Available Competencies
 
-Concerning templates, this is unlike other solutions (e.g. LangChain/LangGraph) that prefer having examples embedded in the prompts.
+OLAF provides competencies across multiple categories including Code Analysis, Documentation & Specification, Requirements Analysis, Project Management, and Software Development.
 
-Also we may also use "questionnaires" to allow guiding the user with a set of questions that are used to deliver on the competency.
-These will also be referenced in the prompt as an input
-
-## Prompt and Template Organization
-
-OLAF organizes prompts and templates into structured categories to improve discoverability, maintainability, and user experience. The categorization follows two main approaches:
-
-### 1. User Profile-Based Categories
-These categories are organized around common user personas and their typical responsibilities:
-
-#### **architect/**
-- **Purpose**: Architectural analysis, system design, and technical strategy
-- **Example Prompts**: 
-  - `analyze-technical-stack.md` - Analyze project technology stack and dependencies
-  - `propose-cloud-native-architecture.md` - Design cloud-native architectural solutions
-- **Example Templates**:
-  - `tech-stack-template.md` - Standardized technology stack documentation
-  - `cloud-native-architecture-template.md` - Cloud architecture documentation format
-
-#### **business-analyst/**
-- **Purpose**: Business requirements analysis, functional specifications, and stakeholder communication
-- **Example Prompts**:
-  - `analyze-business-requirements.md` - Extract and analyze business requirements
-  - `bootstrap-functional-spec-from-code.md` - Generate functional specifications from existing code
-  - `generate-questionnaire.md` - Create stakeholder questionnaires
-- **Example Templates**:
-  - `functional-specification-template.md` - Structured functional specification format
-  - `requirements-analysis-report-template.md` - Business requirements analysis output
-
-#### **developer/**
-- **Purpose**: Code development, review, testing, and technical implementation
-- **Example Prompts**:
-  - `review-code.md` - Comprehensive code review analysis
-  - `evolve-code-iteratively.md` - Iterative code improvement workflow
-  - `improve-cyclomatic-complexity.md` - Code complexity reduction
-- **Example Templates**:
-  - `code-review-template.md` - Standardized code review format
-  - `unit-test-template.md` - Unit test documentation structure
-
-#### **project-manager/**
-- **Purpose**: Project coordination, documentation, and progress tracking
-- **Example Prompts**:
-  - `create-job.md` - Create structured project jobs/tasks
-  - `review-progress.md` - Analyze project progress and status
-  - `store-conversation-record.md` - Document conversation outcomes
-- **Example Templates**:
-  - `job-template.md` - Project job documentation format
-  - `progress-review-template.md` - Progress assessment structure
-
-#### **technical-writer/**
-- **Purpose**: Documentation creation, user manuals, and technical communication
-- **Example Prompts**:
-  - `write-academic-paper.md` - Generate academic-style technical papers
-- **Example Templates**:
-  - `academic-paper-template.md` - Academic paper structure and formatting
-  - `user-manual-template.md` - User documentation format
-
-### 2. Intent-Based Categories
-These categories are organized around specific technical intentions or specialized workflows:
-
-#### **cve-verifier/**
-- **Purpose**: Security vulnerability analysis and CVE management
-- **Example Prompts**:
-  - `analyze-cve-exposure.md` - Analyze codebase for CVE vulnerabilities
-  - `cve-analysis-workflow.md` - Complete CVE assessment workflow
-- **Example Templates**:
-  - `cve-exposure-summary-template.json` - CVE analysis results format
-  - `individual-cve-analysis-template.json` - Individual vulnerability assessment
-
-#### **evolve-unit-tests/**
-- **Purpose**: Comprehensive unit testing improvement and evolution
-- **Example Prompts**:
-  - `evolve-unit-tests-workflow.md` - 9-phase unit test evolution process
-- **Example Templates**:
-  - `unit-test-evolution-report-template.md` - Test evolution progress documentation
-
-#### **reduce-code-complexity/**
-- **Purpose**: Multi-phase code complexity reduction and refactoring
-- **Example Prompts**:
-  - `reduce-code-complexity-master-orchestrator.md` - Master workflow coordinator
-  - `1-discovery-workflow.md` through `7-final-consolidation.md` - Sequential phase workflows
-- **Example Templates**:
-  - `complexity-analysis-results.md` - Complexity assessment output
-  - `implementation-strategy.md` - Refactoring strategy documentation
-
-#### **troubleshooting/**
-- **Purpose**: Log analysis, error investigation, and issue resolution
-- **Example Prompts**:
-  - `orchestrate-log-troubleshooting-workflow.md` - Complete troubleshooting workflow
-  - `troubleshoot-logs-to-sources.md` - Map log errors to source code
-- **Example Scripts**:
-  - `analyze-log-priorities.ps1` - Automated log priority analysis
-  - `analyze-log-source-mapping.ps1` - Log-to-source correlation
-
-### Category Selection Guidelines
-
-**Use User Profile Categories When:**
-- The workflow aligns with a specific professional role
-- Multiple people with the same role would use similar prompts
-- The workflow requires role-specific expertise or perspective
-
-**Use Intent-Based Categories When:**
-- The workflow is highly specialized or technical
-- It represents a complete multi-phase process
-- It requires specific tools, scripts, or specialized templates
-- It's used across multiple user profiles
-
-### Benefits of This Organization
-
-1. **Discoverability**: Users can quickly find prompts relevant to their role or specific technical need
-2. **Maintainability**: Related prompts and templates are co-located for easier updates
-3. **Consistency**: Templates within categories follow similar patterns and structures
-4. **Scalability**: New prompts can be easily categorized using established patterns
-5. **Tool Integration**: Scripts and templates are organized alongside their related prompts
-
-## Available Competencies - this may change rapidly - take those as examples
-
-Here is a list of the competencies that may be used on this vanilla incarnation of OLAF, grouped by category:
-
-**Code Analysis**
-- Review Code
-- Review GitHub PR - needs the GitHub MCP server
-- Analyze Architecture
-- Analyze Technical Stack
-- Analyze Test Stack
-- Evolve Code Iteratively
-- Improve Cyclomatic Complexity - a complete workflow is provided
-- Review Modified Files - those files in the git modified stage
-
-**Documentation & Specification**
-- Research and Report - create plan for research then act on each chapter
-- Create Decision Record - when you document a technical decision for the project - can be embedded in the core principles file
-- Document API Specification
-- Generate Tech Spec from Code
-- Generate initial Technical Specification from code
-- Bootstrap Functional Spec from Code
-- Write Academic Paper
-- Create Prompt (meta-prompting)
-- Generate API Definition
-- Prepare Conversation Handover - when you end a session and want to provide a summary of the conversation for the next session
-- Store Conversation Record - when you end a session and want to store the conversation for later analysis
-
-**Requirements Analysis**
-- Generate Questionnaire
-
-**Project Management**
-- Review Progress based on changelog and jobs registry
-- Create Changelog Entry in the registry
-- Archive Changelog Entries from the registry to an archive registry
-- Create Job - a job is a micro-project, including its task plan
-- Work on Job - start or restart a job
-- Create Person Record - a person record is a record of a person, including its role and responsibilities
-- Generate Changelog entries from commits 
-
-**Software Development**
-- Generate Test Plan
-- Generate API Test Suite
-
-## Centralized Documentation
-All project-related documentation, including architectural decision records, changelogs, and reports, is stored in a structured manner under `/ads/product/documentations`.
-
-Note: the idea with `/ads` is to avoid "polluting" the project folder with OLAF artifacts. But you could also decide to use a different folder part of the project repository.
-
-Reminder : this is only a vanilla incarnation. AI is not *magic*. You need to steer the deliveries for yourself.
-
-## Specific: Complex phase chained prompts
-**Compound Onboarding Competency**: A comprehensive workflow to analyze and understand a new project, composed of several sub-competencies for a thorough evaluation:
-- Project onboarding and analysis
-- Improvement implementations
-- New asset creation
-
-**Improve cyclomatic complexity and halstead metrics**: For repositories this chain of prompts is used to:
-- Find the hotspots (files changed regularly and that present high cyclomatic complexity and halstead metrics)
-- Create strategy and request for USER to review it and approve it
-- On approval, iteratively improve them
+**📖 For the complete list of competencies, see [docs/competencies.md](docs/competencies.md)**
 
 
 ## Integration with agents
 
-### Core Files
-One essential file is:
-- `ack/memory-map.md`, which provides the LLM with key context pointers (files or structure) - or in .windsurf/rules/memory-map.md
+OLAF integrates with various AI agents through core configuration files and helper prompts. The framework has been tested with different models showing varying levels of compatibility.
 
-This file should be loaded by the LLM at the start of each interaction. This is why we rely on the agent's capabilities to do so (e.g., `.windsurf/team.md` for Windsurf).
-
-Additionally, the instructions file references other important files that are essential for the interaction (i.e. `ack/core-principles.md` and `ack/query-competency-index.md`).
-
-The contents of these files are loaded into the context windows of the LLM when the interaction begins. Therefore, it is crucial to keep the information concise and provide clear context.
-
-### Helpers prompts
-Most Agents allows to provide a set of "helpers" prompts that are used to list and use the competencies. 
-We provide:
-- `.windsurf/prompts/list-competencies.md` : a prompt that lists all the competencies available in the index file.
-- `.windsurf/prompts/use-competency.md` : a prompt that uses a competency based on a user's request.
-
-### /ads folder structure
-This folder structure is designed to store work artifacts, such as:
-
-- `/ads/findings` : a temporary folder to store findings that require further action (e.g., results from code reviews). The USER is responsible for moving these findings to their final destination or deleting them.
-- `/ads/people` : stores information about the human team members participating in the project
-- `/ads/practices` : documents the practices used in the project
-- `/ads/projects` : stores information about the projects and tasks being worked on, referred to as "jobs"
-- `/ads/progress/changelog-register.md` : maintains a timestamped record of project changes
-- `/ads/progress/jobs-register.md`: keeps a timestamped record of jobs and their tasks
-- `/ads/progress/jobs` : stores detailed information about jobs and their tasks
-- `/ads/product` : stores product-related artifacts, such as specifications and documentation
-- `/ads/product/decision-records` : stores decision records related to the project
-
-While this structure is extensible, it is not mandatory to use it. However, mant competencies rely on it to provide context to the LLM or to produce artifacts. And it is mapped into teh memory-map.md file. So be careful to update this one if you wish to adapt the structure.
-
-Note: OLAF is not a project management framework and does not aim to replace existing project management tools. It is designed to assist in project management tasks and can be used in conjunction with other tools and frameworks.
+**📖 For detailed integration information, see [docs/integration.md](docs/integration.md)**
 
 
 ## Step-by-Step Getting Started
 
-1. **Copy the `/ack` and `/ads` folders alongside a repository of code and/or documentation**:
-	* DO NOT change these folders' structure until you understand the OLAF principles
-2. **Use windsurf (preferred) or may be GitHub Copilot in Agent Mode**
-	*  You can adapt OLAF to other AI agents you use. For most agents, the key files you need to configure are `.windsurf/rules/team.md` and `.windsurf/prompts/xxx.md` files. Be careful with the prompts as different agents may not use the same preamble format as Windsurf.
-	* Be careful as OLAF may consume your credits at a faster rate than any human can. Especialy if you use the "Propose-Confirm-Act" protocol and use an model for with the agent provide charge premium-requests.
-3. **Read the `.windsurf/rules/team.md` and `.windsurf/prompts/xxx.md` and the `/.windsurf/rules/memory-map.md` files**:
-	* Open and read these files to understand the context and memory map of your project
-	* We recommend to keep them as is for the time being. Don't feel too smart with those until you understand the OLAF principles.
-4. **Explore the competencies**:
-	* Choose a competency and explore its structure - prompt, and potentially template and script
-	* Use a competency to perform a simple task, such as research-and-report
-5. **Find the output of the competencies and move it to the right place if needed**:
-	* After using a competency, find the output and move it to the right place in your project, or delete it if it is not needed
-	* in this incarnation, we tried to locate all outputs in /ads/findings/ or a a subfolder of it, but this is not guaranteed
-6. **Ask the AI to create a new changelog**:
-	* Use the `create-changelog-entry` command to ask the AI to create a new changelog for your project
-  * note that the AI will react differently depending on the context you went through. This is an important aspect of current generative AI.
-7. **Ask the AI to create a new job**:
-	* Use the `create-job` command to ask the AI to create a new job for your project
-	* Describe the job using your wording - try to be clear and concise but with enough details
-8. **You're ready to go!**:
-	* From here, you should be able to manage your way with the rest of the competencies
-	* You may want to create a new competency using the `learn-competency` or explore other features of OLAF
+1. **Copy the `/ack` and `/ads` folders alongside a repository** - DO NOT change these folders' structure initially
+2. **Use windsurf (preferred) or GitHub Copilot in Agent Mode** - Configure agent-specific files carefully
+3. **Read the configuration files** - Understand project context and memory map
+4. **Explore competencies** - Try simple tasks like research-and-report
+5. **Manage outputs** - Find and organize competency outputs appropriately
+6. **Create changelog and jobs** - Use project management features
+7. **You're ready to go!** - Explore other features and create new competencies
+
+**📖 For detailed getting started instructions, see [docs/installation.md](docs/installation.md)**
 
 
-## <font color="red">**Critical notes**</font>
-- <font color="red">**This is a work in progress**</font> and we are still exploring the best way to use OLAF. You need to <font color="red">**read carefully and understand what the AI answers**</font>. Avoid just entering the 'YES/DO it/Correct/OK' without really reading. This is not a Genius, THIS is an Assistant.
+## Documentation
+
+**📖 Complete documentation is available in [docs/](docs/)**
+
+- [Installation Guide](docs/installation.md) - Setup and getting started
+- [Key Features](docs/features.md) - Core OLAF capabilities  
+- [Competencies](docs/competencies.md) - Available workflows and competencies
+- [Project Organization](docs/organization.md) - Structure and organization principles
+- [Agent Integration](docs/integration.md) - Working with different AI agents
+- [Best Practices](docs/best-practices.md) - Guidelines for effective usage
+- [Limitations](docs/limitations.md) - Known limitations and support
+
+## Critical Notes
+- **This is a work in progress** and we are still exploring the best way to use OLAF. You need to **read carefully and understand what the AI answers**. Avoid just entering the 'YES/DO it/Correct/OK' without really reading. This is not a Genius, THIS is an Assistant.
 - Models may fail to answer (resource limit, latency, etc.). Most agents gracefully handle this but you may need to retry. Don't blame your OLAF assistant.
+
+**📖 For complete limitations and best practices, see [docs/best-practices.md](docs/best-practices.md) and [docs/limitations.md](docs/limitations.md)**
 
 
 ## Best Practices
-1. **Maintain Clear Documentation**: Ensure that all prompts are written in a clear, concise, and consistent manner using markdown format. Note that some models may have been trained using other formats, such as XML, and may respond better to prompts in those formats.
-2. **Document Prompt Authorship**: To give credit to the original authors, it is recommended to include comments in prompt files indicating who wrote the prompt and when. This can be done using HTML comments, which will not be visible in the rendered output. For example:
-   ```markdown
-   <!--
-   Author: John Doe
-   Date: 2025-06-24
-   -->
-   ```
-3. **Version Control all Configurations**: Use version control to track all changes to configurations, including those made in and by OLAF. This will help ensure that changes are properly recorded and can be easily reverted if needed. In our experience, using OLAF to build itself resulted in a significant increase in the number of changes and fixes that could be made in a day, and we found it necessary to create a competency to assist in committing changes based on the changelog-register with clearer commit messages.
-4. **Use Standardized Templates for Consistency**: Use standardized templates for the output of competencies to ensure consistency and easier maintenance. While the output of competencies can be defined in the prompt, using templates helps to ensure that the output is consistent and follows a standard format.
-5. **Follow Persona-Specific Workflows**: Follow persona-specific workflows to maintain an engaging interaction with AI personas. While competencies are designed to be agnostic of the personas, following persona-specific workflows helps to ensure that the interaction is productive and efficient.
+Key practices for effective OLAF usage:
+
+1. **Maintain Clear Documentation** - Use consistent markdown formatting for all prompts
+2. **Document Prompt Authorship** - Include author and date information in prompts  
+3. **Version Control Everything** - Track all changes including OLAF-generated modifications
+4. **Use Standardized Templates** - Ensure consistency across competency outputs
+5. **Follow Persona-Specific Workflows** - Maintain engaging AI persona interactions
+
+**📖 For complete best practices, see [docs/best-practices.md](docs/best-practices.md)**
 
 
-## Future Development
+## Future Development and Support
 This repository is not actively maintained or developed. The goal is to share a base set that can be transformed, expanded, and modified by any solo, pro users, or enterprises.
 
-## Support
 No official support is provided. While we appreciate contributions, we cannot guarantee that any issues or pull requests will be addressed.
+
+**📖 For limitations and support details, see [docs/limitations.md](docs/limitations.md)**
+
 
 ## Limitations (as of Q2 2025)
 
-- **Competency Stability**: Any competency may not always work the same way. Be extra careful and correct the behavior as it goes.
-- **Model Compatibility**: Using models such as GPT 4.1 does not work well and may even break your important file... but there's no guarantee that it will work with other models either.
-- **User Expertise**: We recommend avoiding providing this incarnation to non-trained users. It can do more harm than good for those that don't understand the notion of LLMs.
-- **Context Management**: The way the agent manages and interferes with the context strongly impacts the results. If you use your own agents, be extra careful on such aspects as ephemeral memories.
-- **Language Support**: We only tested in Globish (minimally English). Translating the competency in another language may not deliver the same result. Be careful.
-- **Vendor Independence**: Although we tried to make it non-vendor dependant, it is not sure we don't have some leftovers from our first incarnation.
-- **Directory Structure**: The structure to store the artifacts produced by the prompts is just an example, but the prompts are impacted if you change folder names.
-- **Project Management**: We did not intend to deliver on project management. Use MCP servers to get JIRA (or else) or Confluence (or else) data.
+Key limitations include competency stability, model compatibility, context management challenges, and directory structure dependencies.
+
+**📖 For complete limitations list, see [docs/limitations.md](docs/limitations.md)**
 
 ---
 *OLAF - Empowering Your Teams with Intelligent Assistance*
