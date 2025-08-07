@@ -77,13 +77,13 @@ OLAF v1.0.0 marks the initial release of the Open Language Agent Framework, prov
 ## File Locations
 
 ### Core Components
-- **ACK Framework**: ck/ - AI Agent Competency Framework with prompts, templates, and tools
+- **ACK Framework**: ack/ - AI Agent Competency Framework with prompts, templates, and tools
 - **ADS System**: ds/ - AI Documentation System for findings and analysis storage
-- **Tools**: ck/tools/ - Automated scripts and utilities for workflow support
+- **Tools**: ack/tools/ - Automated scripts and utilities for workflow support
 
 ### Key Directories
-- **Templates**: ck/templates/ - Role-based templates for consistent output
-- **Prompts**: ck/prompts/ - Structured prompts for AI-assisted workflows
+- **Templates**: ack/templates/ - Role-based templates for consistent output
+- **Prompts**: ack/prompts/ - Structured prompts for AI-assisted workflows
 - **Findings**: ds/findings/ - Repository for analysis results and documentation
 
 ## Upgrade Instructions
@@ -92,24 +92,24 @@ This is the initial release, so no upgrade is required. For new installations:
 
 1. **Clone Repository**: git clone <repository-url>
 2. **Review Documentation**: Start with README.md for project overview
-3. **Explore Templates**: Browse ck/templates/ for your role-specific needs
-4. **Configure Tools**: Review and customize scripts in ck/tools/ as needed
+3. **Explore Templates**: Browse ack/templates/ for your role-specific needs
+4. **Configure Tools**: Review and customize scripts in ack/tools/ as needed
 
 ## Getting Started
 
 ### For Security Analysts
-1. Navigate to ck/prompts/cve-verifier/ for CVE analysis workflows
-2. Use ck/tools/cve-verifier/Update-Tasklist.ps1 for priority management
-3. Follow templates in ck/templates/cve-verifier/ for consistent reporting
+1. Navigate to ack/prompts/cve-verifier/ for CVE analysis workflows
+2. Use ack/tools/cve-verifier/Update-Tasklist.ps1 for priority management
+3. Follow templates in ack/templates/cve-verifier/ for consistent reporting
 
 ### For Architects
-1. Explore ck/prompts/architect/ for architecture analysis workflows
-2. Use chapter-based templates in ck/templates/architect/ for documentation
+1. Explore ack/prompts/architect/ for architecture analysis workflows
+2. Use chapter-based templates in ack/templates/architect/ for documentation
 3. Reference cloud-native architecture proposal system for structured analysis
 
 ### For Project Managers
-1. Review ck/prompts/project-manager/ for project coordination workflows
-2. Use changelog and task management tools in ck/tools/
+1. Review ack/prompts/project-manager/ for project coordination workflows
+2. Use changelog and task management tools in ack/tools/
 3. Leverage templates for progress tracking and decision recording
 
 ## Known Issues
