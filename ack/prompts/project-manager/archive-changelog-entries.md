@@ -19,33 +19,19 @@ Use terminal commands, not training data.
 
 ## Process
 
-1. **Initialization**:
-   - Verify file paths and permissions
-   - Validate input parameters
-   - Create backup of current files
+This process is fully automated using the PowerShell script at `[id:tools_dir]archive-changelog-entries.ps1`. The script will:
 
-2. **Archival Process**:
-   - Identify entries older than specified days
-   - Move old entries to archive file
-   - Maintain proper formatting and structure
-   - Preserve all metadata and timestamps
-
-3. **Maintenance Entry**:
-   - Add maintenance entry to changelog
-   - Include summary of archived entries
-   - Record archiving details
-
-4. **Validation**:
-   - Verify entry selection accuracy
-   - Check file integrity
-   - Confirm maintenance entry was added
-   - Validate archive file format
+1. Archive entries older than the specified number of days
+2. Maintain chronological order and formatting
+3. Add a maintenance entry to the changelog
+4. Provide execution summary
 
 ## Output/Result Format
-- Updated changelog register with recent entries only
-- Archive file with older entries
-- Maintenance entry in changelog
-- Summary report of actions taken
+The script will produce:
+- Updated changelog with recent entries
+- Archive file containing older entries
+- Maintenance entry in the changelog
+- Execution summary in the terminal
 
 ## Output to USER
 1. **Execution Summary**:
