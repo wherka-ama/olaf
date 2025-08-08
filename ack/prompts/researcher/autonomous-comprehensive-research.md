@@ -49,11 +49,12 @@ Sequential autonomous research with iterative depth expansion and gap analysis.
 For each iteration cycle (up to max_iterations):
 
 4. **Deep Technical Research**: Conduct systematic research across:
-   - Official documentation and specifications
-   - Technical architecture and implementation details
-   - Code repositories and reference implementations
-   - Industry analysis and expert perspectives
-   - Performance characteristics and optimization patterns
+   - Official documentation and specifications (MUST collect URLs)
+   - Technical architecture and implementation details (MUST collect URLs)
+   - Code repositories and reference implementations (MUST collect URLs)
+   - Industry analysis and expert perspectives (MUST collect URLs)
+   - Performance characteristics and optimization patterns (MUST collect URLs)
+   - **CRITICAL**: Every source MUST have full URL - reject any generic references
 
 5. **Knowledge Gap Analysis**: After each research cycle:
    - Identify areas requiring deeper investigation
@@ -110,10 +111,13 @@ Autonomous research generates structured deliverables:
 
 ### Research Quality Standards
 1. **Primary Source Priority**: Always prioritize official documentation and specifications
-2. **Implementation Evidence**: Include actual code examples and reference implementations
-3. **Architecture Analysis**: Provide detailed technical architecture breakdown
-4. **Performance Considerations**: Include scaling, optimization, and performance analysis
-5. **Strategic Context**: Connect technical details to business and strategic implications
+2. **MANDATORY URL COLLECTION**: Every source MUST include full URL - NO generic references allowed
+3. **Source Format**: All sources must use format: `[Source Title](full-url)` 
+4. **Implementation Evidence**: Include actual code examples and reference implementations
+5. **Architecture Analysis**: Provide detailed technical architecture breakdown
+6. **Performance Considerations**: Include scaling, optimization, and performance analysis
+7. **Strategic Context**: Connect technical details to business and strategic implications
+8. **NO GENERIC SOURCES**: Reject any reference without specific URL or DOI
 
 ### Iterative Expansion Rules
 1. **Automatic Gap Detection**: Use structured analysis to identify missing information

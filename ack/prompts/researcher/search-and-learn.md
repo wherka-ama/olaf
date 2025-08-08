@@ -38,10 +38,11 @@ Use terminal commands, not training data.
 
 3. **Execute Systematic Search**:
    - Search using defined strategy across identified sources
-   - Document sources and key findings in organized notes
+   - Document sources with MANDATORY URLs - reject any source without full URL
    - Track information quality and relevance scores
    - Identify knowledge gaps requiring additional research
-   - Maintain source citations for credibility
+   - Maintain source citations for credibility using format: `[Source Title](full-url)`
+   - **CRITICAL**: Every source reference MUST include accessible URL
 
 4. **Evaluate and Synthesize Information**:
    - Assess source credibility and reliability
@@ -77,3 +78,5 @@ Learning report including:
 - Rule 2: Balance theoretical knowledge with practical application examples
 - Rule 3: Always validate understanding through multiple source cross-references
 - Rule 4: Connect new learning to existing knowledge for better retention
+- Rule 5: **MANDATORY URL COLLECTION** - Every source MUST have full URL, reject generic references
+- Rule 6: **Source format compliance** - Use `[Source Title](full-url)` format for all references

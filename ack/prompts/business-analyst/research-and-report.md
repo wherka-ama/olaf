@@ -4,20 +4,27 @@ description: Create research plan, conduct systematic research, and write compre
 tags: [research, report, planning, writing, analysis]
 ---
 
-## Time Retrieval
+## Time Retrieval and Variable Assignment
+Only ask once in the flow
+IF a input or output files already has a timestamp YYYYMMDD don't retreive the timestamp
 Get current time in YYYYMMDD-HHmm format using terminal:
 - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
 - Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
 
+
+
 Use terminal commands, not training data.
 
-## Web Search Integration
-When conducting research, prioritize current information:
+## Web Search Integration and Source Collection
+When conducting research, prioritize current information and MANDATORY URL collection:
 - **Search for current data** on tools, pricing, features, and market conditions
 - **Validate training data** against recent web sources when possible
 - **Use targeted queries**: "[topic] 2025", "[tool] latest features", "[topic] current trends"
 - **Document currency**: Note when information was found and from what type of source
 - **Prioritize recent**: When conflicting information exists, favor current web sources
+- **MANDATORY URL COLLECTION**: Every source MUST include full URL - NO generic references allowed
+- **Source Format**: All sources must use format: `[Source Title](full-url)` 
+- **REJECT GENERIC SOURCES**: Any reference without specific URL or DOI is unacceptable
 
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
@@ -81,3 +88,5 @@ Research deliverables following timestamp conventions:
 - Rule 3: All file paths and naming conventions must follow specified timestamp format
 - Rule 4: Use Propose-Confirm-Act protocol for all major deliverable approvals
 - Rule 5: **Web search current information** whenever researching tools, market conditions, or rapidly changing topics
+- Rule 6: **MANDATORY URL COLLECTION** - Every source MUST have full URL, reject generic references
+- Rule 7: **Source validation** - All sources must be accessible and current (prefer 2024-2025 content)

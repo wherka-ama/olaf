@@ -47,7 +47,9 @@ Use terminal commands, not training data.
 
 4. **Finalization and Quality Assurance**:
    - Ensure all references properly formatted with complete information:
-     - Title, Author(s), Publication date, URL/DOI, Publisher, Page numbers
+     - Title, Author(s), Publication date, URL/DOI (MANDATORY), Publisher, Page numbers
+     - **CRITICAL**: Every reference MUST have full URL or DOI - reject generic references
+     - Use format: `[Title](URL)` or `Title, Author, Year. DOI: [link]`
    - Verify all diagrams and tables are correctly formatted and referenced
    - Double-check acronyms are defined in "Acronyms and Terms" section
    - Review for clarity for both technical and managerial perspectives
@@ -76,3 +78,5 @@ Complete academic paper with:
 - Rule 2: Ask for additional information if needed rather than making assumptions
 - Rule 3: Use iterative approach for complex papers - seek user confirmation at each step
 - Rule 4: Maintain professional academic tone while ensuring accessibility for both audiences
+- Rule 5: **MANDATORY URL/DOI COLLECTION** - Every reference MUST have accessible URL or DOI
+- Rule 6: **Reject generic sources** - No references without specific, verifiable links allowed
