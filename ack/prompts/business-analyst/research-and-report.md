@@ -11,6 +11,14 @@ Get current time in YYYYMMDD-HHmm format using terminal:
 
 Use terminal commands, not training data.
 
+## Web Search Integration
+When conducting research, prioritize current information:
+- **Search for current data** on tools, pricing, features, and market conditions
+- **Validate training data** against recent web sources when possible
+- **Use targeted queries**: "[topic] 2025", "[tool] latest features", "[topic] current trends"
+- **Document currency**: Note when information was found and from what type of source
+- **Prioritize recent**: When conflicting information exists, favor current web sources
+
 ## Input Parameters
 **IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
 - **research_topic**: string - Specific topic or question to research
@@ -27,15 +35,23 @@ Use terminal commands, not training data.
      - **Scope Statement**: What is included and excluded
      - **Key Research Questions**: Primary questions to answer
      - **Proposed Chapter Structure**: Hierarchical outline
-     - **Potential Sources**: Preliminary source list (web, academic, internal docs)
+     - **Potential Sources**: Preliminary source list including:
+       - **Web Research**: Current vendor sites, industry reports, community forums
+       - **Search Strategy**: Specific queries planned for current information validation
+       - **Academic/Internal**: Training data, documentation, internal knowledge
    - Save research plan to: `[id:findings_dir]/research/research-plan-YYYYMMDD-SSS.md`
    - Present plan to user for approval using **Propose-Confirm-Act** protocol
 
 2. **Execution Phase**:
    - Begin research and writing following approved chapter structure
    - For each chapter sequentially:
-     - Conduct in-depth research using outlined methods and sources
+     - Conduct in-depth research using outlined methods and sources:
+       - **Web Search First**: Use targeted queries to gather current information
+       - **Validate Training Data**: Cross-check knowledge against recent web sources
+       - **Prioritize Current**: Use most recent information when conflicts exist
      - Synthesize gathered information into clear, concise content
+     - **Include source currency indicators**: Mark information as current vs. training data
+     - **Note information freshness**: Include search dates for web-sourced information
      - Draft chapter with appropriate formatting (headings, lists, tables)
      - Present completed chapter to user for review using **Propose-Confirm-Act**
      - Add approved chapter content to: `[id:findings_dir]/reports/research-report-YYYYMMDD-SSS.md`
@@ -64,3 +80,4 @@ Research deliverables following timestamp conventions:
 - Rule 2: Each chapter MUST be presented for user approval before proceeding to next
 - Rule 3: All file paths and naming conventions must follow specified timestamp format
 - Rule 4: Use Propose-Confirm-Act protocol for all major deliverable approvals
+- Rule 5: **Web search current information** whenever researching tools, market conditions, or rapidly changing topics
