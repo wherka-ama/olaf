@@ -1,6 +1,6 @@
 # Competency Index
 
-**Last Updated:** 20250807-1316 CEDT
+**Last Updated:** 20250808-1030 CEDT
 
 ## How to Use This Index
 
@@ -58,8 +58,8 @@ To remove a competency:
   [["evolve unit tests", "improve unit tests", "unit test evolution", "enhance test coverage"], "evolve-unit-tests/evolve-unit-tests-workflow.md", "Act"],
 
   [["search and learn", "learn and search", "search & learn"], "researcher/search-and-learn.md", "Act"],
-  [["research and report", "comprehensive research", "autonomous research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
-  [["controlled research", "supervised research", "step by step research"], "business-analyst/research-and-report.md", "Propose-Confirm-Act"],
+  [["autonomous research", "free research", "comprehensive research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
+  [["research and report", "controlled research", "supervised research", "step by step research"], "business-analyst/research-and-report.md", "Propose-Confirm-Act"],
   [["tech spec from code", "spec from code"], "developer/generate-tech-spec-from-code.md", "Act"],
 
   [["bootstrap functional spec", "func spec from code"], "business-analyst/bootstrap-functional-spec-from-code.md", "Act"],
