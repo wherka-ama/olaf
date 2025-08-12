@@ -1,10 +1,34 @@
-# Prompt engineering best practices
+# Prompt Engineering Best Practices
 
-This guide provides specific prompt engineering techniques for most models to help you achieve optimal results in your applications.
+This guide provides specific prompt engineering techniques for optimal results in your applications.
 
-## General principles
+## Core Principles
 
-### Be explicit with your instructions
+### 1. Use Imperative Language
+Always use commanding, action-oriented language for clarity and consistency:
+
+**Effective patterns:**
+- "You WILL" - for required actions
+- "You MUST" - for critical requirements  
+- "You NEVER" - for prohibited actions
+- "MANDATORY" - for non-negotiable requirements
+- "CRITICAL" - for extremely important instructions
+
+<Accordion title="Example: Task Instructions">
+  **Less effective:**
+  ```text
+  Please analyze the code and make improvements
+  ```
+
+  **More effective:**
+  ```text
+  You WILL analyze the code structure and identify three specific improvement opportunities. You MUST provide concrete examples for each recommendation.
+  ```
+</Accordion>
+
+### 2. Be Explicit with Instructions and Success Criteria
+
+Always define what constitutes successful completion:
 
 
 <Accordion title="Example: Creating an analytics dashboard">
@@ -17,11 +41,19 @@ This guide provides specific prompt engineering techniques for most models to he
   **More effective:**
 
   ```text
-  Create an analytics dashboard. Include as many relevant features and interactions as possible. Go beyond the basics to create a fully-featured implementation.
+  You WILL create an analytics dashboard that includes:
+  - Real-time data visualization
+  - Interactive filtering capabilities
+  - Export functionality
+  - Mobile-responsive design
+  
+  Success criteria: Dashboard loads in under 3 seconds and displays data correctly on all screen sizes.
   ```
 </Accordion>
 
-### Add context to improve performance
+### 3. Add Context to Improve Performance
+
+Always explain WHY instructions matter:
 
 <Accordion title="Example: Formatting preferences">
   **Less effective:**
@@ -33,25 +65,53 @@ This guide provides specific prompt engineering techniques for most models to he
   **More effective:**
 
   ```text
-  Your response will be read aloud by a text-to-speech engine, so never use ellipses since the text-to-speech engine will not know how to pronounce them.
+  You MUST avoid ellipses because your response will be read aloud by a text-to-speech engine, and ellipses cannot be properly pronounced by TTS systems.
   ```
 </Accordion>
 
+### 4. Structure with XML-Style Markup
 
-### Be vigilant with examples & details
+Use XML-style tags for complex prompts to improve organization:
 
-## Guidance for specific situations
+```text
+<!-- <validation_phase> -->
+You WILL first validate all input parameters
+<!-- </validation_phase> -->
 
-### Control the format of responses
+<!-- <execution_phase> -->  
+You WILL then execute the core logic
+<!-- </execution_phase> -->
+
+<!-- <output_phase> -->
+You WILL generate outputs in the specified format
+<!-- </output_phase> -->
+```
+
+### 5. Include Validation and Error Handling
+
+Always anticipate and address potential issues:
+
+```text
+## Error Handling
+You WILL handle these scenarios:
+- **Missing Parameters**: Request specific missing items from user
+- **Invalid Input**: Provide clear error message and correction guidance
+- **Tool Failures**: Offer alternative approaches or manual steps
+- **Validation Failures**: Stop process and request user guidance
+```
+
+## Advanced Techniques
+
+### Control Response Format with Precision
 
 1. **Tell the model what to do instead of what not to do**
 
    * Instead of: "Do not use markdown in your response"
-   * Try: "Your response should be composed of smoothly flowing prose paragraphs."
+   * Try: "You WILL format your response using plain text with clear paragraph breaks"
 
-2. **Use XML format indicators (if supported by the model)**
+2. **Use XML format indicators for structured outputs**
 
-   * Try: "Write the prose sections of your response in \<smoothly\_flowing\_prose\_paragraphs> tags."
+   * Try: "You WILL write prose sections in `<prose>` tags and code examples in `<code>` tags"
 
 3. **Match your prompt style to the desired output**
 
@@ -59,44 +119,97 @@ This guide provides specific prompt engineering techniques for most models to he
    Using XML when possible for process oriented prompts.
    Ask for JSON and provide clear structure if you expect structured data.
 
-### Leverage thinking & interleaved thinking capabilities
-for complex tasks, use reflection: 
+### Leverage Thinking & Reflection Capabilities
 
-```text Example prompt
-After receiving tool results, carefully reflect on their quality and determine optimal next steps before proceeding. Use your thinking to plan and iterate based on this new information, and then take the best next action.
+For complex tasks, build in reflection steps:
+
+```text
+You WILL follow this process:
+1. Analyze the requirements thoroughly
+2. Reflect on potential approaches and their trade-offs  
+3. Select the optimal approach with clear rationale
+4. Execute the solution
+5. Validate results against success criteria
 ```
 
-### Optimize parallel tool calling
+### Optimize Tool Usage and Workflows
 
-Be specific about calls that can be made by model. This prompt can be effective:
-
-```text Sample prompt for agents
-For maximum efficiency, whenever you need to perform multiple independent operations, invoke the following relevant tools <tool names> simultaneously rather than sequentially.
+**For parallel operations:**
+```text
+You WILL invoke multiple independent tools simultaneously when possible: [tool_1], [tool_2], [tool_3]. You MUST NOT execute these sequentially unless dependencies require it.
 ```
 
-### Reduce file creation in agentic coding
-
-If you'd prefer to minimize net new file creation, you can instruct the model to clean up after itself:
-
-```text Sample prompt
-If you create any temporary new files, scripts, or helper files for iteration, clean up these files by removing them at the end of the task.
+**For file management:**
+```text
+You WILL clean up temporary files created during execution. You MUST remove any helper files, scripts, or intermediate outputs that are not part of the final deliverable.
 ```
 
-### Enhance visual and frontend code generation
+### Enhance Code Generation Quality
 
-For frontend code generation improve frontend performance in specific areas by providing additional modifiers and details on what to focus on:
+For development tasks, include quality requirements:
 
-* "Include as many relevant features and interactions as possible"
-* "Add thoughtful details like hover states, transitions, and micro-interactions"
-* "Create an impressive demonstration showcasing web development capabilities"
-* "Apply design principles: hierarchy, contrast, balance, and movement"
+```text
+You WILL implement a high-quality, production-ready solution that:
+- Works correctly for all valid inputs, not just test cases
+- Follows established design patterns and best practices
+- Includes appropriate error handling and validation
+- Is maintainable and well-documented
+- Avoids hard-coded values or test-specific implementations
 
-### Avoid focusing on passing tests and hard-coding
-
-```text Sample prompt
-Please write a high quality, general purpose solution. Implement a solution that works correctly for all valid inputs, not just the test cases. Do not hard-code values or create solutions that only work for specific test inputs. Instead, implement the actual logic that solves the problem generally.
-
-Focus on understanding the problem requirements and implementing the correct algorithm. Tests are there to verify correctness, not to define the solution. Provide a principled implementation that follows best practices and software design principles.
-
-If the task is unreasonable or infeasible, or if any of the tests are incorrect, please tell me. The solution should be robust, maintainable, and extendable.
+CRITICAL: If requirements are unclear or infeasible, you MUST request clarification rather than making assumptions.
 ```
+
+## Prompt Engineering Workflow
+
+### 1. Design Phase
+- Define clear objectives and success criteria
+- Identify required inputs and expected outputs
+- Plan user interaction points and decision flows
+
+### 2. Implementation Phase  
+- Use imperative language consistently
+- Structure with clear phases and validation steps
+- Include comprehensive error handling
+
+### 3. Testing Phase
+- Test with realistic scenarios
+- Validate edge cases and error conditions  
+- Iterate based on results
+
+### 4. Validation Phase
+- Ensure consistent execution across different inputs
+- Verify outputs meet quality standards
+- Document any limitations or assumptions
+
+## Quality Standards
+
+### Successful Prompts Achieve:
+- **Clear Execution**: No ambiguity about required actions
+- **Consistent Results**: Similar inputs produce similar quality outputs  
+- **Complete Coverage**: All necessary aspects are addressed
+- **Error Resilience**: Graceful handling of edge cases
+- **User-Friendly**: Clear communication and interaction patterns
+
+### Common Pitfalls to Avoid:
+- Vague success criteria ("make it good" → specify measurable outcomes)
+- Missing context (explain why instructions matter)
+- Conflicting requirements (review for contradictions)
+- Overly complex logic (break into clear phases)
+- No validation steps (always include result verification)
+
+## Template Structure
+
+Every prompt should include:
+1. **Clear Objectives**: What needs to be accomplished
+2. **Input Validation**: Required parameters and prerequisites  
+3. **Process Steps**: Logical execution flow with decision points
+4. **Output Specification**: Format and quality requirements
+5. **Error Handling**: Specific scenarios and responses
+6. **Success Criteria**: Measurable completion requirements
+
+⚠️ **Critical Requirements**
+- MANDATORY: Test all prompts before deployment
+- NEVER deploy prompts without validation scenarios
+- ALWAYS include user interaction protocols
+- ALWAYS provide rollback capabilities for destructive operations
+- ALWAYS document assumptions and limitations clearly

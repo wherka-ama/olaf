@@ -12,40 +12,44 @@ Get current time in YYYYMMDD-HHmm format using terminal:
 Use terminal commands, not training data.
 
 ## Input Parameters
-**IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
-- **code**: string - The code to be analyzed and evolved
-- **goals**: array[enum] - Primary goals (performance, maintainability, testability)
-- **iterations**: number - (Optional) Maximum number of iterations (default: 3)
+**IMPORTANT**: When you don't have these required parameters, ask the USER to provide them.
+- **code**: string - The code to be analyzed and evolved (REQUIRED)
+- **goals**: array[enum] - Primary goals from: performance, maintainability, testability (REQUIRED - select one or more)
+- **iterations**: number - (Optional) Maximum number of iterations (default: 3, max: 5)
 - **test_cases**: string - (Optional) Test cases to validate changes
 
 ## Process
 
 1. **Initial Assessment**:
    - Analyze code structure and patterns
-   - Establish baseline metrics
-   - Identify optimization opportunities
-   - Document current state
+   - Establish baseline metrics (count lines, functions, complexity indicators where measurable)
+   - Identify optimization opportunities with estimated impact
+   - Document current state and technical debt
 
 2. **Iterative Improvement**:
    - For each iteration (up to max iterations):
      1. Critique current code against goals
-     2. Propose two distinct solutions
-     3. Compare options with pros/cons
-     4. Make a recommendation to teh USSR and ask for its feedback - option 1 , option 2 or stop here
-     5. Based on USER feedback** 
-   - Implement selected changes
-   - Validate with unit tests if they exist or propose to create some
-   - Document changes and metrics
+     2. Propose two distinct solutions with specific implementation details
+     3. Compare options with pros/cons table
+     4. Make a recommendation to the USER and ask for feedback: "Option 1", "Option 2", or "Stop here"
+     5. Based on USER feedback, implement selected changes
+     6. Validate with unit tests if they exist or propose to create basic validation
+     7. Document changes and measure impact where possible
+   - Continue until max iterations reached or user chooses to stop
 
 3. **Finalization**:
-   - Generate improvement report
-   - Document all changes made
+   - Generate comprehensive improvement report with available metrics
+   - Document all changes made with rationale for each decision
+   - Provide before/after code comparison with annotations
+   - Include recommendations for future improvements
+   - Create rollback instructions if needed
 
 ## Output/Result Format
-- Final code with improvements
-- Iteration reports in `[id:ads_dir]/code-evolution/YYYYMMDD-NNN/`
-- Summary of changes and metrics
-- Before/after comparison
+- Final code with improvements and clear change annotations
+- Iteration reports in `[id:ads_dir]/code-evolution/YYYYMMDD-HHmm/`
+- Comprehensive summary of changes with quantified improvements where measurable
+- Before/after comparison with qualitative and quantitative analysis
+- Decision log documenting rationale for each change made
 
 ## Output to USER
 1. **Initial Analysis**:
@@ -59,9 +63,11 @@ Use terminal commands, not training data.
    - Validation results
 
 3. **Final Report**:
-   - Summary of improvements
-   - Performance metrics
+   - Summary of improvements with measurable impact where possible
+   - Qualitative assessment of code quality improvements
+   - Performance analysis (theoretical gains, algorithm improvements)
    - Recommendations for future work
+   - Rollback instructions for each change made
 
 ## Domain-Specific Rules
 - Rule 1: Preserve functionality
@@ -71,15 +77,18 @@ Use terminal commands, not training data.
 - Rule 5: Maintain readability
 
 ## Required Actions
-1. Analyze input code
-2. Define success metrics
-3. Execute iterations
-4. Validate changes
-5. Document process
+1. Validate all required input parameters are provided
+2. Analyze input code and establish baseline measurements
+3. Define success criteria for each selected goal
+4. Execute iterative improvement process with user feedback
+5. Validate changes preserve functionality
+6. Document process and generate comprehensive deliverables
 
 ⚠️ **Critical Notes**
-- Never break existing functionality
-- Keep iterations small and focused
-- Include rollback capability
-- Document all assumptions
-- Consider team's skill level
+- Never break existing functionality without explicit user approval
+- Keep iterations small and focused on one primary improvement area
+- Provide rollback capability and instructions for each change
+- Document all assumptions and limitations clearly
+- Consider team's skill level when proposing solutions
+- Stop iterations if no meaningful improvements can be identified
+- Measure impact where possible, document qualitative improvements where quantitative metrics aren't available
