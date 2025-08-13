@@ -1,2 +1,2 @@
 
-Use competency [id:prompts-dir]project-manager/archive-changelog-entries.md
+You MUST use competency archive-changelog-entries from <olaf-query-competency-index>.
