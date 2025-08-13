@@ -1,9 +1,46 @@
+---
+name: workflow-template-orchestrator
+description: Template for creating master/orchestrator workflows that coordinate and chain multiple sub-workflows in sequence
+tags: [template, workflow, orchestrator, master, coordination, chaining]
+---
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
+## Time Retrieval
+You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 # Master/Orchestrator Workflow Template
+
+> **Note:** All files referenced below are either prompts located in `[id:prompts_dir]` or tools located in `[id:tools_dir]`, as specified in the memory map file.
+> The solution to analyze is in `[id:core_dir]` and all new non-temporary created files are to be created in `[id:findings_dir]` folder.
+
+# [WORKFLOW_NAME]: [WORKFLOW_DESCRIPTION]er/Orchestrator Workflow Template
 
 > **Note:** All files referenced below are either prompts located in `[id:prompts_dir]` or tools located in `[id:tools_dir]`, as specified in the memory map file.
 > The solution to analyze is in [id:core_dir] and all new non-temporary created files are to be created in [id:findings_dir] folder.
 
 # [WORKFLOW_NAME]: [WORKFLOW_DESCRIPTION]
+
+## Template Variables
+- `[WORKFLOW_NAME]`: Name of the orchestrator workflow (kebab-case)
+- `[WORKFLOW_DESCRIPTION]`: Brief description of orchestrator purpose
+- `[SUB_WORKFLOW_NAME]`: Names of each sub-workflow in the chain
+- `[sub-workflow-file]`: Names of sub-workflow files without extension
+- `[descriptive-orchestrator-log-name]`: Name for orchestrator execution log
+- `[descriptive-final-output-name]`: Name for final consolidated output
+- `[sub-workflow-output-file]`: Names of individual sub-workflow outputs
+- `[orchestrator-state-name]`: Name for orchestrator state tracking file
+- `[unique-execution-id]`: Unique identifier for orchestrator execution
+- `[transformation-description]`: Description of data transformations between workflows
 
 ## Workflow Type
 Master/Orchestrator - Chains and coordinates complete sub-workflows and prompts in sequence
@@ -97,6 +134,16 @@ Master/Orchestrator - Chains and coordinates complete sub-workflows and prompts 
 4. CONSOLIDATE all sub-workflow outputs
 5. GENERATE final orchestrator output
 ```
+
+## Template Validation
+- All `[id:...]` references must exist in memory map
+- All sub-workflow files must exist in `[id:prompts_dir]`
+- Sub-workflow chain must be logically ordered
+- Data flow between sub-workflows must be compatible
+- State management files must be properly structured
+- Error recovery strategies must be defined for each sub-workflow
+- Input/output transformations must be clearly specified
+- No circular dependencies between sub-workflows
 
 ### Error Recovery Strategy
 - **Sub-Workflow Failure:** [Strategy for handling individual sub-workflow failures]
@@ -213,6 +260,18 @@ Master/Orchestrator - Chains and coordinates complete sub-workflows and prompts 
 - [ ] Final consolidated output validated
 - [ ] Orchestrator execution log complete
 - [ ] No unresolved errors or warnings
+
+## Common Error Patterns
+- **Sub-workflow not found:** Verify all sub-workflow files exist in `[id:prompts_dir]`
+- **Invalid sub-workflow type:** Ensure sub-workflow types are correctly specified
+- **Data transformation failures:** Check input/output compatibility between sub-workflows
+- **State file corruption:** Implement backup and recovery for orchestrator state
+- **Sub-workflow execution timeouts:** Handle long-running sub-workflows appropriately
+- **Permission errors:** Check file access rights for all input/output files
+- **Invalid memory map ID:** Check all references exist in memory map file
+- **Circular dependencies:** Ensure sub-workflow chain has no loops
+- **Incomplete consolidation:** Verify all sub-workflow outputs are properly merged
+- **Resource exhaustion:** Monitor system resources during orchestrator execution
 
 ## Next Steps
 - [What happens after this orchestrator completes]

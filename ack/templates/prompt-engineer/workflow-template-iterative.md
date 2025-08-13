@@ -1,9 +1,46 @@
+---
+name: workflow-template-iterative
+description: Template for creating iterative workflows that repeat until completion criteria are met with user authorization
+tags: [template, workflow, iterative, automation, state-management]
+---
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
+## Time Retrieval
+You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
+
 # Iterative Workflow Template
+
+> **Note:** All files referenced below are either prompts located in `[id:prompts_dir]` or tools located in `[id:tools_dir]`, as specified in the memory map file.
+> The solution to analyze is in `[id:core_dir]` and all new non-temporary created files are to be created in `[id:findings_dir]` folder.
+
+# [WORKFLOW_NAME]: [WORKFLOW_DESCRIPTION]ative Workflow Template
 
 > **Note:** All files referenced below are either prompts located in `[id:prompts_dir]` or tools located in `[id:tools_dir]`, as specified in the memory map file.
 > The solution to analyze is in [id:core_dir] and all new non-temporary created files are to be created in [id:findings_dir] folder.
 
 # [WORKFLOW_NAME]: [WORKFLOW_DESCRIPTION]
+
+## Template Variables
+- `[WORKFLOW_NAME]`: Name of the workflow (kebab-case)
+- `[WORKFLOW_DESCRIPTION]`: Brief description of workflow purpose
+- `[STEP_NAME]`: Name of the iteration step
+- `[prompt-file-name]`: Name of prompt file without extension
+- `[tool-name]`: Name of tool/script file without extension
+- `[ext]`: File extension for tools (ps1, py, sh, etc.)
+- `[descriptive-iteration-state-name]`: Name for iteration state file
+- `[descriptive-iteration-output-name]`: Name for iteration output file
+- `[descriptive-final-output-name]`: Name for final output file
+- `[descriptive-progress-tracking-name]`: Name for progress tracking file
 
 ## Workflow Type
 Iterative - Repeats the same process until completion criteria are met with user authorization
@@ -29,7 +66,7 @@ Iterative - Repeats the same process until completion criteria are met with user
 ## Iteration Logic
 
 ### Iteration Step: [STEP_NAME]
-- **Prompt/Tool:** `[id:prompts_dir][prompt-file-name].md` or `[id:tools_dir][tool-name].ps1`
+- **Prompt/Tool:** `[id:prompts_dir][prompt-file-name].md` or `[id:tools_dir][tool-name].[ext]`
 - **Input:** 
   - First iteration: [Initial input]
   - Subsequent iterations: Output from previous iteration + `[iteration-state-file].json`
@@ -51,6 +88,14 @@ Iterative - Repeats the same process until completion criteria are met with user
   }
 }
 ```
+
+## Template Validation
+- All `[id:...]` references must exist in memory map
+- Iteration logic must be clearly defined
+- State management files must be properly structured
+- Completion criteria must be measurable
+- User authorization points must be clearly identified
+- No infinite iteration loops allowed
 
 ## User Authorization Process
 
@@ -100,6 +145,16 @@ Iterative - Repeats the same process until completion criteria are met with user
 - **Iteration Failure:** [What to do if an iteration fails]
 - **State Recovery:** [How to recover from corrupted state]
 - **Rollback:** [How to return to previous iteration]
+
+## Common Error Patterns
+- **State file corruption:** Backup and restore mechanisms needed
+- **Infinite iteration loops:** Max iteration limits must be enforced
+- **Tool not found:** Verify tool exists in `[id:tools_dir]`
+- **Permission errors:** Check file access rights and execution permissions
+- **Prompt not found:** Verify prompt exists in `[id:prompts_dir]`
+- **Invalid memory map ID:** Check reference exists in memory map file
+- **User authorization timeout:** Handle cases where user doesn't respond
+- **Completion criteria never met:** Implement fallback mechanisms
 
 ## Completion Actions
 - [ ] All completion criteria met
