@@ -1,5 +1,7 @@
 # DFD Sub-prompt 1: Initial Analysis (Steps 1-3)
 
+> Output Directory Reminder: All files created or updated during this sub‑prompt MUST reside in `[id:findings_dir]dfd/`. Example paths: `[id:findings_dir]dfd/DFD_master_progress.md`, `[id:findings_dir]dfd/[App]_analysis.md`, `[id:findings_dir]dfd/DFD_level1_tasks.md`.
+
 ## Phase A: Initial Analysis
 
 **Prerequisites Check:**
@@ -66,7 +68,7 @@
 
 ### 2.4 Create Context Diagram Documentation
 
-**Add to your main analysis document (`[App]_analysis.md`):**
+**Add to your main analysis document (`[id:findings_dir]dfd/[App]_analysis.md`):**
 
 ```markdown
 # [Application Name] - Data Flow Diagrams
@@ -108,7 +110,7 @@
 
 ### 3.1 Create Level 1 Task File
 
-**Create `DFD_level1_tasks.md` with the following structure:**
+**Create `DFD_level1_tasks.md` (path: `[id:findings_dir]dfd/DFD_level1_tasks.md`) with the following structure:**
 
 ```markdown
 # Level 1 DFD Analysis Tasks for [Application Name]

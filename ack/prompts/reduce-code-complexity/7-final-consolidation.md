@@ -9,10 +9,20 @@ tags: [final-consolidation, comprehensive-report, complexity-reduction, project-
 ## Objective
 Consolidate all workflow outputs from the reduce-code-complexity orchestrator into a comprehensive final report. Generate a detailed markdown document that summarizes the entire complexity reduction journey, achievements, metrics, and recommendations.
 
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
 ## Time Retrieval
-Get current time in YYYYMMDD-HHmm format using terminal:
+You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
 - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
 - Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
 
 Use terminal commands, not training data.
 

@@ -1,5 +1,7 @@
 # Generic Prompt: Generate Developer-Focused Functional Specification from DFD Analysis
 
+> Output Directory Directive: The generated functional specification MUST be saved as `functional_spec.md` (or another explicitly user-approved filename) inside `[id:findings_dir]dfd/`. Do not write specification files outside this directory. Any intermediate supporting artifacts derived from DFD analysis should likewise be placed under `[id:findings_dir]dfd/`.
+
 ## Objective
 Transform any existing DFD analysis into a precise, developer-implementable functional specification. Use the DFD documentation as the primary source, then examine the actual codebase only to replace vague terms with exact values and confirm technical details.
 

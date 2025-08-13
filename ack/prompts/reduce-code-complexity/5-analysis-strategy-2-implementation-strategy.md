@@ -9,10 +9,20 @@ tags: [analysis-strategy, implementation-planning, execution-plan, task-manageme
 ## Objective
 Transform the prioritized refactoring roadmap into a detailed, actionable implementation plan. Generate a comprehensive markdown file with iteration-based structure, breaking down each refactoring opportunity into specific actions, tasks, and subtasks for execution.
 
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
 ## Time Retrieval
-Get current time in YYYYMMDD-HHmm format using terminal:
+You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
 - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
 - Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
+
+Use terminal commands, not training data.
 
 Use terminal commands, not training data.
 

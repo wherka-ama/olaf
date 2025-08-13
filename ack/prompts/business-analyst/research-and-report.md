@@ -4,6 +4,14 @@ description: Create research plan, conduct systematic research, and write compre
 tags: [research, report, planning, writing, analysis]
 ---
 
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
 ## Time Retrieval and Variable Assignment
 Only ask once in the flow
 IF a input or output files already has a timestamp YYYYMMDD don't retreive the timestamp

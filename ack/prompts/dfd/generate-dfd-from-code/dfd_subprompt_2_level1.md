@@ -1,5 +1,7 @@
 # DFD Sub-prompt 2: Level 1 Analysis (Steps 4-7)
 
+> Output Directory Reminder: Continue storing and updating all artifacts inside `[id:findings_dir]dfd/`. Do not create duplicate files elsewhere.
+
 ## Phase B: Level 1 Analysis
 
 **Prerequisites Check:**
@@ -14,13 +16,11 @@
 - Step 6: Level 1 Refinement (if needed)
 - Step 7: Level 2 Task Planning
 
----
-
 ## Step 4: Level 1 DFD Creation
 
 ### 4.1 Execute Level 1 Tasks
 
-**Work through `DFD_level1_tasks.md` systematically:**
+**Work through `DFD_level1_tasks.md` (located at `[id:findings_dir]dfd/DFD_level1_tasks.md`) systematically:**
 
 #### Phase 1: Process Identification (Tasks 1.1-1.8)
 - Mark each task complete [x] as you work through them
@@ -258,12 +258,27 @@ If validation failed, refine your Level 1 DFD:
 
 ### 7.3 Update Master Progress
 
+**CRITICAL: Do NOT mark Step 7 complete until you have completed ALL required actions below:**
+
+**If Level 2 is required, you MUST:**
+1. Add the decision section to master progress
+2. Create and save the `DFD_level2_tasks.md` file
+3. Only THEN mark Step 7 complete
+
+**If Level 2 is not required, you MUST:**
+1. Add the decision section to master progress
+2. Verify NO `DFD_level2_tasks.md` file exists (delete if accidentally created)
+3. Only THEN mark Step 7 complete
+
+**Add this EXACT section to master progress:**
+
 **If Level 2 is required:**
 ```markdown
 ### Level 2 Required?
 - **Decision:** Yes
 - **Reason:** [Specific justification]
 - **Processes requiring Level 2:** [List process names]
+- **Task File Created:** Yes - DFD_level2_tasks.md
 ```
 
 **If Level 2 is not required:**
@@ -271,9 +286,10 @@ If validation failed, refine your Level 1 DFD:
 ### Level 2 Required?
 - **Decision:** No
 - **Reason:** Level 1 provides sufficient detail for intended purpose
+- **Task File Created:** No - Level 2 not needed
 ```
 
-**🔄 Update Master Progress:**
+**🔄 Update Master Progress ONLY AFTER completing required actions:**
 - Mark Step 7 as complete: `[x] **Step 7**: Level 2 Task Planning`
 - Update Level 2 decision and file status
 - Update current phase based on Level 2 decision
@@ -286,7 +302,7 @@ If validation failed, refine your Level 1 DFD:
 
 **Update Master Progress File:**
 
-**If Level 2 is required:**
+**⚠️ ONLY USE THIS TEMPLATE IF Decision: Yes AND DFD_level2_tasks.md file EXISTS:**
 ```markdown
 ### Phase B: Level 1 Analysis (Sub-prompt 2) - COMPLETED
 - [x] **Step 4**: Level 1 DFD Creation
@@ -300,7 +316,7 @@ If validation failed, refine your Level 1 DFD:
 **Ready for User Review:** Yes
 ```
 
-**If Level 2 is not required:**
+**⚠️ ONLY USE THIS TEMPLATE IF Decision: No AND DFD_level2_tasks.md file does NOT exist:**
 ```markdown
 ### Phase B: Level 1 Analysis (Sub-prompt 2) - COMPLETED
 - [x] **Step 4**: Level 1 DFD Creation

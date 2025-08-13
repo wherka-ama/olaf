@@ -1,14 +1,19 @@
 # DFD Sub-prompt 3: Level 2 Analysis (Steps 8-9)
 
+> Output Directory Reminder: All Level 2 artifacts and updates to existing files must be written under `[id:findings_dir]dfd/` (e.g., `[id:findings_dir]dfd/DFD_level2_tasks.md`, updates inside `[id:findings_dir]dfd/[App]_analysis.md`).
+
 ## Phase C: Level 2 Analysis
 
-**Prerequisites Check:**
+**Prerequisites Check - ABORT IF ANY FAIL:**
 
 - [ ] Master progress shows Steps 1-7 completed
-- [ ] Level 2 decision = "Yes" in master progress
-- [ ] `DFD_level2_tasks.md` file exists
+- [ ] Master progress contains "### Level 2 Required?" section
+- [ ] Level 2 decision = "Decision: Yes" (exact text required)
+- [ ] `DFD_level2_tasks.md` file exists and is not empty
 - [ ] Steps 8-9 are marked as incomplete in master progress
 - [ ] Level 1 DFD is complete and validated
+
+**🚨 STOP AND ABORT if any prerequisite fails. Request user to fix master progress integrity before proceeding.**
 
 **This sub-prompt covers:**
 
@@ -21,7 +26,7 @@
 
 ### 8.1 Execute Level 2 Tasks
 
-**Work through `DFD_level2_tasks.md` systematically:**
+**Work through `DFD_level2_tasks.md` (path: `[id:findings_dir]dfd/DFD_level2_tasks.md`) systematically:**
 
 #### Phase 1: Sub-Process Identification (Tasks 1.1-1.6)
 

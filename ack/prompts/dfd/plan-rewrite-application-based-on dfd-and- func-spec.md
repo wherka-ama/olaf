@@ -1,5 +1,7 @@
 # Generic Application Rewrite Prompt: From DFD Analysis to New Language Implementation
 
+> Output Directory Directive: All rewrite planning artifacts (e.g., `rewrite_plan.md`, architecture transition documents, technology selection questionnaires) MUST be stored under `[id:findings_dir]dfd/`. If filenames are suggested without paths in this prompt, interpret their target path as `[id:findings_dir]dfd/<filename>`.
+
 ## 🎯 **Objective**
 Transform any existing application into a new target language/technology stack using DFD analysis, functional specifications, and technical documentation as the foundation. This prompt provides a systematic approach to application rewriting that ensures architectural fidelity, functional completeness, and technical excellence.
 

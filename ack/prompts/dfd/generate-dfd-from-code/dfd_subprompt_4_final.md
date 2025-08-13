@@ -1,5 +1,7 @@
 # DFD Sub-prompt 4: Final Documentation (Steps 10-12)
 
+> Output Directory Reminder: All final documentation outputs including `DFD_level_analysis.md` and any consolidated analysis sections MUST be saved under `[id:findings_dir]dfd/`. Ensure `DFD_level_analysis.md` resides at `[id:findings_dir]dfd/DFD_level_analysis.md`.
+
 ## Phase D: Final Documentation and Review
 
 **Prerequisites Check:**
@@ -22,7 +24,7 @@
 
 ### 10.1 Create Complete DFD Documentation Package
 
-**Consolidate all work into a comprehensive final document:**
+**Consolidate all work into a comprehensive final document (`[id:findings_dir]dfd/DFD_level_analysis.md`):**
 
 ```markdown
 # Data Flow Diagram Analysis for [Application Name]

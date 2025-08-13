@@ -4,6 +4,14 @@ description: Convert existing prompts to follow established template structure a
 tags: [prompt, conversion, refactor, template]
 ---
 
+
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
+
 ## Time Retrieval
 You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
 - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
