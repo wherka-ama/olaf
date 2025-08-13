@@ -1,7 +1,7 @@
 <olaf-query-competency-index>
 # Competency Index
 
-**Last Updated:** 20250808-1030 CEDT
+**Last Updated:** 20250813-1259 CEDT
 
 ## How to Use This Index
 
@@ -52,6 +52,7 @@ To remove a competency:
   [["review code", "check code", "code review", "examine code"], "developer/review-code.md", "Act"],
   [["review modified", "modified files", "review changes"], "developer/review-modified-files.md", "Act"],
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
+  [["accessibility review", "accessibility check", "wcag review", "accessibility compliance"], "developer/review-code-accessibility.md", "Act"],
   [["codebase risk", "code risk", "analyze codebase", "code quality analysis"], "other-users/analyze-codebase-risk.md", "Act"],
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
@@ -80,6 +81,9 @@ To remove a competency:
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
   [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "troubleshooting/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
   [["log to source", "map logs to code", "trace logs", "source mapping", "debug with logs"], "troubleshooting/troubleshoot-logs-to-sources.md", "Act"],
+
+  [["fix code smells", "code smells"], "developer/fix-code-smells.md", "Act"],
+  [["test prompt", "try prompt", "test new prompt", "validate prompt", "prompt testing"], "prompt-engineer/test-prompt.md", "Act"],
 
 ]
 ```
