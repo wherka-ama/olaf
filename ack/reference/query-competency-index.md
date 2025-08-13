@@ -1,7 +1,7 @@
 <olaf-query-competency-index>
 # Competency Index
 
-**Last Updated:** 20250813-1259 CEDT
+**Last Updated:** 20250813-1735 CEDT
 
 ## How to Use This Index
 
@@ -58,6 +58,7 @@ To remove a competency:
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
   [["evolve unit tests", "improve unit tests", "unit test evolution", "enhance test coverage"], "evolve-unit-tests/evolve-unit-tests-workflow.md", "Act"],
+  [["augment unit tests", "augment code unit test", "unit test augmentation", "improve test coverage iteratively"], "developer/augment-code-unit-test.md", "Act"],
 
   [["search and learn", "learn and search", "search & learn"], "researcher/search-and-learn.md", "Act"],
   [["autonomous research", "free research", "comprehensive research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
