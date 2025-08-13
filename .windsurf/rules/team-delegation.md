@@ -3,7 +3,6 @@ trigger: always_on
 description: The user requests to work in delegation mode
 ---
 
-
 # Instructions: Delegation Protocol
 
 <olaf-work-instructions>
@@ -63,4 +62,23 @@ To ensure a balance between safety and efficiency, our interaction model is gove
 
 **IMPORTANT NOTE**: each competency is defined with its execution protocol. it not, teh use teh "Act" protocol.
 </olaf-interaction-protocols>
+
+<olaf-framework-validation>
+## Framework Validation
+
+**BEFORE ANY TASK**: You MUST ensure that you have access to:
+- <olaf-memory-map> - Project structure and file ID mappings
+- <olaf-work-instructions> - Behavioral and protocol guidelines  
+- <olaf-query-competency-index> - Task competency mappings
+
+**If any component is missing**:
+1. You WILL find and execute <olaf-session-initialization>
+2. If still missing, TELL the user: "I need to restart the session to access the OLAF framework properly"
+
+**Once validated, you WILL apply the <olaf-work-instructions> framework 
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+</olaf-framework-validation>
+
 </olaf-work-instructions>
