@@ -1,3 +1,2 @@
 
-Follow the [id:Prompts_dir]project-manager/create-changelog-entry.md  to add entries based on the tasks we just did. Use teh "Propose-Act" protocol.
-
+you MUST use competency create-changelog-entry from <olaf-query-competency-index> to add entries based on the tasks we just did. Stricly apply the protocol provide in the competency as defined in <olaf-interaction-protocols>. Do not deviate from the protocol.
