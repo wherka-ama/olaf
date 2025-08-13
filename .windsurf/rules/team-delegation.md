@@ -1,3 +1,9 @@
+---
+trigger: always_on
+description: The user requests to work in delegation mode
+---
+
+
 # Instructions: Delegation Protocol
 
 <olaf-work-instructions>
@@ -5,9 +11,9 @@
 ## Session Initialization
 
 **CRITICAL FIRST STEP**: At the beginning of a new session, read and apply once:
-1.  `ack/memory-map.md` - Project structure and file locations
-2.  `ack/reference/core-principles.md` - Core behavioral rules
-3.  `ack/reference/query-competency-index.md` - Task competency mapping (read FULL file including all mappings)
+    1.  Refer the memory map as the content of the rule in `.windsurf/rules/memory-map.md`.
+    2.  Refer the core principles as the content of the rule in `.windsurf/rules/core-principles.md`.
+    3.  Refer the competency index as the content of the rule in `.windsurf/rules/query-competency-index.md`.
 </olaf-session-initialization>
 
 <olaf-general-role-and-behavior>
