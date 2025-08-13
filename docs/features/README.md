@@ -4,6 +4,10 @@ This directory contains detailed documentation for each key feature of the Open 
 
 ## Core Features
 
+### Framework Management
+- **[Framework Management](framework-management.md)** - XML section tagging and framework validation for better LLM integration
+- **[Enhanced Prompt Engineering](prompt-engineering.md)** - Advanced prompt creation, testing, and modernization capabilities
+
 ### Interaction Management
 - **[Interaction Protocols](interaction-protocols.md)** - Act, Propose-Act, and Propose-Confirm-Act protocols for different safety levels
 
@@ -21,10 +25,20 @@ This directory contains detailed documentation for each key feature of the Open 
 
 ## Quick Navigation
 
-**For safety and control**: Start with [Interaction Protocols](interaction-protocols.md)
+**For framework understanding**: Start with [Framework Management](framework-management.md) and [Enhanced Prompt Engineering](prompt-engineering.md)
 
-**For customization**: Review [Meta-prompting](meta-prompting.md) and [Tools and Templates Integration](tools-and-templates.md)
+**For safety and control**: Review [Interaction Protocols](interaction-protocols.md)
 
-**For context management**: Check [Memory-map](memory-map.md) and [Chapter Mode](chapter-mode.md)
+**For customization**: Check [Meta-prompting](meta-prompting.md) and [Tools and Templates Integration](tools-and-templates.md)
 
-**For workflow understanding**: See [Competency-Driven Workflow](competency-driven-workflow.md)
+**For context management**: See [Memory-map](memory-map.md) and [Chapter Mode](chapter-mode.md)
+
+**For workflow understanding**: Explore [Competency-Driven Workflow](competency-driven-workflow.md)
+
+## New in v1.2.0
+
+- **XML Section Tagging**: Structured framework components for better LLM parsing and validation
+- **Advanced Prompt Testing**: Comprehensive testing framework for prompt quality assurance
+- **Enhanced Templates**: Improved prompt templates with detailed guidelines and best practices
+- **Framework Validation**: Automatic validation across all framework components
+- **Legacy Modernization**: Tools and processes for updating existing prompts to current standards
