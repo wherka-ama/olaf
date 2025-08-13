@@ -33,7 +33,7 @@
 param (
     [string]$RepoPath = (Get-Location),
     [int]$MonthsToAnalyze = 12,
-    [string]$OutputFile = "[id:findings_dir]hotspot-analysis/complexity-hotspots.md",
+    [string]$OutputFile = "complexity-hotspots.md",
     [string[]]$FileExtensions = @("cs", "java", "js", "ts", "py", "rb", "php", "go", "cpp", "c", "h", "hpp"),
     [string[]]$ExcludePatterns = @("node_modules", "dist", "bin", "obj", "build", "target", "vendor", "packages")
 )
@@ -46,7 +46,7 @@ if (-not (Test-Path ".git")) {
 }
 
 # Calculate date for git log
-$sinceDate = (Get-Date).AddMonths(-$MonthsToAnalyze).ToString("YYYYMMDD")
+$sinceDate = (Get-Date).AddMonths(-$MonthsToAnalyze).ToString("yyyy-MM-dd")
 
 Write-Host "Analyzing git history since $sinceDate..."
 
@@ -73,6 +73,30 @@ $results = @()
 
 # Analyze top changed files for complexity
 $topFiles = $changedFiles | Select-Object -First 30
+
+# Fallback: if no git history, analyze all code files
+if ($topFiles.Count -eq 0) {
+    Write-Host "No git history found. Analyzing all code files..."
+    $allCodeFiles = Get-ChildItem -Recurse -File | Where-Object {
+        $file = $_.FullName.Replace($PWD.Path + "\", "")
+        $extension = [System.IO.Path]::GetExtension($file).TrimStart('.')
+        $exclude = $false
+        foreach ($pattern in $ExcludePatterns) {
+            if ($file -like "*$pattern*") {
+                $exclude = $true
+                break
+            }
+        }
+        -not $exclude -and $FileExtensions -contains $extension
+    }
+    
+    $topFiles = $allCodeFiles | ForEach-Object {
+        [PSCustomObject]@{
+            Name = $_.FullName.Replace($PWD.Path + "\", "")
+            Count = 1  # Assign weight of 1 to all files
+        }
+    } | Select-Object -First 30
+}
 
 foreach ($fileEntry in $topFiles) {
     $file = $fileEntry.Name
@@ -131,7 +155,7 @@ $sortedResults = $results | Sort-Object -Property ComplexityScore -Descending
 $report = @"
 # Complexity Hotspots Analysis
 
-Analysis performed on: $(Get-Date -Format "YYYYMMDD")  
+Analysis performed on: $(Get-Date -Format "yyyyMMdd-HHmm")  
 Repository: $RepoPath  
 Period analyzed: $MonthsToAnalyze months (since $sinceDate)
 
