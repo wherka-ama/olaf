@@ -1,3 +1,4 @@
+<olaf-query-competency-index>
 # Competency Index
 
 **Last Updated:** 20250808-1030 CEDT
@@ -83,3 +84,4 @@ To remove a competency:
 ]
 ```
 end-of-competency-index
+</olaf-query-competency-index>

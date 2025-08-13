@@ -4,6 +4,39 @@ description: [Brief description of what this prompt accomplishes]
 tags: [tag1, tag2, tag3, tag4]
 ---
 
+## Framework Validation
+
+**BEFORE ANY TASK**: You MUST ensure that you have access to:
+- <olaf-memory-map> - Project structure and file ID mappings
+- <olaf-work-instructions> - Behavioral and protocol guidelines  
+- <olaf-query-competency-index> - Task competency mappings
+
+**If any component is missing**:
+1. You WILL find and execute <olaf-session-initialization>
+2. If still missing, TELL the user: "I need to restart the session to access the OLAF framework properly"
+
+**Once validated, you WILL apply the <olaf-work-instructions> framework 
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+
+
+## Framework Validation
+
+**BEFORE ANY TASK**: You MUST ensure that you have access to:
+- <olaf-memory-map> - Project structure and file ID mappings
+- <olaf-work-instructions> - Behavioral and protocol guidelines  
+- <olaf-query-competency-index> - Task competency mappings
+
+**If any component is missing**:
+1. You WILL find and execute <olaf-session-initialization>
+2. If still missing, TELL the user: "I need to restart the session to access the OLAF framework properly"
+
+**Once validated, you WILL apply the <olaf-work-instructions> framework 
+You MUST pay special attention to**:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+
 ## Time Retrieval
 You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
 - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
