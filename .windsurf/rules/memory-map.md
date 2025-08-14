@@ -9,6 +9,7 @@ last_updated: 2025-08-04
 purpose: LLM navigation aid
 </metadata>
 
+<olaf-memory-map>
 ## Project Structure and Paths
 
 ### Core solution [id:core_dir] = `my-repo/`
@@ -51,3 +52,4 @@ purpose: LLM navigation aid
 
 ### External References 
 - **Handover Document** [id:handover] = `[id:ads_dir]handover-conversation.md`
+</olaf-memory-map>
