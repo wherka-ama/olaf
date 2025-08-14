@@ -7,10 +7,10 @@ purpose: LLM navigation aid
 
 ## Project Structure and Paths
 
-### Core solution [id:core_dir] = `roo-code/`
+### Core solution [id:core_dir] = `my-repo/`
 # Example usage:
-# [id:core_dir]README.md → refers to roo-code/README.md
-# [id:core_dir]src/      → refers to roo-code/src/
+# [id:core_dir]README.md → refers to my-repo/README.md
+# [id:core_dir]src/      → refers to my-repo/src/
 
 
 ### Core Framework [id:ack_dir] = `ack/`
