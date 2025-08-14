@@ -6,7 +6,7 @@ description: the index of competencies
 <olaf-query-competency-index>
 # Competency Index
 
-**Last Updated:** 20250813-1735 CEDT
+**Last Updated:** 20250814-0858 CEDT
 
 ## How to Use This Index
 
