@@ -1,7 +1,7 @@
 Using with Sonnet4 as compared to using with gpt4.1, the initialization sequence is always respected
 
 
-pppaccau_amadeus: rearch and report
+<human-user-name>: rearch and report
 
 GitHub Copilot: I'll begin by completing the session initialization as required by the protocol, then address your request. **Session initialization complete.** I've loaded the memory map, core principles, and query competency index.
 

@@ -3,7 +3,7 @@ This conversation is interesting as it shows how I provided inputs to the prompt
 how to assit in really testing the prompt is another work in progress.
 
 
-pppaccau_amadeus: create prompt
+<human-user-name>: create prompt
 
 GitHub Copilot: I will follow the Olaf Delegation Protocol as described in `[id:copilot-instructions]`:
 
@@ -39,7 +39,7 @@ I will now execute the workflow in `[id:prompts_dir]prompt-engineer/create-promp
 
 Please provide these details to continue.
 
-pppaccau_amadeus: 1.  need this prompt to help user to generate a release note  by providing a starting git tag  (commits till this tag are excluded from the release note) and an ending git tag (all commits till this tag are included).
+<human-user-name>: 1.  need this prompt to help user to generate a release note  by providing a starting git tag  (commits till this tag are excluded from the release note) and an ending git tag (all commits till this tag are included).
 If the starting tag is not provided then start  from the tag before the last one.
 If the ending tag is not provided get the last tag 
 Look in the templates_dir if there is a release notes tempaple . If not, create one  and store it in the templates_dir and refere to it in your prompt.
@@ -77,7 +77,7 @@ I will create `generate-release-note-from-git-tags.md` in `[id:prompts_dir]proje
 
 Do you want me to proceed with creating this new prompt?
 
-pppaccau_amadeus: do not create a new prompt adapt teh existing one. Make sure it uses our prompt teamples and prompt principles.
+<human-user-name>: do not create a new prompt adapt teh existing one. Make sure it uses our prompt teamples and prompt principles.
 You can adjust eth existing templates 
 
 GitHub Copilot: I'll adapt the existing generate-professional-release-notes.md prompt to include your specific requirements and ensure it follows our prompt template and principles.
@@ -146,7 +146,7 @@ Made changes.
 
 The prompt now follows our established template and principles while implementing your specific git tag defaulting behavior and release note structure.
 
-pppaccau_amadeus: test prompt
+<human-user-name>: test prompt
 
 GitHub Copilot: I'll test the prompt we just adapted. Based on the competency index, "test prompt" maps to `prompt-engineer/test-prompt.md` with Act protocol.
 

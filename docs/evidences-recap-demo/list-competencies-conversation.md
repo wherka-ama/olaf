@@ -1,6 +1,6 @@
 I type /list-competency which invoked list-competencies.prompt.md from .github/prompts/
 
-pppaccau_amadeus: Follow instructions in [list-competencies.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/list-competencies.prompt.md).
+<human-user-name>: Follow instructions in [list-competencies.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/list-competencies.prompt.md).
 contact
 
 GitHub Copilot: To fulfill your request, I will:
@@ -57,7 +57,7 @@ Proceeding to step 1: I will now read the `[id:query-competency-index]` file to 
 
 If you want to proceed with a specific task, please specify which one. If you are unsure, let me know your goal and I will help you narrow down the options.
 
-pppaccau_amadeus: using the people register  tell me who i should contact for genAI expertise
+<human-user-name>: using the people register  tell me who i should contact for genAI expertise
 
 GitHub Copilot: I'll help you find who to contact for genAI expertise. Let me check the people register to identify the right expert. Based on the people register, for genAI expertise you should contact:
 
@@ -82,7 +82,7 @@ GitHub Copilot: I'll help you find who to contact for genAI expertise. Let me ch
 
 Alex Morgan appears to be your primary contact for genAI expertise given their specific role as Gen AI associate director and their strategic oversight responsibilities.
 
-pppaccau_amadeus: Cam you tell me  what are teh defined process that i need to follow in teh team 
+<human-user-name>: Cam you tell me  what are teh defined process that i need to follow in teh team 
 
 GitHub Copilot: I'll help you find the defined processes you need to follow in the team. Let me check the practices directory and other relevant documentation to identify the team processes. Let me read the key process documents to give you a comprehensive overview: Based on my review of the team documentation, here are the **defined processes you need to follow** in the team:
 
@@ -144,7 +144,7 @@ When expressing requirements to developers:
 
 These processes ensure effective collaboration, code quality, and project delivery while maintaining team health and compliance.
 
-pppaccau_amadeus: i just have interest in team proccess not technical practices
+<human-user-name>: i just have interest in team proccess not technical practices
 
 GitHub Copilot: Based on your interest in team processes (not technical practices), here are the **defined team processes** you need to follow:
 

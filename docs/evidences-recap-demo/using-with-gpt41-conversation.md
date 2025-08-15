@@ -2,7 +2,7 @@ In that case i request for "research and report" but using gpt4.1. the initializ
 
 
 
-pppaccau_amadeus: research- and report
+<human-user-name>: research- and report
 
 GitHub Copilot: I will follow the Olaf Delegation Protocol as described in `[id:copilot-instructions]`.
 

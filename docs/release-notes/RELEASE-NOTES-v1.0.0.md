@@ -1,7 +1,7 @@
 ﻿# Release v1.0.0 - Initial OLAF Release
 **Release Date:** August 7, 2025  
 **Tag:** [v1.0.0](https://github.com/AmadeusITGroup/olaf/releases/tag/v1.0.0)  
-**Release Manager:** pppaccau_amadeus
+**Release Manager:** <human-user-name>
 
 ## Overview
 OLAF v1.0.0 marks the initial release of the Open Language Agent Framework, providing a comprehensive solution for AI-assisted code analysis, security vulnerability assessment, and project management. This foundational release establishes the core architecture with specialized tools for CVE verification, architectural analysis, and automated documentation generation.
@@ -118,7 +118,7 @@ This is the initial release, so no upgrade is required. For new installations:
 - Git integration assumes standard git repository structure and configuration
 
 ## Contributors
-Special thanks to **pppaccau_amadeus** for architecting and implementing the complete OLAF framework, establishing the foundation for AI-assisted development workflows.
+Special thanks to **<human-user-name>** for architecting and implementing the complete OLAF framework, establishing the foundation for AI-assisted development workflows.
 
 ## Links
 - [Repository](https://github.com/AmadeusITGroup/olaf)

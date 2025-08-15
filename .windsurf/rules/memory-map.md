@@ -17,7 +17,6 @@ purpose: LLM navigation aid
 # [id:core_dir]README.md → refers to my-repo/README.md
 # [id:core_dir]src/      → refers to my-repo/src/
 
-
 ### Core Framework [id:ack_dir] = `ack/`
 # Example usage:
 # [id:ack_dir]README.md → refers to ack/README.md

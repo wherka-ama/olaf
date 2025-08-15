@@ -1,7 +1,7 @@
 i request /reinit that invoke reinit.prompt.md from .github/prompts/reinit.prompt.md
 look at its content to see how we use olaf- tag 
 
-pppaccau_amadeus: Follow instructions in [reinit.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/reinit.prompt.md).
+<human-user-name>: Follow instructions in [reinit.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/reinit.prompt.md).
 
 GitHub Copilot: I'll reapply the session initialization as instructed. Let me read the required files to initialize the session properly. ## Session Initialization Complete
 

@@ -2,7 +2,7 @@ This is concise as i used gpt 4.1. try it with other models  or state ïn detail
 
 
 
-pppaccau_amadeus: please explain the initilalization , then how a competnecy is found , then how the  interaction protocol works
+<human-user-name>: please explain the initilalization , then how a competnecy is found , then how the  interaction protocol works
 
 GitHub Copilot: Here is a concise explanation based on the provided copilot-instructions:
 

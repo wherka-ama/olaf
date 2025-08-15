@@ -2,7 +2,7 @@ Here I don't use a prepared prompt to interact with ads. The issue is that I try
 
 
 
-pppaccau_amadeus: zhat are th defined process in this project
+<human-user-name>: zhat are th defined process in this project
 
 GitHub Copilot: I'll help you identify the defined processes in this project. Let me start by reading the session initialization files and then explore the project structure to find the defined processes. Now let me explore the specific process directories to understand the defined processes: Let me also check for more workflow-related files: Let me check some key workflow files: Based on my analysis of the project, here are the **defined processes** in this project:
 
@@ -97,7 +97,7 @@ GitHub Copilot: I'll help you identify the defined processes in this project. Le
 
 All processes follow the **OLAF framework** with standardized templates, file referencing conventions, and quality assurance mechanisms built into each workflow.
 
-pppaccau_amadeus: i am only intereed in VI
+<human-user-name>: i am only intereed in VI
 
 GitHub Copilot: Based on your interest in **VI. Team & Communication Processes**, here are the defined processes in that category:
 

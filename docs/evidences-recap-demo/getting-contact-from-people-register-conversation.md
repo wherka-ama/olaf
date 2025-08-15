@@ -1,4 +1,4 @@
-pppaccau_amadeus: Using teh people register tell me who i should contect to get hellp on understan how ai is used in this project
+<human-user-name>: Using teh people register tell me who i should contect to get hellp on understan how ai is used in this project
 
 GitHub Copilot: I'll start by reading the session initialization files and then check the people register to identify who can help with understanding AI usage in this project. Now I'll check the people register to find who can help with AI usage in the project. Based on the people register, I can see who you should contact regarding AI usage in the project:
 

@@ -1,6 +1,6 @@
  invoke use-competency.prompt.md in .github/prompts/ by typing /use-competency
 
-pppaccau_amadeus: Follow instructions in [use-competency.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/use-competency.prompt.md).
+<human-user-name>: Follow instructions in [use-competency.prompt.md](file:///c%3A/Users/ppaccaud/coderepos/demo-2025-08-14/generic-demo/.github/prompts/use-competency.prompt.md).
 should I use AI
 
 GitHub Copilot: I will follow the instructions in [use-competency.prompt.md] and consult the full <olaf-query-competency-index> to determine the relevant competency for your question: "should I use AI".
@@ -23,7 +23,7 @@ Since your input is "should I use AI" (no specific task described), here is the 
 
 If you have a specific task in mind, please describe it in one sentence for a tailored recommendation.
 
-pppaccau_amadeus: should i use it to rename a symbol through my code base
+<human-user-name>: should i use it to rename a symbol through my code base
 
 GitHub Copilot: 🔧 **Recommendation: Use IDE Tools**
 
