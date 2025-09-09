@@ -1,5 +1,15 @@
 # Open Lightweight Assistant Framework (OLAF)
 
+## Quick Installation
+
+Download the ZIP file and extract the framework folders:
+
+```
+https://github.com/AmadeusITGroup/olaf/archive/refs/heads/main.zip
+```
+
+See [Installation Guide](README-INSTALLATION.md) for detailed steps.
+
 ## Executive Summary
 OLAF is a simple assistant framework designed to enhance the interactions between users and AI agents through natural language interaction.
 
