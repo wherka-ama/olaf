@@ -7,14 +7,14 @@ This document serves as a central registry of all individuals participating in t
 
 | Name | Role | Primary Skills | Secondary Skills | Contact Information | When to Contact | Availability |
 |------|------|----------------|------------------|---------------------|----------------|-------------|
-| Jane Smith | Senior Developer | Full-stack development, React.js, Node.js | Database design, DevOps | Email: jane.smith@example.com<br>Slack: @js<br>Phone: For urgent matters | Technical implementation questions, architecture decisions | 8am-4pm (GMT+1) |
-| Alex Morgan | Gen AI associate director | ACME knowledge, Home office automation | Strategy, Budget management | Email: alex.morgan@example.com<br>Teams: @alexm | Strategy confirmation, budget alignment | 9am-6pm |
+| Jean Marin | Senior Developer | Full-stack development, React.js, Node.js | Database design, DevOps | Email: jean.marin@example.com<br>Slack: @js<br>Phone: For urgent matters | Technical implementation questions, architecture decisions | 8am-8pm (GMT+2) |
+
 
 ## Detailed Participant Information
 
 
 
-### Jane Smith
+### Jean Marin
 
 **Role:** Senior Developer responsible for technical implementation and architecture decisions
 
@@ -32,62 +32,12 @@ This document serves as a central registry of all individuals participating in t
 
 **Contact Protocol:**
 - For technical implementation questions: Slack (@js)
-- For architecture decisions: Email (jane.smith@example.com)
+- For architecture decisions: Email (jean.marin@example.com)
 - For urgent matters: Phone
 
 **Working Hours:**
-- 8 AM till 4 PM (GMT+1)
+- 8 AM till 8 PM (GMT+2)
 
 **Notes:**
-Known for her expertise in full-stack development and React.js
+Known for his expertise in full-stack development and React.js
 
-### Alex Morgan
-
-**Role:** Gen AI associate director responsible for strategy and budget oversight
-
-**Areas of Expertise:**
-- Long standing knowledge of ACME (Expert)
-- Technical nerd on home office automation (Expert)
-
-**Project Responsibilities:**
-- Supervisor
-- Strategy oversight
-- Budget approval
-
-**Contact Protocol:**
-- For all matters: Microsoft Teams
-
-**Working Hours:**
-- 9 AM till 6 PM
-
-**Notes:**
-Known as "The boss" with senior leadership position and decision-making authority
-
-## Usage Guidelines
-
-1. **Updating Information:** When participant information changes, please update both the table and detailed section.
-2. **Contacting Team Members:** Always respect the "When to Contact" guidelines and preferred contact methods.
-3. **New Additions:** When adding new team members, follow the existing format for consistency.
-4. **Skill Definitions:**
-   - Primary Skills: Core competencies directly relevant to their project role
-   - Secondary Skills: Additional capabilities that may be useful in specific scenarios
-
-## Skills Legend
-
-| Skill Category | Description | Examples |
-|----------------|-------------|----------|
-| Technical | Programming languages, frameworks, tools | Python, React, Docker |
-| Design | UX/UI, graphic design, prototyping | Figma, Adobe Suite, Wireframing |
-| Management | Project coordination, team leadership | Agile, Scrum, Resource planning |
-| Domain Knowledge | Industry-specific expertise | Healthcare, Finance, Education |
-| Soft Skills | Communication, collaboration | Conflict resolution, Presentation |
-
-## Contact Purpose Guide
-
-| Purpose | Appropriate Contacts | Notes |
-|---------|----------------------|-------|
-| Technical Implementation | [Roles to contact] | [Best practices for this type of contact] |
-| Design Reviews | [Roles to contact] | [Best practices for this type of contact] |
-| Project Timeline | [Roles to contact] | [Best practices for this type of contact] |
-| Resource Allocation | [Roles to contact] | [Best practices for this type of contact] |
-| Client Communication | [Roles to contact] | [Best practices for this type of contact] |
