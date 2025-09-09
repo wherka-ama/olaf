@@ -1,4 +1,4 @@
-# Essential needstips for a business analyst when expressing requirements to developers
+# Essential tips for a business analyst when expressing requirements to developers
 
 ## 1. **Clear and Unambiguous Requirements**
 This is the most critical need. If requirements are vague, they will be misinterpreted.
