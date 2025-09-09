@@ -25,7 +25,7 @@
 ## 🔍 Technical Notes and Compatibility
 - Unit Test Augmentation workflow and quality review prompts extend developer tooling for test coverage and static checks.
 - Delegation rule at `.windsurf/rules/team-delegation.md` now enforces session initialization.
-- Path references standardized to `my-repo/` per `ack/memory-map.md`.
+- Path references standardized to `my-repo/` per `olaf-core-knowldege/memory-map.md`.
 - No breaking changes; upgrade requires no manual steps.
 
 ---

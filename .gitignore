@@ -17,7 +17,7 @@ yarn-error.log
 *.swo
 
 # Conversation files
-ads/handover-conversation*.md
+olaf-data-store/handover-conversation*.md
 
 
 # Project Folders

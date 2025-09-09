@@ -1,4 +1,4 @@
-O opened  /ack/prompts/def.../dfd_main_coordinator.md  in the editor and stated the following request - using sonnet4
+O opened  /olaf-core-knowldege/prompts/def.../dfd_main_coordinator.md  in the editor and stated the following request - using sonnet4
 
 
 ppaccau_amadeus: excsute this workflow on code2dfd

@@ -23,7 +23,7 @@ Note: If you are working with a version control system (e.g.; GitLab, GitHub, et
 	* Use a competency to perform a simple task, such as research-and-report
 5. **Find the output of the competencies and move it to the right place if needed**:
 	* After using a competency, find the output and move it to the right place in your project, or delete it if it is not needed
-	* in this incarnation, we tried to locate all outputs in /ads/findings/ or a a subfolder of it, but this is not guaranteed
+	* in this incarnation, we tried to locate all outputs in /olaf-data-store/findings/ or a a subfolder of it, but this is not guaranteed
 6. **Ask the AI to create a new changelog**:
 	* Use the `create-changelog-entry` command to ask the AI to create a new changelog for your project
   * note that the AI will react differently depending on the context you went through. This is an important aspect of current generative AI.

@@ -3,7 +3,7 @@
 This project experiments with **Prompt Markup Language (PML)**, a structured, XML-inspired format designed for authoring, maintaining, and versioning AI prompt files. PML enables clear definition of prompt metadata, context, inputs, outputs, and workflow, supporting robust prompt engineering and automation across the OLAF platform.
 
 
-- All PML files are located in `[id:prompts_dir]` (`ack/prompts`).
+- All PML files are located in `[id:prompts_dir]` (`olaf-core-knowldege/prompts`).
 - A loonnnng  `pml.xsd` for schema details and validation.
 
 ### Outcomes

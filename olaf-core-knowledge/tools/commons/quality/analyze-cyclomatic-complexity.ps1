@@ -11,7 +11,7 @@
     Path to the repository to analyze. Defaults to the current directory.
 
 .PARAMETER OutputFile
-    Path to the output markdown file. Defaults to cyclomatic-complexity.md in the ads/findings directory.
+    Path to the output markdown file. Defaults to cyclomatic-complexity.md in the olaf-data-store/findings directory.
 
 .PARAMETER FileExtensions
     Array of file extensions to analyze (without the dot). Defaults to common code file extensions.

@@ -8,7 +8,7 @@ This method allows for the application of smaller, more focused prompts, with re
 
 ## Implementation Example: Code Complexity Reduction
 
-An example of this strategy can be found within this repository in the `/ack/prompts/reduce-code-complexity/` directory. It features an orchestrator with corresponding sub-flows and prompts designed to implement the least-to-most prompting technique.
+An example of this strategy can be found within this repository in the `/olaf-core-knowldege/prompts/reduce-code-complexity/` directory. It features an orchestrator with corresponding sub-flows and prompts designed to implement the least-to-most prompting technique.
 
 This workflow has been successfully applied to reduce code complexity in a public JavaScript/TypeScript project.
 

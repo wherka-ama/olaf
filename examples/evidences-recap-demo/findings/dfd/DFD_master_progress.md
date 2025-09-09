@@ -33,7 +33,7 @@
 **Next Sub-prompt:** 2
 **Ready for User Review:** Yes
 
-## File Status (all under `ads/findings/dfd/`)
+## File Status (all under `olaf-data-store/findings/dfd/`)
 - [x] `DFD_master_progress.md` - This master tracking file
 - [x] `Code2DFD_analysis.md` - Main analysis document
 - [x] `DFD_level1_tasks.md` - Level 1 task tracking

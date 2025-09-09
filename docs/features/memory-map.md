@@ -5,7 +5,7 @@ OLAF provides a Memory-map (a markdown file) that maps the important folders and
 ## Location
 
 The memory-map is present in:
-- `/ack/memory-map.md` for general purpose agents 
+- `/olaf-core-knowldege/memory-map.md` for general purpose agents 
 - `.windsurf/rules/memory-map.md` for Cascade agent
 
 ## Purpose

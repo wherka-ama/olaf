@@ -50,7 +50,7 @@ function Get-RelativePathFromAck {
         $relativePath = $FullPath.Substring($ackBasePath.Length)
         # Remove leading slash/backslash and convert to forward slashes
         $relativePath = $relativePath.TrimStart('\', '/').Replace('\', '/')
-        return "/ack/$relativePath"
+        return "/olaf-core-knowldege/$relativePath"
     }
     return $FullPath
 }

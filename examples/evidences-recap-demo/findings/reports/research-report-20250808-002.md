@@ -1597,7 +1597,7 @@ jobs:
   generate-docs:
     name: Generate Documentation
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heolaf-data-store/main'
     steps:
       - name: Auto-generate missing documentation
         run: |

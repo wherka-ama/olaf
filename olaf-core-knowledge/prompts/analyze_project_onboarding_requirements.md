@@ -428,10 +428,10 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 - Human-readable summaries and findings
 - Actionable insights and recommendations
 - Clear file naming for easy identification and automation
-- Integration with existing tooling in `olaf-core-knowledge/tools/` and `ack/tools/`
+- Integration with existing tooling in `olaf-core-knowledge/tools/` and `olaf-core-knowldege/tools/`
 
 ### Python Script Integration
-- Leverage existing tools in `olaf-core-knowledge/tools/` and `ack/tools/`
+- Leverage existing tools in `olaf-core-knowledge/tools/` and `olaf-core-knowldege/tools/`
 - Develop additional scripts as needed for specific analysis tasks
 - Ensure scripts are language-agnostic where possible
 - Provide automated metrics calculation and data extraction
