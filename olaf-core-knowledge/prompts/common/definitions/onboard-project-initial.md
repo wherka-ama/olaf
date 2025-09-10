@@ -109,36 +109,12 @@ The `olaf-onboarding-tasklist.md` file must contain:
 
 ## Python Script Integration
 
-Available Python scripts for analysis tasks (check for existence before using):
+Available Python scripts for analysis tasks (only these 5 exist):
 - `workspace_content_analyzer.py`
-- `repo_application_classifier.py`
 - `language_distribution_analyzer.py`
 - `repo_size_metrics_calculator.py`
-- `technology_stolaf-core-knowledge_identifier.py`
-- `unit_testing_framework_analyzer.py`
-- `integration_testing_analyzer.py`
-- `code_coverage_analyzer.py`
-- `performance_testing_analyzer.py`
-- `local_build_process_analyzer.py`
-- `cicd_pipeline_analyzer.py`
-- `deployment_strategy_analyzer.py`
-- `infrastructure_code_analyzer.py`
-- `database_architecture_analyzer.py`
-- `api_design_analyzer.py`
-- `architecture_pattern_analyzer.py`
-- `auth_implementation_analyzer.py`
-- `security_pattern_analyzer.py`
-- `data_governance_analyzer.py`
-- `code_style_analyzer.py`
 - `complexity_analyzer.py`
-- `dependency_analyzer.py`
-- `licensing_legal_analyzer.py`
-- `documentation_analyzer.py`
-- `spec_driven_development_analyzer.py`
-- `error_handling_monitoring_analyzer.py`
 - `hotspot_analyzer.py`
-- `critical_contributors_analyzer.py`
-- `business_domain_synthesizer.py`
 
 ## Output Requirements
 

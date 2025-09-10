@@ -71,16 +71,16 @@ The `olaf-onboarding-tasklist.md` file should follow this structure:
 | ID | Task Name | Status | Output File | Script | Dependencies | Updated |
 |----|-----------|--------|-------------|--------|--------------|---------|
 | 1 | Workspace Content Analysis | COMPLETED | analyze-workspace-content-structure.md | workspace_content_analyzer.py | None | 2025-09-09 14:30 |
-| 2 | Repository Application Classification | IN_PROGRESS | classify-repo-application-types.md | repo_application_classifier.py | 1 | 2025-09-09 15:15 |
+| 2 | Repository Application Classification | IN_PROGRESS | classify-repo-application-types.md | - | 1 | 2025-09-09 15:15 |
 | 3 | Programming Language Analysis | PENDING | analyze-repo-language-distribution.md | language_distribution_analyzer.py | 1 | - |
 | 4 | Repository Size Metrics | PENDING | measure-repo-size-metrics.md | repo_size_metrics_calculator.py | 1 | - |
-| 5 | Technology Stack Analysis | PENDING | identify-repo-technology-stack.md | technology_stack_identifier.py | 2,3 | - |
+| 5 | Technology Stack Analysis | PENDING | identify-repo-technology-stack.md | - | 2,3 | - |
 
 ### PHASE 2: TESTING STRATEGY  
 | ID | Task Name | Status | Output File | Script | Dependencies | Updated |
 |----|-----------|--------|-------------|--------|--------------|---------|
-| 6 | Unit Testing Framework Analysis | PENDING | analyze-unit-testing-frameworks.md | unit_testing_framework_analyzer.py | 3,5 | - |
-| 7 | Integration Testing Analysis | SKIPPED | analyze-integration-testing-setup.md | integration_testing_analyzer.py | 2,5 | 2025-09-09 14:00 |
+| 6 | Unit Testing Framework Analysis | PENDING | analyze-unit-testing-frameworks.md | - | 3,5 | - |
+| 7 | Integration Testing Analysis | SKIPPED | analyze-integration-testing-setup.md | - | 2,5 | 2025-09-09 14:00 |
 
 [Continue for all 28 tasks organized across 10 phases...]
 
@@ -131,7 +131,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
   - Direct relationships with other repositories
   - Classification by type (Front-end, Backend, Database, API, Full-stack, Microservice, Library/SDK, Configuration/Infrastructure)
 - **Python Script Support:** Pattern recognition for application types, configuration file analysis
-- **Script Name:** `repo_application_classifier.py`
 
 ### 3. Programming Language Analysis
 **Target File:** `analyze-repo-language-distribution.md`
@@ -156,7 +155,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 - Document frameworks and technologies used (framework-agnostic)
 - Categorize by application layer (Frontend, Middleware, Backend, Database, Infrastructure)
 - **Python Script Support:** Configuration file parsing, dependency manifest analysis
-- **Script Name:** `technology_stack_identifier.py`
 
 ### **THEME B: TESTING STRATEGY ANALYSIS**
 *Understanding testing approaches and coverage*
@@ -166,28 +164,24 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses language analysis from #3, technology stack from #5
 - For each repository identify unit testing framework and version, execution commands, examples, mocking strategies
 - **Python Script Support:** Test file discovery, framework detection, command extraction
-- **Script Name:** `unit_testing_framework_analyzer.py`
 
 ### 7. Integration Testing Analysis
 **Target File:** `analyze-integration-testing-setup.md`
 **Dependencies:** Uses technology stack from #5, application types from #2
 - Integration testing frameworks, execution procedures, mocking approaches, environment configuration
 - **Python Script Support:** Integration test pattern recognition, environment configuration analysis
-- **Script Name:** `integration_testing_analyzer.py`
 
 ### 8. Comprehensive Code Coverage Analysis
 **Target File:** `analyze-code-coverage-measurement.md`
 **Dependencies:** Uses unit testing from #6, integration testing from #7
 - Coverage calculation methods, metrics, thresholds, uncovered critical paths identification
 - **Python Script Support:** Coverage report parsing, threshold analysis, critical path identification
-- **Script Name:** `code_coverage_analyzer.py`
 
 ### 9. Performance Testing Analysis
 **Target File:** `analyze-performance-testing-strategy.md`
 **Dependencies:** Uses technology stack from #5, application types from #2
 - Performance testing frameworks, load testing configurations, benchmarks
 - **Python Script Support:** Performance metrics extraction, benchmark analysis
-- **Script Name:** `performance_testing_analyzer.py`
 
 ### **THEME C: BUILD AND DEPLOYMENT PIPELINE**
 *Understanding build, deployment, and infrastructure*
@@ -197,28 +191,24 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses technology stack from #5, language analysis from #3
 - Local build procedures, dependencies, setup requirements
 - **Python Script Support:** Build script discovery, dependency analysis
-- **Script Name:** `local_build_process_analyzer.py`
 
 ### 11. CI/CD Pipeline Analysis
 **Target File:** `analyze-cicd-pipeline-setup.md`
 **Dependencies:** Uses build process from #10, testing frameworks from #6-9
 - CI/CD platform identification, pipeline configuration, automation processes
 - **Python Script Support:** Pipeline configuration parsing, workflow analysis
-- **Script Name:** `cicd_pipeline_analyzer.py`
 
 ### 12. Deployment Strategy Analysis
 **Target File:** `analyze-deployment-strategy-methods.md`
 **Dependencies:** Uses CI/CD analysis from #11, technology stack from #5
 - Deployment technologies, environments, container orchestration, deployment patterns
 - **Python Script Support:** Deployment configuration analysis, container scanning
-- **Script Name:** `deployment_strategy_analyzer.py`
 
 ### 24. Infrastructure as Code Analysis
 **Target File:** `analyze-infrastructure-code-patterns.md`
 **Dependencies:** Uses deployment strategy from #12, CI/CD from #11
 - IaC tool usage, infrastructure versioning, GitOps patterns, environment provisioning
 - **Python Script Support:** IaC file discovery, GitOps pattern detection
-- **Script Name:** `infrastructure_code_analyzer.py`
 
 ### **THEME D: SECURITY AND COMPLIANCE**
 *Security implementation and compliance patterns*
@@ -228,21 +218,18 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses technology stack from #5, application types from #2
 - Authentication mechanisms, authorization frameworks, security configuration
 - **Python Script Support:** Security configuration scanning, vulnerability pattern detection
-- **Script Name:** `auth_implementation_analyzer.py`
 
 ### 28. Security Pattern Analysis
 **Target File:** `analyze-security-pattern-implementation.md`
 **Dependencies:** Uses auth analysis from #14, technology stack from #5, API design from #16
 - Input validation, injection prevention, cryptographic implementations, secrets management
 - **Python Script Support:** Security pattern detection, vulnerability pattern scanning, crypto usage analysis
-- **Script Name:** `security_pattern_analyzer.py`
 
 ### 23. Licensing and Legal Analysis
 **Target File:** `analyze-licensing-legal-compliance.md`
 **Dependencies:** Uses dependency analysis from #20
 - Software license compliance, third-party obligations, open source compatibility
 - **Python Script Support:** License file discovery, dependency license analysis
-- **Script Name:** `licensing_legal_analyzer.py`
 
 ### **THEME E: DATA AND API ARCHITECTURE**
 *Data handling and API design patterns*
@@ -252,21 +239,18 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses technology stack from #5, application types from #2
 - Database technologies, schema design patterns, migration strategies
 - **Python Script Support:** Schema analysis, migration script discovery
-- **Script Name:** `database_architecture_analyzer.py`
 
 ### 16. API Design and Documentation
 **Target File:** `analyze-api-design-documentation.md`
 **Dependencies:** Uses application types from #2, technology stack from #5
 - API design patterns, documentation quality, versioning strategies
 - **Python Script Support:** API endpoint discovery, documentation coverage analysis
-- **Script Name:** `api_design_analyzer.py`
 
 ### 26. Data Governance Analysis
 **Target File:** `analyze-data-governance-patterns.md`
 **Dependencies:** Uses database architecture from #13, security patterns from #28
 - Data validation patterns, schema constraints, PII handling, data retention logic
 - **Python Script Support:** Data validation pattern detection, schema analysis, PII pattern identification
-- **Script Name:** `data_governance_analyzer.py`
 
 ### **THEME F: CODE QUALITY AND STANDARDS**
 *Code quality, style, and architectural patterns*
@@ -276,7 +260,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses language analysis from #3
 - Naming conventions per language, formatting tools, style guide compliance
 - **Python Script Support:** Style configuration discovery, consistency analysis
-- **Script Name:** `code_style_analyzer.py`
 
 ### 19. Complexity Analysis
 **Target File:** `analyze-cyclomatic-complexity-metrics.md`
@@ -290,14 +273,12 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses technology stack from #5, build process from #10
 - External dependency inventory, security vulnerabilities, license compliance
 - **Python Script Support:** Dependency tree analysis, vulnerability scanning
-- **Script Name:** `dependency_analyzer.py`
 
 ### 21. Architecture Pattern Analysis
 **Target File:** `analyze-architecture-pattern-consistency.md`
 **Dependencies:** Uses application types from #2, technology stack from #5, API design from #16
 - Architectural patterns, pattern consistency, microservices vs monolith assessment
 - **Python Script Support:** Pattern detection, architectural metrics
-- **Script Name:** `architecture_pattern_analyzer.py`
 
 ### **THEME G: OPERATIONAL EXCELLENCE**
 *Monitoring, error handling, and operational practices*
@@ -307,7 +288,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses technology stack from #5, application types from #2
 - Error handling strategies, logging frameworks, monitoring setup
 - **Python Script Support:** Log configuration analysis, monitoring setup detection
-- **Script Name:** `error_handling_monitoring_analyzer.py`
 
 ### **THEME H: DEVELOPMENT PRACTICES**
 *Development methodologies and specification practices*
@@ -317,7 +297,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses testing frameworks from #6-7, documentation from #17
 - BDD/Gherkin specification analysis, specification as code practices
 - **Python Script Support:** Spec file discovery, BDD framework detection
-- **Script Name:** `spec_driven_development_analyzer.py`
 
 ### **THEME I: DOCUMENTATION AND KNOWLEDGE**
 *Documentation quality and knowledge management*
@@ -327,7 +306,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses workspace structure from #1, application types from #2
 - Documentation inventory, coverage assessment, quality evaluation
 - **Python Script Support:** Documentation file discovery, link validation, freshness analysis
-- **Script Name:** `documentation_analyzer.py`
 
 ### **THEME J: RISK AND MAINTENANCE ANALYSIS**
 *Risk assessment and maintenance considerations*
@@ -344,7 +322,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses hotspot analysis from #18
 - Contributors with highest impact, contribution patterns, bus factor analysis
 - **Python Script Support:** Git blame analysis, contribution metrics calculation
-- **Script Name:** `critical_contributors_analyzer.py`
 
 ### **THEME K: SYNTHESIS AND BUSINESS CONTEXT**
 *High-level synthesis and business understanding*
@@ -354,7 +331,6 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 **Dependencies:** Uses application types from #2, API design from #16, spec-driven development from #25, documentation from #17
 - Business logic patterns, feature mapping, workflow inference, domain terminology
 - **Python Script Support:** Pattern synthesis, domain terminology extraction, business logic mapping
-- **Script Name:** `business_domain_synthesizer.py`
 
 ## Execution Order and Key Dependencies
 
