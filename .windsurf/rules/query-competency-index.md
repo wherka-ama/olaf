@@ -2,11 +2,10 @@
 trigger: always_on
 description: the index of competencies
 ---
-
 <olaf-query-competency-index>
 # Competency Index
 
-**Last Updated:** 20250814-0858 CEDT
+**Last Updated:** 20250911-1338 CEDT
 
 ## How to Use This Index
 
@@ -58,7 +57,6 @@ To remove a competency:
   [["review modified", "modified files", "review changes"], "developer/review-modified-files.md", "Act"],
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
   [["accessibility review", "accessibility check", "wcag review", "accessibility compliance"], "developer/review-code-accessibility.md", "Act"],
-  [["codebase risk", "code risk", "analyze codebase", "code quality analysis"], "other-users/analyze-codebase-risk.md", "Act"],
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
@@ -67,7 +65,7 @@ To remove a competency:
 
   [["search and learn", "learn and search", "search & learn"], "researcher/search-and-learn.md", "Act"],
   [["autonomous research", "free research", "comprehensive research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
-  [["research and report", "controlled research", "supervised research", "step by step research"], "researcher/research-and-report.md", "Propose-Confirm-Act"],
+ [["research and report", "controlled research", "supervised research", "step by step research"], "researcher/research-and-report.md", "Propose-Confirm-Act"],
   [["tech spec from code", "spec from code"], "developer/generate-tech-spec-from-code.md", "Act"],
 
   [["bootstrap functional spec", "func spec from code"], "business-analyst/bootstrap-functional-spec-from-code.md", "Act"],
@@ -82,15 +80,12 @@ To remove a competency:
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],
   [["create job", "new job", "define job"], "project-manager/create-job.md", "Act"],
 
-  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "project-manager/orchestrate-project-onboarding-analysis.md", "Propose-Act"],
+  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "common/orchestrators/orchestrate-project-onboarding.md", "Propose-Act"],
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
-  [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "troubleshooting/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
-  [["log to source", "map logs to code", "trace logs", "source mapping", "debug with logs"], "troubleshooting/troubleshoot-logs-to-sources.md", "Act"],
 
   [["fix code smells", "code smells"], "developer/fix-code-smells.md", "Act"],
   [["test prompt", "try prompt", "test new prompt", "validate prompt", "prompt testing"], "prompt-engineer/test-prompt.md", "Act"],
 
 ]
-```
 end-of-competency-index
 </olaf-query-competency-index>

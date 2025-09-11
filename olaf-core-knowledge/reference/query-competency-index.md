@@ -1,7 +1,7 @@
 <olaf-query-competency-index>
 # Competency Index
 
-**Last Updated:** 20250813-1735 CEDT
+**Last Updated:** 20250911-1338 CEDT
 
 ## How to Use This Index
 
@@ -53,7 +53,6 @@ To remove a competency:
   [["review modified", "modified files", "review changes"], "developer/review-modified-files.md", "Act"],
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
   [["accessibility review", "accessibility check", "wcag review", "accessibility compliance"], "developer/review-code-accessibility.md", "Act"],
-  [["codebase risk", "code risk", "analyze codebase", "code quality analysis"], "other-users/analyze-codebase-risk.md", "Act"],
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
@@ -77,15 +76,12 @@ To remove a competency:
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],
   [["create job", "new job", "define job"], "project-manager/create-job.md", "Act"],
 
-  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "project-manager/orchestrate-project-onboarding-analysis.md", "Propose-Act"],
+  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "common/orchestrators/orchestrate-project-onboarding.md", "Propose-Act"],
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
-  [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "troubleshooting/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
-  [["log to source", "map logs to code", "trace logs", "source mapping", "debug with logs"], "troubleshooting/troubleshoot-logs-to-sources.md", "Act"],
 
   [["fix code smells", "code smells"], "developer/fix-code-smells.md", "Act"],
   [["test prompt", "try prompt", "test new prompt", "validate prompt", "prompt testing"], "prompt-engineer/test-prompt.md", "Act"],
 
 ]
-```
 end-of-competency-index
 </olaf-query-competency-index>
