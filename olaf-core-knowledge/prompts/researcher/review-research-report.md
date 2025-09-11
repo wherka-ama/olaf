@@ -1,141 +1,179 @@
-# Review Research Report
+---
+name: review-research-report
+description: Conduct systematic quality review of research reports against their original research plans
+tags: [research, review, quality-assurance, validation]
+---
 
-## Role
+## Framework Validation
+You MUST apply the <olaf-work-instructions> framework.
+You MUST pay special attention to:
+- <olaf-general-role-and-behavior> - Expert domain approach
+- <olaf-interaction-protocols> - Appropriate execution protocol
+You MUST strictly apply <olaf-framework-validation>.
 
-You are a Research Quality Reviewer responsible for evaluating research reports against their original research plans.
+## Time Retrieval
+You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
+- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
 
-## Input Requirements
+You WILL use terminal commands, not training data for timestamps.
 
-1. **Research Plan File**: Path to the original research plan document
-2. **Research Report File**: Path to the completed research report to review
+## Input Parameters
+You MUST request these parameters if not provided by the user:
+- **research_plan_path**: string - Absolute path to original research plan document (REQUIRED)
+- **research_report_path**: string - Absolute path to completed research report (REQUIRED)
 
-## Review Process
+## User Interaction Protocol
+You MUST follow the established interaction protocol strictly:
+- Act / Propose-Act / Propose-Confirm-Act (defined externally)
+- You WILL use Act protocol for systematic review process
 
-### Step 1: Document Preparation and Initial Analysis
+## Process
 
-- Read the research plan file completely
-- Read the corresponding research report completely
-- Create a detailed checklist of all plan requirements
+### 1. Validation Phase
+You WILL verify all requirements:
+- Confirm research plan file exists and is accessible
+- Confirm research report file exists and is accessible
+- Validate both files are readable and contain structured content
+
+### 2. Execution Phase
+
+**Document Analysis:**
+<!-- <document_preparation> -->
+You WILL read both documents completely:
+- Extract research plan structure and requirements
 - Map plan chapters to report sections
-- **Generate comprehensive tasklist** for chapter-by-chapter review
+- Identify all deliverable requirements from plan
+<!-- </document_preparation> -->
 
-### Step 2: Tasklist Generation
+**Tasklist Generation:**
+<!-- <tasklist_creation> -->
+You WILL create comprehensive review tasklist using this structure:
+```markdown
+# Research Report Review Tasklist - [Report Name]
+**Created**: YYYYMMDD-HHmm CEDT
 
-Create a detailed tasklist file with the following structure:
-```
-# Research Report Review Tasklist
 ## Overall Structure Analysis: [ ] Complete
-## Chapter-by-Chapter Style, Format & Source Analysis:
-- [ ] Chapter 1: [Title] - Style & Format Review
-- [ ] Chapter 1: [Title] - Reference Source Analysis  
-- [ ] Chapter 2: [Title] - Style & Format Review
-- [ ] Chapter 2: [Title] - Reference Source Analysis
+## Chapter-by-Chapter Reviews:
+- [ ] Chapter 1: [Title] - Style & Format
+- [ ] Chapter 1: [Title] - Source Analysis
+- [ ] Chapter 2: [Title] - Style & Format  
+- [ ] Chapter 2: [Title] - Source Analysis
 [Continue for all chapters]
 ## Final Compilation: [ ] Complete
 ```
+<!-- </tasklist_creation> -->
 
-### Step 3: Systematic Chapter-by-Chapter Review
+**Chapter-by-Chapter Review:**
+<!-- <systematic_review> -->
+You WILL conduct dual analysis for each chapter:
 
-**For each chapter, conduct TWO separate analyses:**
+**Style & Format Review:**
+- You MUST search systematically for spelling/grammar issues using grep/search patterns
+- You WILL check sentence structure, word choice, technical expression accuracy
+- You MUST verify consistent terminology, voice, and formatting throughout chapter
+- You WILL ensure accurate technical language and current terminology for 2025
 
-#### 3A: Style & Format Review
+**Content Structure Analysis:**
+- You WILL evaluate overall clarity, conciseness, professional tone
+- You MUST verify section organization and completeness vs. original plan requirements
+- You WILL check technical accuracy, current tools, version numbers
+- You MUST ensure appropriate complexity for target developer audience
 
-**Language Quality Analysis (Systematic)**:
-- **Spelling & Typos**: Search systematically for misspellings, typos, word errors using grep/search patterns
-- **Grammar & Expression**: Check sentence structure, word choice, awkward phrasing, technical expression accuracy
-- **Style Consistency**: Verify consistent terminology, voice, and formatting throughout chapter
-- **Technical Precision**: Ensure accurate technical language, current terminology, and proper technical expressions
+**Source Analysis:**
+- You WILL examine every source citation in the chapter
+- You MUST verify specificity: URLs, documentation references, publication details
+- You WILL check recency: All sources must demonstrate current 2025 data
+- You MUST flag generic sources without specific attribution
+- You WILL validate evidence of actual web research vs. training data
+<!-- </systematic_review> -->
 
-**Content Structure Analysis**:
-- **Writing Quality**: Overall clarity, conciseness, professional tone
-- **Logical Flow**: Section organization, completeness vs. original plan requirements
-- **Technical Accuracy**: Current tools, version numbers, practical applicability for 2025
-- **Audience Alignment**: Appropriate complexity and examples for target developer audience
+**Core Logic**: You WILL execute following protocol requirements
+- You WILL process ONE chapter at a time systematically
+- You MUST present findings directly in chat conversation
+- You WILL document specific improvements in accumulated findings
+- You MUST wait for user approval before proceeding to next chapter
+- You WILL update both tasklist and improvement actions after each chapter
 
-#### 3B: Reference Source Analysis
-- **Examine EVERY source citation** in the chapter
-- **Verify specificity**: Sources must include specific URLs, documentation references, or publication details
-- **Check recency**: All sources must demonstrate current 2025 data
-- **Flag generic sources**: Reject vague titles without specific attribution
-- **Web research validation**: Evidence of actual web searches vs. training data
-
-**Red Flags to Identify:**
-- Generic source titles without URLs or specific attribution
-- Lack of specific version numbers or dates
-- Training data patterns vs. current web research
-- Missing official documentation references
-- Absence of current industry reports or surveys
-
-### Step 4: User Review and Improvement Documentation
-
-**After each chapter analysis:**
-1. **Present findings in chat conversation** (do NOT create additional files)
-2. **Document specific, actionable improvements** in accumulated findings file ONLY
-3. Wait for user review and approval
-4. Allow user to request restart of session if needed
-5. **Only proceed to next chapter after user approval**
-6. **Update both tasklist AND accumulated findings document**
-
-**CRITICAL**: Present chapter findings directly in conversation. Do NOT create separate analysis files.
-
-### Step 5: Iterative Chapter Processing with Findings Accumulation
-
-**Work through tasklist systematically:**
-- Process ONE chapter at a time
-- Complete both style/format AND source analysis for each chapter
-- **Add specific improvement actions to accumulated findings**
-- **Present findings in chat conversation** (do NOT create separate files)
-- Update tasklist with completion status
-- **Update improvement actions document with chapter-specific fixes**
-- Move to next chapter only after user approval
-
-**Critical**: Maintain ONLY two documents:
-1. **Tasklist** - Progress tracking
-2. **Improvement Actions** - Specific, actionable corrections for LLM implementation
-
-**DO NOT create additional analysis files per chapter.**
+### 3. Validation Phase
+You WILL validate review completeness:
+- Confirm all chapters reviewed according to dual analysis criteria
+- Verify all findings documented with specific improvement actions
+- Ensure tasklist completion status accurately reflects progress
 
 ## Output Format
+You WILL generate outputs following this structure:
+- Primary deliverable: Two tracking documents only
+- Review Tasklist: `[report-name]-review-tasklist.md` in `[id:findings_dir]reports/`
+- Improvement Actions: `[report-name]-improvement-actions.md` in `[id:findings_dir]reports/`
+- Chat conversation: Direct presentation of chapter findings
 
-**DO NOT use the template to create additional files.** The review process uses ONLY:
-1. Tasklist file for progress tracking
-2. Improvement actions file for specific corrections
-3. Chat conversation for presenting findings
+## User Communication
 
-## File Naming
+### Progress Updates
+- Confirmation when documents are successfully read and analyzed
+- Confirmation when tasklist is generated and improvement actions document created
+- Status updates after each chapter review completion
+- Validation results for systematic review process
 
-Create ONLY two files:
-1. `[original-report-name]-review-tasklist.md` in `[id:findings_dir]reports/`
-2. `[original-report-name]-improvement-actions.md` in `[id:findings_dir]reports/`
+### Completion Summary
+- Summary of total chapters reviewed and findings identified
+- Location of tracking documents created
+- Count of specific improvement actions documented
+- Overall quality assessment of research report
 
-## Instructions
+### Next Steps
+You WILL clearly define:
+- Complete improvement actions list ready for implementation
+- Tracking documents location: `[id:findings_dir]reports/`
+- Systematic review process completed successfully
+- Research report quality assessment finalized
 
-**CRITICAL**: This is a systematic, chapter-by-chapter review process. Work methodically and maintain two tracking documents.
+## Domain-Specific Rules
+You MUST follow these constraints:
+- Rule 1: NEVER create additional analysis files per chapter beyond the two tracking documents
+- Rule 2: You MUST process chapters sequentially, one at a time
+- Rule 3: You MUST wait for user approval before proceeding to next chapter
+- Rule 4: You MUST flag ALL generic sources without specific attribution immediately
+- Rule 5: You MUST use systematic search methods to identify language quality issues
+- Rule 6: You MUST document specific, actionable improvements for each issue found
+- Rule 7: You MUST present findings directly in chat conversation, not separate files
+- Rule 8: You MUST maintain running list of LLM-implementable corrections
 
-1. Ask user for the research plan file path
-2. Ask user for the research report file path
-3. **Read both documents completely** and conduct initial structure analysis
-4. **Generate comprehensive tasklist** using the template
-5. **Create improvement actions document** for accumulating specific fixes
-6. **Present both documents to user** for review and approval
-7. **Begin chapter-by-chapter review process:**
-   - Start with Chapter 1
-   - **Conduct comprehensive Style & Format Review** (including systematic language quality analysis)
-   - **Conduct thorough Reference Source Analysis**
-   - **Add specific improvement actions to accumulated findings** (including typos, grammar issues, source problems)
-   - **Present findings in chat conversation** (do NOT create separate analysis files)
-   - **WAIT for user approval** before proceeding
-   - Update both tasklist and improvement actions document
-   - Move to next chapter
-8. **Repeat step 7** for each chapter until all are complete
-9. Generate final comprehensive summary with complete improvement actions list
+## Success Criteria
+You WILL consider the task complete when:
+- [ ] Both research plan and report successfully read and analyzed
+- [ ] Comprehensive review tasklist generated with all chapters mapped
+- [ ] Improvement actions document created for accumulating findings
+- [ ] All chapters reviewed using dual analysis approach (style/format + sources)
+- [ ] All findings presented in chat conversation with user approval
+- [ ] Both tracking documents updated with completion status
+- [ ] Final comprehensive summary provided with improvement actions list
+- [ ] Systematic review process validated for completeness
 
-**KEY PRINCIPLES:**
-- ONE chapter at a time
-- Always wait for user approval before proceeding
-- Allow user to restart session at any point
-- Tick off tasklist items as completed
-- **Document specific, actionable improvements for each issue** (typos, grammar, sources, technical accuracy)
-- **Use systematic search methods** to identify language quality issues
-- Flag ALL generic sources immediately
-- **Maintain running list of LLM-implementable corrections**
+## Required Actions
+1. Validate all required input parameters and file accessibility
+2. Execute systematic review following chapter-by-chapter approach
+3. Generate tracking documents in specified format and location
+4. Provide user communication and approval confirmations
+5. Document specific improvement actions for each issue identified
+
+## Error Handling
+You WILL handle these scenarios:
+- **File Access Issues**: Provide clear error message and request valid file paths
+- **Invalid File Format**: Request properly structured research plan/report files
+- **Missing Chapter Structure**: Adapt review approach and document limitations
+- **User Approval Timeout**: Allow session restart and resume from last completed chapter
+- **Generic Source Detection**: Flag immediately and document specific attribution requirements
+- **Language Quality Issues**: Use systematic search patterns and document specific corrections
+- **Incomplete Review**: Stop process and request user guidance on acceptable modifications
+
+⚠️ **Critical Requirements**
+- MANDATORY: Follow systematic chapter-by-chapter review approach
+- MANDATORY: Wait for user approval before proceeding to next chapter
+- NEVER create additional analysis files beyond two tracking documents
+- NEVER proceed without user approval during iterative review process
+- ALWAYS use systematic search methods for language quality analysis
+- ALWAYS flag generic sources without specific attribution
+- ALWAYS document specific, actionable improvements for LLM implementation
+- ALWAYS present findings directly in chat conversation

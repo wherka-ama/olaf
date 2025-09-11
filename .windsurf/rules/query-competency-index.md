@@ -67,7 +67,7 @@ To remove a competency:
 
   [["search and learn", "learn and search", "search & learn"], "researcher/search-and-learn.md", "Act"],
   [["autonomous research", "free research", "comprehensive research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
-  [["research and report", "controlled research", "supervised research", "step by step research"], "business-analyst/research-and-report.md", "Propose-Confirm-Act"],
+  [["research and report", "controlled research", "supervised research", "step by step research"], "researcher/research-and-report.md", "Propose-Confirm-Act"],
   [["tech spec from code", "spec from code"], "developer/generate-tech-spec-from-code.md", "Act"],
 
   [["bootstrap functional spec", "func spec from code"], "business-analyst/bootstrap-functional-spec-from-code.md", "Act"],
