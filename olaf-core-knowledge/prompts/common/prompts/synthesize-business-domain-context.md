@@ -25,7 +25,7 @@ You MUST request these parameters if not provided by the user:
 - **spec_driven_file**: string - Path to specification-driven development analysis output (REQUIRED)
 - **documentation_file**: string - Path to documentation analysis output (REQUIRED)
 - **repository_name**: string - Name of the repository for output file naming (REQUIRED)
-- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data-store/product/context/{repository-name}/)
+- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data/product/context/{repository-name}/)
 
 ## User Interaction Protocol
 You MUST follow the established interaction protocol strictly:

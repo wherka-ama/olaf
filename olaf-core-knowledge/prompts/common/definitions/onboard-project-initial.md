@@ -8,13 +8,13 @@ This workflow orchestrates a comprehensive project onboarding analysis with 28 a
 
 ## Prerequisites
 - Access to target repository/workspace for analysis
-- Python tools available in `olaf-core-knowledge/tools/` directory
-- Write access to `olaf-data-store/product/context/{repository-name}/` directory
+- Python tools available in `olaf-core/tools/` directory
+- Write access to `olaf-data/product/context/{repository-name}/` directory
 
 ## Initial Session Setup
 
 ### 1. Check for Existing Task List
-- Look for `olaf-onboarding-tasklist.md` in `olaf-data-store/product/` folder
+- Look for `olaf-onboarding-tasklist.md` in `olaf-data/product/` folder
 - If task list exists:
   - Read the task list to determine next pending task/chapter
   - Display current progress and next task to user
@@ -23,10 +23,10 @@ This workflow orchestrates a comprehensive project onboarding analysis with 28 a
   - If restarting, proceed to step 3
 
 ### 2. Fresh Start Setup (No Task List)
-- Check which output files already exist in `olaf-data-store/product/context/{repository-name}/`
+- Check which output files already exist in `olaf-data/product/context/{repository-name}/`
 - Present list of existing files to user
 - Allow user to specify which existing analyses they are willing to redo/overwrite
-- Create initial `olaf-onboarding-tasklist.md` in `olaf-data-store/product/` folder with all 28 tasks and their status
+- Create initial `olaf-onboarding-tasklist.md` in `olaf-data/product/` folder with all 28 tasks and their status
 
 ## Task List Management
 
@@ -48,7 +48,7 @@ The `olaf-onboarding-tasklist.md` file must contain:
 4. **Repository Size Metrics** → `measure-repo-size-metrics.md`
 
 ### PHASE 2: TECHNOLOGY UNDERSTANDING
-5. **Technology Stolaf-core-knowledge Analysis** → `identify-repo-technology-stolaf-core-knowledge.md`
+5. **Technology Stolaf-core Analysis** → `identify-repo-technology-stolaf-core.md`
 
 ### PHASE 3: TESTING AND QUALITY (Parallel Execution Possible)
 6. **Unit Testing Framework Analysis** → `analyze-unit-testing-frameworks.md`
@@ -120,7 +120,7 @@ Available Python scripts for analysis tasks (only these 5 exist):
 
 ### File Storage Location
 All final analysis files must be stored in:
-- Path: `olaf-data-store/product/context/{repository-name}/`
+- Path: `olaf-data/product/context/{repository-name}/`
 - Files must use kebab-case naming for clarity
 
 ### Output Format

@@ -113,22 +113,22 @@ These categories are organized around specific technical intentions or specializ
 5. **Tool Integration**: Scripts and templates are organized alongside their related prompts
 
 ## Centralized Documentation
-All project-related documentation, including architectural decision records, changelogs, and reports, is stored in a structured manner under `/olaf-data-store/product/documentations`.
+All project-related documentation, including architectural decision records, changelogs, and reports, is stored in a structured manner under `/olaf-data/product/documentations`.
 
-Note: the idea with `olaf-data-store` is to avoid "polluting" the project folder with OLAF artifacts. But you could also decide to use a different folder part of the project repository.
+Note: the idea with `olaf-data` is to avoid "polluting" the project folder with OLAF artifacts. But you could also decide to use a different folder part of the project repository.
 
-## olaf-data-store folder structure
+## olaf-data folder structure
 This folder structure is designed to store work artifacts, such as:
 
-- `/olaf-data-store/findings` : a temporary folder to store findings that require further action (e.g., results from code reviews). The USER is responsible for moving these findings to their final destination or deleting them.
-- `/olaf-data-store/people` : stores information about the human team members participating in the project
-- `/olaf-data-store/practices` : documents the practices used in the project
-- `/olaf-data-store/projects` : stores information about the projects and tasks being worked on, referred to as "jobs"
-- `/olaf-data-store/progress/changelog-register.md` : maintains a timestamped record of project changes
-- `/olaf-data-store/progress/jobs-register.md`: keeps a timestamped record of jobs and their tasks
-- `/olaf-data-store/progress/jobs` : stores detailed information about jobs and their tasks
-- `/olaf-data-store/product` : stores product-related artifacts, such as specifications and documentation
-- `/olaf-data-store/product/decision-records` : stores decision records related to the project
+- `/olaf-data/findings` : a temporary folder to store findings that require further action (e.g., results from code reviews). The USER is responsible for moving these findings to their final destination or deleting them.
+- `/olaf-data/people` : stores information about the human team members participating in the project
+- `/olaf-data/practices` : documents the practices used in the project
+- `/olaf-data/projects` : stores information about the projects and tasks being worked on, referred to as "jobs"
+- `/olaf-data/progress/changelog-register.md` : maintains a timestamped record of project changes
+- `/olaf-data/progress/jobs-register.md`: keeps a timestamped record of jobs and their tasks
+- `/olaf-data/progress/jobs` : stores detailed information about jobs and their tasks
+- `/olaf-data/product` : stores product-related artifacts, such as specifications and documentation
+- `/olaf-data/product/decision-records` : stores decision records related to the project
 
 While this structure is extensible, it is not mandatory to use it. However, mant competencies rely on it to provide context to the LLM or to produce artifacts. And it is mapped into teh memory-map.md file. So be careful to update this one if you wish to adapt the structure.
 

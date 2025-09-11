@@ -1,6 +1,6 @@
 # Core Principles
 
-OLAF allows you to define core principles that guide the AI in performing its tasks. These principles are defined in the `olaf-core-knowldege/reference/core-principles.md` file or in the corresponding `.windsurf/rules/` files.
+OLAF allows you to define core principles that guide the AI in performing its tasks. These principles are defined in the `olaf-core/reference/core-principles.md` file or in the corresponding `.windsurf/rules/` files.
 
 ## Purpose
 
@@ -12,12 +12,12 @@ OLAF allows you to define core principles that guide the AI in performing its ta
 ## Configuration
 
 Core principles are stored in:
-- `olaf-core-knowldege/reference/core-principles.md` – For general-purpose agents
+- `olaf-core/reference/core-principles.md` – For general-purpose agents
 - `.windsurf/rules/core-principles.md` – For Windsurf agents
 
 ## Integration
 
-This file can be edited and may also refer to Decision Records in the `olaf-data-store` folder, provided those are in a format acceptable to the model.
+This file can be edited and may also refer to Decision Records in the `olaf-data` folder, provided those are in a format acceptable to the model.
 
 The contents of these files are loaded into the context window of the LLM at the start of each interaction. Therefore, it is crucial to keep the information concise and provide clear context.
 

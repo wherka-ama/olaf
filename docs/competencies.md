@@ -2,7 +2,7 @@
 
 ## Available Competencies
 
-This list reflects the current Query Competency Index. All competencies are organized by role in the `olaf-core-knowledge/prompts/` directory structure.
+This list reflects the current Query Competency Index. All competencies are organized by role in the `olaf-core/prompts/` directory structure.
 
 ## Code Analysis & Development
 
@@ -76,4 +76,4 @@ This list reflects the current Query Competency Index. All competencies are orga
 - Some use "Propose-Act" (propose before acting)
 - A few use "Propose-Confirm-Act" (additional confirmation step)
 
-For exact pattern matching and workflow details, see the Query Competency Index in `olaf-core-knowledge/reference/`.
+For exact pattern matching and workflow details, see the Query Competency Index in `olaf-core/reference/`.

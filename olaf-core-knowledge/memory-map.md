@@ -13,10 +13,10 @@ purpose: LLM navigation aid
 # [id:core_dir]src/      → refers to my-repo/src/
 
 
-### Core Framework [id:ack_dir] = `olaf-core-knowldege/`
+### Core Framework [id:ack_dir] = `olaf-core/`
 # Example usage:
-# [id:ack_dir]README.md → refers to olaf-core-knowldege/README.md
-# [id:prompts_dir]phase-0-1-build-setup.md → refers to olaf-core-knowldege/prompts/phase-0-1-build-setup.md
+# [id:ack_dir]README.md → refers to olaf-core/README.md
+# [id:prompts_dir]phase-0-1-build-setup.md → refers to olaf-core/prompts/phase-0-1-build-setup.md
 - **Prompts Directory** [id:prompts_dir] = `[id:ack_dir]prompts/`
 
 - **Tools Directory** [id:tools_dir] = `[id:ack_dir]tools/`
@@ -26,7 +26,7 @@ purpose: LLM navigation aid
 - **Competency Index** [id:competency_index] = `[id:reference_dir]query-competency-index.md`
 - **LLM vs IDE Task Guide** [id:llm_vs_ide_task_guide] = `[id:reference_dir]llm-vs-ide-task-guide.md`
 
-### Work Environment [id:ads_dir] = `olaf-data-store/` 
+### Work Environment [id:ads_dir] = `olaf-data/` 
 - **Peoples** [id:peoples_dir] = `[id:ads_dir]peoples/`
 - **Projects** [id:projects_dir] = `[id:ads_dir]projects/`
   - **Changelog Register** [id:changelog_register] = `[id:projects_dir]changelog-register.md` 

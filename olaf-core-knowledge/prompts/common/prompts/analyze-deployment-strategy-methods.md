@@ -23,7 +23,7 @@ You MUST request these parameters if not provided by the user:
 - **cicd_pipeline_file**: string - Path to CI/CD pipeline analysis output (REQUIRED)
 - **technology_stack_file**: string - Path to technology stack analysis output (REQUIRED)
 - **repository_name**: string - Name of the repository for output file naming (REQUIRED)
-- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data-store/product/context/{repository-name}/)
+- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data/product/context/{repository-name}/)
 
 ## User Interaction Protocol
 You MUST follow the established interaction protocol strictly:

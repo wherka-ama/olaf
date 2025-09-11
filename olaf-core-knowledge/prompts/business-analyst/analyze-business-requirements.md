@@ -75,7 +75,7 @@ Follow template structure: `[id:templates_dir]business-analyst/requirements-anal
 - Rule 2: Generate constructive questions that guide toward solutions
 - Rule 3: Categorize issues by type (ambiguity, incompleteness, testability)
 - Rule 4: Follow official template structure strictly for consistency
-- Rule 5: Save report in olaf-data-store/findings with date-serial-kebab-case naming
+- Rule 5: Save report in olaf-data/findings with date-serial-kebab-case naming
 - Rule 6: Focus on actionable feedback rather than criticism
 
 ## Required Actions
@@ -84,7 +84,7 @@ Follow template structure: `[id:templates_dir]business-analyst/requirements-anal
 3. Systematically identify and categorize requirements issues
 4. Generate constructive clarifying questions for each issue
 5. Produce formatted analysis report following official template
-6. Save report to olaf-data-store/findings with proper naming convention
+6. Save report to olaf-data/findings with proper naming convention
 
 ⚠️ **Critical Notes**
 - Ensure all issues include specific document section references
@@ -92,4 +92,4 @@ Follow template structure: `[id:templates_dir]business-analyst/requirements-anal
 - Maintain objectivity and avoid subjective judgments
 - Verify template compliance before finalizing report
 - Flag any missing critical requirement categories
-- Report must be saved in olaf-data-store/findings directory with YYYYMMDD-NNN format
+- Report must be saved in olaf-data/findings directory with YYYYMMDD-NNN format

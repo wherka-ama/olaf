@@ -1,11 +1,11 @@
 # Memory-map
 
-OLAF provides a Memory-map (a markdown file) that maps the important folders and files of the project. So prompt can be instructed to read input files and generate output files based in the right location of the project - especially for the olaf-data-store folder.
+OLAF provides a Memory-map (a markdown file) that maps the important folders and files of the project. So prompt can be instructed to read input files and generate output files based in the right location of the project - especially for the olaf-data folder.
 
 ## Location
 
 The memory-map is present in:
-- `/olaf-core-knowldege/memory-map.md` for general purpose agents 
+- `/olaf-core/memory-map.md` for general purpose agents 
 - `.windsurf/rules/memory-map.md` for Cascade agent
 
 ## Purpose

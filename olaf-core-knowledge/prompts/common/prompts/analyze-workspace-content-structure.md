@@ -23,7 +23,7 @@ You MUST request these parameters if not provided by the user:
 - **workspace_path**: string - Full path to workspace directory to analyze (REQUIRED)
 - **repository_name**: string - Name of the repository for output file naming (REQUIRED)
 - **exclude_patterns**: array - Patterns to exclude from analysis (legacy, temp, etc.) (OPTIONAL)
-- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data-store/product/context/{repository-name}/)
+- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data/product/context/{repository-name}/)
 
 ## User Interaction Protocol
 You MUST follow the established interaction protocol strictly:

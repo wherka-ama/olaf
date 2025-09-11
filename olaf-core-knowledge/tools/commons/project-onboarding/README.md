@@ -44,7 +44,7 @@ These scripts replace and enhance the original PowerShell automation, providing 
 ### Setup
 ```bash
 # Navigate to the scripts directory
-cd olaf-core-knowledge/tools/commons/project-onboarding
+cd olaf-core/tools/commons/project-onboarding
 
 # Install dependencies
 pip install -r requirements.txt
@@ -85,7 +85,7 @@ Additional options:
 ## Integration with OLAF Prompts
 
 These scripts are designed to work seamlessly with the OLAF project onboarding prompts located in:
-`olaf-core-knowledge/prompts/common/project-onboarding/`
+`olaf-core/prompts/common/project-onboarding/`
 
 Each prompt references the corresponding Python script for automated analysis execution.
 

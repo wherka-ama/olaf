@@ -2,11 +2,11 @@
 
 ## Core Files
 One essential file is:
-- `olaf-core-knowldege/memory-map.md`, which provides the LLM with key context pointers (files or structure) - or in .windsurf/rules/memory-map.md
+- `olaf-core/memory-map.md`, which provides the LLM with key context pointers (files or structure) - or in .windsurf/rules/memory-map.md
 
 This file should be loaded by the LLM at the start of each interaction. This is why we rely on the agent's capabilities to do so (e.g., `.windsurf/team.md` for Windsurf).
 
-Additionally, the instructions file references other important files that are essential for the interaction (i.e. `olaf-core-knowldege/core-principles.md` and `olaf-core-knowldege/query-competency-index.md`).
+Additionally, the instructions file references other important files that are essential for the interaction (i.e. `olaf-core/core-principles.md` and `olaf-core/query-competency-index.md`).
 
 The contents of these files are loaded into the context windows of the LLM when the interaction begins. Therefore, it is crucial to keep the information concise and provide clear context.
 

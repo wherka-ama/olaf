@@ -22,7 +22,7 @@ You WILL use terminal commands, not training data for timestamps.
 You MUST request these parameters if not provided by the user:
 - **workspace_structure_file**: string - Path to workspace content analysis output (REQUIRED)
 - **repository_name**: string - Name of the repository for output file naming (REQUIRED)
-- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data-store/product/context/{repository-name}/)
+- **output_location**: string - Target directory for analysis output (OPTIONAL, default: olaf-data/product/context/{repository-name}/)
 
 ## User Interaction Protocol
 You MUST follow the established interaction protocol strictly:

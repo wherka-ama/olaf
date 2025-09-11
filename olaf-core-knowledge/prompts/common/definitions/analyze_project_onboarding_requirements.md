@@ -4,7 +4,7 @@
 **IMPORTANT:** When using this file to create a workflow, the prompt must:
 
 ### **Initial Session Setup:**
-1. **Check for existing task list:** Look for `olaf-onboarding-tasklist.md` in `olaf-data-store/product/` folder
+1. **Check for existing task list:** Look for `olaf-onboarding-tasklist.md` in `olaf-data/product/` folder
 2. **If task list exists:**
    - Read the task list to determine the next pending task/chapter to execute
    - Display current progress and next task to user
@@ -13,10 +13,10 @@
    - If restarting, proceed to step 3
 
 3. **If no task list exists (fresh start):**
-   - Check which output files already exist in target storage location (`olaf-data-store/product/context/{repository-name}/`)
+   - Check which output files already exist in target storage location (`olaf-data/product/context/{repository-name}/`)
    - Present the list of existing files to the user
    - Allow the user to specify which existing analyses they are willing to redo/overwrite
-   - Create initial `olaf-onboarding-tasklist.md` in `olaf-data-store/product/` folder with all 28 tasks and their status
+   - Create initial `olaf-onboarding-tasklist.md` in `olaf-data/product/` folder with all 28 tasks and their status
 
 ### **Task List Management:**
 4. **Task list format:** `olaf-onboarding-tasklist.md` must contain:
@@ -100,12 +100,12 @@ All generated files will follow kebab-case convention with maximum 4 words each:
 ## File Storage Location
 All final analysis files must be stored in:
 
-- Path: `olaf-data-store/product/context/{repository-name}/`
+- Path: `olaf-data/product/context/{repository-name}/`
 - Files must use kebab-style naming for clarity and LLM/human understanding
 
 ## Python Script Assistance
 Where applicable, Python scripts can assist with analysis tasks. Available tools are located in:
-- `olaf-core-knowledge/tools/`
+- `olaf-core/tools/`
 
 Scripts can help with metrics calculation, file discovery, complexity analysis, and other automated assessments.
 
@@ -394,7 +394,7 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 - Ensure automated file generation with proper kebab-case naming
 - Enable both human review and LLM consumption
 - Integrate Python script assistance where applicable
-- Store all outputs in designated `olaf-data-store/product/context/{repository-name}/` directories
+- Store all outputs in designated `olaf-data/product/context/{repository-name}/` directories
 - **Progress tracking:** Update task list after each completed analysis
 - **Interruption handling:** Allow workflow to be safely interrupted and resumed
 
@@ -404,10 +404,10 @@ Scripts can help with metrics calculation, file discovery, complexity analysis, 
 - Human-readable summaries and findings
 - Actionable insights and recommendations
 - Clear file naming for easy identification and automation
-- Integration with existing tooling in `olaf-core-knowledge/tools/` and `olaf-core-knowldege/tools/`
+- Integration with existing tooling in `olaf-core/tools/` and `olaf-core/tools/`
 
 ### Python Script Integration
-- Leverage existing tools in `olaf-core-knowledge/tools/` and `olaf-core-knowldege/tools/`
+- Leverage existing tools in `olaf-core/tools/` and `olaf-core/tools/`
 - Develop additional scripts as needed for specific analysis tasks
 - Ensure scripts are language-agnostic where possible
 - Provide automated metrics calculation and data extraction

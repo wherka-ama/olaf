@@ -31,10 +31,10 @@ It can serve several needs:
 - **Help change management**: By assisting engineers to become more familiar with the notion and usage of agents and delegating part of their complex tasks to AI personas
 
 ## How to install
-To use OLAF, you need to copy the `olaf-core-knowledge` and `olaf-data-store` folders side by side with your project.
+To use OLAF, you need to copy the `olaf-core` and `olaf-data` folders side by side with your project.
 
-- **olaf-core-knowledge for Assistant Core Knowledge** : this is the folder that contains all the artifacts that are used by the AI to perform their tasks. It is the core of OLAF.
-- **olaf-data-store for Assistant Data Store** : this is the folder that contains all the artifacts that are produced or used by OLAF to perform its tasks.
+- **olaf-core for Assistant Core Knowledge** : this is the folder that contains all the artifacts that are used by the AI to perform their tasks. It is the core of OLAF.
+- **olaf-data for Assistant Data Store** : this is the folder that contains all the artifacts that are produced or used by OLAF to perform its tasks.
 
 Note: If you are working with a version control system (e.g.; GitLab, GitHub, etc.), you can (should) include this into your project.
 
@@ -70,7 +70,7 @@ OLAF integrates with various AI agents through core configuration files and help
 
 ## Step-by-Step Getting Started
 
-1. **Copy the `olaf-core-knowledge` and `olaf-data-store` folders alongside a repository** - DO NOT change these folders' structure initially
+1. **Copy the `olaf-core` and `olaf-data` folders alongside a repository** - DO NOT change these folders' structure initially
 2. **Use windsurf (preferred) or GitHub Copilot in Agent Mode** - Configure agent-specific files carefully
 3. **Read the configuration files** - Understand project context and memory map
 4. **Explore competencies** - Try simple tasks like research-and-report
