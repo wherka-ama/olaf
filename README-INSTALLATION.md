@@ -14,9 +14,12 @@ https://github.com/AmadeusITGroup/olaf/archive/refs/heads/main.zip
 - This creates a folder named `olaf-main`
 
 ### 3. Copy the framework folders
-From the extracted `olaf-main` folder, copy these two folders to your project directory:
-- `olaf-core-knowledge/`
-- `olaf-data-store/`
+From the extracted `olaf-main` folder, copy these folders to your project directory:
+- `olaf-core-knowledge/` - Core prompts, templates, and reference materials
+- `olaf-data-store/` - Data storage and project files
+- `.github/` - GitHub integration and workflow configurations
+- `.windsurf/` - Windsurf IDE configuration and workflows
+- `docs/` - Complete documentation and guides
 
 ## That's it!
 
@@ -24,8 +27,11 @@ You now have the OLAF framework installed in your project.
 
 ## What You Get
 
-- **olaf-core-knowledge/** - Core prompts, templates, and documentation
+- **olaf-core-knowledge/** - Core prompts, templates, and reference materials
 - **olaf-data-store/** - Data storage and project files
+- **.github/** - GitHub integration and workflow configurations
+- **.windsurf/** - Windsurf rules and workflows
+- **docs/** - Complete documentation and guides
 
 ## Updating OLAF
 

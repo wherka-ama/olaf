@@ -115,9 +115,9 @@ These categories are organized around specific technical intentions or specializ
 ## Centralized Documentation
 All project-related documentation, including architectural decision records, changelogs, and reports, is stored in a structured manner under `/olaf-data-store/product/documentations`.
 
-Note: the idea with `/ads` is to avoid "polluting" the project folder with OLAF artifacts. But you could also decide to use a different folder part of the project repository.
+Note: the idea with `olaf-data-store` is to avoid "polluting" the project folder with OLAF artifacts. But you could also decide to use a different folder part of the project repository.
 
-## /ads folder structure
+## olaf-data-store folder structure
 This folder structure is designed to store work artifacts, such as:
 
 - `/olaf-data-store/findings` : a temporary folder to store findings that require further action (e.g., results from code reviews). The USER is responsible for moving these findings to their final destination or deleting them.

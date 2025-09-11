@@ -2,54 +2,78 @@
 
 ## Available Competencies
 
-Here is a list of the competencies that may be used on this vanilla incarnation of OLAF, grouped by category:
+This list reflects the current Query Competency Index. All competencies are organized by role in the `olaf-core-knowledge/prompts/` directory structure.
 
-**Code Analysis**
-- Review Code
-- Review GitHub PR - needs the GitHub MCP server
-- Analyze Architecture
-- Analyze Technical Stack
-- Analyze Test Stack
-- Evolve Code Iteratively
-- Improve Cyclomatic Complexity - a complete workflow is provided
-- Review Modified Files - those files in the git modified stage
+## Code Analysis & Development
 
-**Documentation & Specification**
-- Research and Report - create plan for research then act on each chapter
-- Create Decision Record - when you document a technical decision for the project - can be embedded in the core principles file
-- Document API Specification
-- Generate Tech Spec from Code
-- Generate initial Technical Specification from code
-- Bootstrap Functional Spec from Code
-- Write Academic Paper
-- Create Prompt (meta-prompting)
-- Generate API Definition
-- Prepare Conversation Handover - when you end a session and want to provide a summary of the conversation for the next session
-- Store Conversation Record - when you end a session and want to store the conversation for later analysis
+- **Review Code** - Comprehensive code review and analysis
+- **Review Modified Files** - Review files in git modified stage
+- **Review GitHub PR** - Pull request review (requires GitHub MCP server)
+- **Accessibility Review** - WCAG compliance and accessibility checks
+- **Improve Cyclomatic Complexity** - Complete workflow for complexity reduction
+- **Evolve Code Iteratively** - Iterative code improvement approach
+- **Evolve Unit Tests** - Enhance test coverage and quality
+- **Augment Code Unit Test** - Improve test coverage iteratively
+- **Fix Code Smells** - Identify and resolve code quality issues
+- **Analyze Technical Stack** - Technical architecture analysis
+- **Generate Tech Spec from Code** - Create technical specifications from existing code
 
-**Requirements Analysis**
-- Generate Questionnaire
+## Research & Documentation
 
-**Project Management**
-- Review Progress based on changelog and jobs registry
-- Create Changelog Entry in the registry
-- Archive Changelog Entries from the registry to an archive registry
-- Create Job - a job is a micro-project, including its task plan
-- Work on Job - start or restart a job
-- Create Person Record - a person record is a record of a person, including its role and responsibilities
-- Generate Changelog entries from commits 
+- **Search and Learn** - Autonomous learning and information gathering
+- **Autonomous Comprehensive Research** - Free-form research capabilities
+- **Research and Report** - Controlled, step-by-step research (Propose-Confirm-Act)
+- **Write Academic Paper** - Academic and technical writing
+- **Create Decision Record** - Document technical decisions (ADR)
 
-**Software Development**
-- Generate Test Plan
-- Generate API Test Suite
+## Business Analysis & Specifications
 
-## Specific: Complex phase chained prompts
-**Compound Onboarding Competency**: A comprehensive workflow to analyze and understand a new project, composed of several sub-competencies for a thorough evaluation:
-- Project onboarding and analysis
-- Improvement implementations
-- New asset creation
+- **Bootstrap Functional Spec from Code** - Generate functional specifications from code
+- **Review User Story** - User story analysis and validation
+- **Generate Questionnaire** - Create surveys and questionnaires
 
-**Improve cyclomatic complexity and halstead metrics**: For repositories this chain of prompts is used to:
-- Find the hotspots (files changed regularly and that present high cyclomatic complexity and halstead metrics)
-- Create strategy and request for USER to review it and approve it
-- On approval, iteratively improve them
+## Prompt Engineering & Meta-work
+
+- **Create Prompt** - Meta-prompting for new OLAF prompts
+- **Convert Prompt** - Refactor existing prompts to OLAF standards
+- **Test Prompt** - Validate and test prompt effectiveness
+
+## Project Management
+
+- **Review Progress** - Status updates based on changelog and jobs registry
+- **Generate Tasklist** - Create structured task lists
+- **Analyze Changelog and Report** - Changelog analysis and reporting
+- **Archive Changelog Entries** - Clean up changelog registry (Propose-Confirm-Act)
+- **Generate Commits from Changelog** - Create git commits from changelog entries
+- **Prepare Conversation Handover** - Session summary for handover
+- **Store Conversation Record** - Archive conversations for analysis
+- **Create Job** - Define micro-projects with task plans
+- **Work on Job** - Start or restart job execution
+- **Create Person Record** - Team member records with roles and responsibilities
+
+## Testing & Security
+
+- **Generate Test Plan** - Create comprehensive testing strategies
+- **CVE Analysis Workflow** - Vulnerability analysis and security assessment
+
+## Orchestrators & Utilities
+
+- **Project Onboarding** - Comprehensive project analysis workflow (Propose-Act)
+- **Should I Use AI** - Guidance on AI vs IDE task decisions
+- **Find Expert Contact** - Locate domain experts and contacts
+
+## Complex Workflows
+
+**Orchestrate Refactoring** - Master orchestrator for code complexity reduction (Propose-Act):
+- Identify hotspots (frequently changed files with high complexity)
+- Create improvement strategy for user review
+- Iteratively implement approved improvements
+
+---
+
+**Protocol Notes:**
+- Most competencies use "Act" protocol (direct execution)
+- Some use "Propose-Act" (propose before acting)
+- A few use "Propose-Confirm-Act" (additional confirmation step)
+
+For exact pattern matching and workflow details, see the Query Competency Index in `olaf-core-knowledge/reference/`.

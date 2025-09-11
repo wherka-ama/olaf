@@ -4,10 +4,11 @@ This directory contains detailed documentation for the Open Lightweight Assistan
 
 ## Documentation Structure
 
-- **[Installation Guide](installation.md)** - How to install and get started with OLAF
+- **[Installation Guide](../README-INSTALLATION.md)** - How to install and get started with OLAF
 - **[Key Features](features.md)** - Core features and capabilities overview
   - **[Detailed Features](features/)** - In-depth documentation for each feature
 - **[Competencies Overview](competencies.md)** - Available competencies and workflows
+- **[DFD Generation from Code](dfd-from-code.md)** - Systematic process for creating Data Flow Diagrams from source code
 - **[Project Organization](organization.md)** - How prompts, templates, and artifacts are organized
 - **[Agent Integration](integration.md)** - Integration with various AI agents and models
 - **[Best Practices](best-practices.md)** - Guidelines for effective use of OLAF
@@ -33,7 +34,7 @@ This directory contains detailed documentation for the Open Lightweight Assistan
 
 ## Quick Navigation
 
-For immediate setup: Start with the [Installation Guide](installation.md)
+For immediate setup: Start with the [Installation Guide](../README-INSTALLATION.md)
 
 For understanding new capabilities: Review [Framework Management](features/framework-management.md) and [Enhanced Prompt Engineering](features/prompt-engineering.md)
 

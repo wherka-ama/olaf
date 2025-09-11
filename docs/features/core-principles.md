@@ -17,7 +17,7 @@ Core principles are stored in:
 
 ## Integration
 
-This file can be edited and may also refer to Decision Records in the `/ads` folder, provided those are in a format acceptable to the model.
+This file can be edited and may also refer to Decision Records in the `olaf-data-store` folder, provided those are in a format acceptable to the model.
 
 The contents of these files are loaded into the context window of the LLM at the start of each interaction. Therefore, it is crucial to keep the information concise and provide clear context.
 

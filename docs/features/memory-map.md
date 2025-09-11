@@ -1,6 +1,6 @@
 # Memory-map
 
-OLAF provides a Memory-map (a markdown file) that maps the important folders and files of the project. So prompt can be instructed to read input files and generate output files based in the right location of the project - especially for the /ads folder.
+OLAF provides a Memory-map (a markdown file) that maps the important folders and files of the project. So prompt can be instructed to read input files and generate output files based in the right location of the project - especially for the olaf-data-store folder.
 
 ## Location
 

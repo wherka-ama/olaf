@@ -13,7 +13,7 @@
 
 3. **Use Standardized References**: Use `olaf-` prefixed references for framework components for better navigation
 
-4. **Test Before Deployment**: Use the `test-prompt` functionality to validate prompts before deployment
+4. **Test Before Deployment**: Use the `test-prompt` competency to validate prompts before deployment
 
 ## Prompt Engineering Best Practices
 
@@ -45,9 +45,9 @@
 
 ## Migration and Modernization
 
-1. **Convert Legacy Prompts**: Use the conversion tools to modernize existing prompts to OLAF v1.2.0 standards
+1. **Convert Legacy Prompts**: Use the convert-prompt-existing competency to modernize existing prompts to OLAF standards
 
-2. **Validate After Updates**: Always test converted prompts with the validation framework
+2. **Validate After Updates**: Always test converted prompts with the test-prompt competency
 
 3. **Update Documentation**: Keep inline documentation current with framework changes
 

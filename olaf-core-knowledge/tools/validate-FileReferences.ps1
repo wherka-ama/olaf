@@ -207,7 +207,7 @@ function Test-FileReferences {
                 $fileExists = $true
             }
             else {
-                # If not found at resolved path, search only in /ack subdirectories
+                # If not found at resolved path, search only in olaf-core-knowledge subdirectories
                 $fileExists = Find-FileInAck -FileName $referencedFile -AckRootPath $RootPath
             }
             
