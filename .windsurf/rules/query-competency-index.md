@@ -82,7 +82,6 @@ To remove a competency:
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],
   [["create job", "new job", "define job"], "project-manager/create-job.md", "Act"],
 
-  [["business analyst pipeline", "project assessment pipeline", "requirements to test plan", "end to end analysis"], "other-users/orchestrate-project-assessment-pipeline.md", "Propose-Act"],
   [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "project-manager/orchestrate-project-onboarding-analysis.md", "Propose-Act"],
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
   [["troubleshoot logs", "log troubleshooting", "debug logs", "log analysis workflow", "investigate logs"], "troubleshooting/orchestrate-log-troubleshooting-workflow.md", "Propose-Act"],
