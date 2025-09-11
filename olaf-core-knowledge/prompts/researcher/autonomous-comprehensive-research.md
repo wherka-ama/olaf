@@ -5,7 +5,7 @@ tags: [research, autonomous, comprehensive, iterative, technical, analysis]
 ---
 
 ## Purpose
-Perform comprehensive, autonomous research on any technical topic with minimal user guidance. The prompt automatically deepens research iteratively, identifies knowledge gaps, explores technical specifications, and produces complete technical reports without requiring detailed user direction.
+Perform comprehensive, autonomous research on any technical topic with minimal user guidance. The prompt automatically deepens research iteratively, identifies knowledge gaps, explores technical subjects, and produces complete technical reports without requiring detailed user direction.
 
 
 ## Framework Validation
