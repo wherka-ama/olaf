@@ -54,6 +54,7 @@ To remove a competency:
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
   [["accessibility review", "accessibility check", "wcag review", "accessibility compliance"], "developer/review-code-accessibility.md", "Act"],
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
+  [["analyze function", "function analysis", "function complexity", "analyze function complexity"], "developer/analyze-function-complexity.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
   [["evolve unit tests", "improve unit tests", "unit test evolution", "enhance test coverage"], "evolve-unit-tests/evolve-unit-tests-workflow.md", "Act"],
