@@ -83,3 +83,11 @@ The core idea is:
 - Get a target technology and elaborate a migration plan (from atomic component to more complex? from story maps or from user actions?)
 - Then scaffold the target implementation (AI and scripted)
 - We expect to assist and reduce time for analysis and proposal with some what-if scenarios
+
+**research-generate-pptx**
+This branch focuses on developing automated PowerPoint presentation generation capabilities from various input sources. The research aims to create systematic approaches for converting documentation, code analysis, and structured data into professional presentations. The goal is to streamline the creation of technical presentations, project updates, and research summaries.
+
+The core idea is:
+- Generate professional PowerPoint presentations from markdown, code documentation, or structured data (AI and scripted)
+- Support multi-language presentation generation with appropriate formatting
+
