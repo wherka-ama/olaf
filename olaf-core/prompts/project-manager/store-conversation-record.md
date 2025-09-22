@@ -42,8 +42,14 @@ Use terminal commands, not training data.
    - Format timestamp as: `YYYYMMDD-HHMM`
    - Ensure unique timestamp for each conversation record
 
-3. **Create New File**:
-   - Write file: `[id:conversation_records_dir]onversation-record-[timestamp].md`
+3. **Validate File Location Before Creation**:
+   - **CRITICAL**: Read `[id:ack_dir]memory-map.md` to resolve `[id:conversation_records_dir]`
+   - **MANDATORY**: Verify the resolved path is `olaf-data/product/documentations/conversations/`
+   - **STOP**: If path resolution fails or points elsewhere, HALT and ask user for clarification
+   - **ENSURE**: Directory exists or create it if missing using create_directory tool
+
+4. **Create New File**:
+   - Write file: `[id:conversation_records_dir]conversation-record-[timestamp].md`
    - **Create new file for each record - never append to existing files**
    - Use unique timestamp to ensure no filename conflicts
    - Initialize file with proper structure
@@ -71,10 +77,12 @@ Structure with logical topic sections:
 - Topics documented: [number of distinct conversation topics]
 - Actions captured: [number of tool calls and operations]
 - Files affected: [number of files created/modified/deleted]
-- Record location: `[id:conversation_records_dir]onversation-record-[timestamp].md`
+- Record location: `[id:conversation_records_dir]conversation-record-[timestamp].md`
 
 ## Record Creation Rules
 - Rule 1: CRITICAL - Only create records when explicitly requested by user, never automatically
 - Rule 2: Always get AI model information directly from user - never infer or guess
 - Rule 3: Create new file for each record with unique timestamp - never append to existing
 - Rule 4: Capture complete conversation - include full narrative, never summarize content
+- Rule 5: **MANDATORY PATH VALIDATION** - Always resolve [id:conversation_records_dir] via memory-map.md before file creation
+- Rule 6: **FAIL-SAFE** - If path validation fails, STOP and request user guidance rather than guess location
