@@ -54,7 +54,6 @@ This list reflects the current Query Competency Index. All competencies are orga
 ## Testing & Security
 
 - **Generate Test Plan** - Create comprehensive testing strategies
-- **CVE Analysis Workflow** - Vulnerability analysis and security assessment
 
 ## Orchestrators & Utilities
 
@@ -62,12 +61,6 @@ This list reflects the current Query Competency Index. All competencies are orga
 - **Should I Use AI** - Guidance on AI vs IDE task decisions
 - **Find Expert Contact** - Locate domain experts and contacts
 
-## Complex Workflows
-
-**Orchestrate Refactoring** - Master orchestrator for code complexity reduction (Propose-Act):
-- Identify hotspots (frequently changed files with high complexity)
-- Create improvement strategy for user review
-- Iteratively implement approved improvements
 
 ---
 

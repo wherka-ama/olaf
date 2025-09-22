@@ -73,7 +73,6 @@ To remove a competency:
   [["questionnaire", "survey"], "business-analyst/generate-questionnaire.md", "Act"],
   [["write paper", "academic paper", "research paper"], "technical-writer/write-academic-paper.md", "Act"],
   [["generate test plan", "test plan", "testing plan", "create test plan"], "tester/generate-test-plan.md", "Act"],
-  [["cve analysis", "cve workflow", "vulnerability analysis", "security analysis", "cve exposure"], "cve-verifier/cve-analysis-workflow.md", "Act"],
   [["create prompt", "new prompt", "write prompt"], "prompt-engineer/create-prompt.md", "Act"],
   [["convert prompt", "refactor prompt", "rewrite prompt"], "prompt-engineer/convert-prompt-existing.md", "Act"],
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],

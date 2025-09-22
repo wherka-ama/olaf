@@ -64,15 +64,6 @@ These categories are organized around common user personas and their typical res
 
 These categories are organized around specific technical intentions or specialized workflows:
 
-#### **cve-verifier/**
-
-- **Purpose**: Security vulnerability analysis and CVE management
-- **Example Prompts**:
-  - `analyze-cve-exposure.md` - Analyze codebase for CVE vulnerabilities
-  - `cve-analysis-workflow.md` - Complete CVE assessment workflow
-- **Example Templates**:
-  - `cve-exposure-summary-template.json` - CVE analysis results format
-  - `individual-cve-analysis-template.json` - Individual vulnerability assessment
 
 #### **evolve-unit-tests/**
 

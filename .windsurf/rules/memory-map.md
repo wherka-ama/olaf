@@ -46,7 +46,6 @@ purpose: LLM navigation aid
     - **Conversations** [id:conversation_records_dir] = `[id:documentations_dir]conversations/` 
 - **Directory** [id:findings_dir] = `[id:ads_dir]findings/` 
   - **Code Reviews** [id:code_reviews_dir] = `[id:findings_dir]code-reviews/` 
-  - **cve-verifier** [id:cve_verifier_dir] = `[id:findings_dir]cve-verifier/`
 - **Practices** [id:practices_dir] = `[id:ads_dir]practices/` 
 
 ### External References 
