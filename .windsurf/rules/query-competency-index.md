@@ -10,26 +10,29 @@ description: the index of competencies
 ## How to Use This Index
 
 If requested for a competency, you MUST perform the following steps:
-1.  **Iterate sequentially** through the mappings below.
-2.  For each mapping, check if the user's request contains any of the phrases in the first element (patterns array).
-3.  Use the **first mapping** that has a matching pattern. Stop searching once a match is found.
-4.  Once a match is found, use the second element (workflow) and third element (protocol) to proceed.
-5.  If no pattern matches after checking all mappings, use your best judgment to select the most relevant one.
+
+1. **Iterate sequentially** through the mappings below.
+2. For each mapping, check if the user's request contains any of the phrases in the first element (patterns array).
+3. Use the **first mapping** that has a matching pattern. Stop searching once a match is found.
+4. Once a match is found, use the second element (workflow) and third element (protocol) to proceed.
+5. If no pattern matches after checking all mappings, use your best judgment to select the most relevant one.
 
 example:  [["review code", "check code", "code review", "examine code"], "developer/review-code.md", "Propose-Act"]
 patterns array: ["review code", "check code", "code review", "examine code"],
-File name of the prompt to load and execute: "developer/review-code.md", 
+File name of the prompt to load and execute: "developer/review-code.md",
 Protocol to use when interacting through the chat with USER: "Propose-Act"
 Important note: All prompt files are now organized by role in [id:prompts_dir] subdirectories
 
 ## Maintenance Instructions
 
 To add a new competency:
+
 1. Add a new array entry at the appropriate location
 2. Format it as: `[["pattern1", "pattern2", ...], "prompt-file.md", "Protocol-Name"]`
 3. Update the "Last Updated" timestamp at the top of this file
 
 To remove a competency:
+
 1. Locate and delete the entire array entry for that competency
 2. Update the "Last Updated" timestamp at the top of this file
 
@@ -42,8 +45,6 @@ To remove a competency:
   [["handover", "conversation handover"], "project-manager/prepare-conversation-handover.md", "Act"],
   [["store conversation", "save chat"], "project-manager/store-conversation-record.md", "Act"],
   [["decision record", "adr", "document decision"], "project-manager/create-decision-record.md", "Act"],
-
-  [["orchestrate refactoring", "driver refactoring"], "reduce-code-complexity/reduce-code-complexity-master-orchestrator.md", "Propose-Act"],
 
   [["progress", "status update", "how are we doing"], "project-manager/review-progress.md", "Act"],
   [["tasklist", "task list", "generate tasklist", "create tasklist"], "project-manager/generate-tasklist.md", "Act"],
