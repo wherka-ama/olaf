@@ -2,7 +2,7 @@
 
 # Competency Index
 
-**Last Updated:** 20250911-1338 CEDT
+**Last Updated:** 20250922-1546 CEDT
 
 ## How to Use This Index
 
@@ -72,6 +72,8 @@ To remove a competency:
 
   [["questionnaire", "survey"], "business-analyst/generate-questionnaire.md", "Act"],
   [["write paper", "academic paper", "research paper"], "technical-writer/write-academic-paper.md", "Act"],
+  [["create presentation", "pptx", "powerpoint", "slides", "blog post", "write blog", "brochure", "create brochure"], "technical-writer/create-presentation-and-posts-workflow.md", "Propose-Act"],
+  [["generate tutorial", "create tutorial", "step by step tutorial", "tutorial from conversation", "conversation to tutorial"], "prompt-engineer/generate-step-by-step-tutorial.md", "Propose-Act"],
   [["generate test plan", "test plan", "testing plan", "create test plan"], "tester/generate-test-plan.md", "Act"],
   [["create prompt", "new prompt", "write prompt"], "prompt-engineer/create-prompt.md", "Act"],
   [["convert prompt", "refactor prompt", "rewrite prompt"], "prompt-engineer/convert-prompt-existing.md", "Act"],
