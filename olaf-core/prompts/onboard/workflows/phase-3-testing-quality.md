@@ -12,22 +12,22 @@ Analyzes testing frameworks, test coverage, and testing strategies. Parallel exe
 ## Tasks in This Phase
 
 ### Task 6: Unit Testing Framework Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-unit-testing-frameworks.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-unit-testing-frameworks.md`
 - **Output:** `analyze-unit-testing-frameworks.md`
 - **Description:** Analyzes unit testing frameworks, patterns, and coverage
 
 ### Task 7: Integration Testing Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-integration-testing-setup.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-integration-testing-setup.md`
 - **Output:** `analyze-integration-testing-setup.md`
 - **Description:** Documents integration testing approaches and tools
 
 ### Task 8: Code Coverage Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-code-coverage-measurement.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-code-coverage-measurement.md`
 - **Output:** `analyze-code-coverage-measurement.md`
 - **Description:** Measures and analyzes code coverage metrics
 
 ### Task 9: Performance Testing Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-performance-testing-strategy.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-performance-testing-strategy.md`
 - **Output:** `analyze-performance-testing-strategy.md`
 - **Description:** Analyzes performance testing tools and strategies
 

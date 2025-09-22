@@ -12,17 +12,17 @@ Analyzes documentation coverage, specification-driven development practices, and
 ## Tasks in This Phase
 
 ### Task 23: Documentation Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-documentation-practices.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-documentation-practices.md`
 - **Output:** `analyze-documentation-practices.md`
 - **Description:** Analyzes documentation quality, coverage, and practices, and maintainability
 
 ### Task 25: Spec-Driven Development Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-spec-driven-development.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-spec-driven-development.md`
 - **Output:** `analyze-spec-driven-development.md`
 - **Description:** Analyzes specification-driven development practices and tools
 
 ### Task 26: Error Handling and Monitoring Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-error-handling-monitoring.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-error-handling-monitoring.md`
 - **Output:** `analyze-error-handling-monitoring.md`
 - **Description:** Analyzes error handling patterns and monitoring practices
 

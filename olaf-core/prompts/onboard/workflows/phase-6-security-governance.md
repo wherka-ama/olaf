@@ -12,17 +12,17 @@ Analyzes security implementations, authentication patterns, and data governance 
 ## Tasks in This Phase
 
 ### Task 16: Authentication Implementation Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-auth-implementation-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-auth-implementation-patterns.md`
 - **Output:** `analyze-auth-implementation-patterns.md`
 - **Description:** Analyzes authentication and authorization mechanisms
 
 ### Task 17: Security Pattern Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-security-patterns-implementation.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-security-patterns-implementation.md`
 - **Output:** `analyze-security-patterns-implementation.md`
 - **Description:** Documents security implementations and patterns
 
 ### Task 18: Data Governance Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-data-governance-compliance.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-data-governance-compliance.md`
 - **Output:** `analyze-data-governance-compliance.md`
 - **Description:** Analyzes data handling, privacy, and compliance patterns
 

@@ -12,7 +12,7 @@ Final phase that synthesizes all analysis results into comprehensive project ove
 ## Tasks in This Phase
 
 ### Task 27: Business Domain Synthesis
-- **Prompt:** `[id:prompts_dir]common/prompts/synthesize-business-domain-context.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/synthesize-business-domain-context.md`
 - **Output:** `synthesize-business-domain-context.md`
 - **Description:** Synthesizes business domain context from all previous analyses
 

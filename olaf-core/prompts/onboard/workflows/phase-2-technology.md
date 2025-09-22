@@ -12,7 +12,7 @@ Identifies and documents technologies, frameworks, libraries, and platforms used
 ## Tasks in This Phase
 
 ### Task 5: Technology Stack Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/identify-repo-technology-stack.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/identify-repo-technology-stack.md`
 - **Output:** `identify-repo-technology-stack.md`
 - **Description:** Comprehensive analysis of all technologies, frameworks, libraries, and platforms
 

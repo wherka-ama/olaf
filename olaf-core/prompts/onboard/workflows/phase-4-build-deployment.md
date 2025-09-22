@@ -12,22 +12,22 @@ Analyzes build processes, CI/CD pipelines, deployment strategies, and infrastruc
 ## Tasks in This Phase
 
 ### Task 10: Local Build Process Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/document-local-build-process.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/document-local-build-process.md`
 - **Output:** `document-local-build-process.md`
 - **Description:** Documents local development and build processes
 
 ### Task 11: CI/CD Pipeline Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-cicd-pipeline-setup.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-cicd-pipeline-setup.md`
 - **Output:** `analyze-cicd-pipeline-setup.md`
 - **Description:** Analyzes continuous integration and deployment pipelines
 
 ### Task 12: Deployment Strategy Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-deployment-strategy-methods.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-deployment-strategy-methods.md`
 - **Output:** `analyze-deployment-strategy-methods.md`
 - **Description:** Documents deployment methods and strategies
 
 ### Task 24: Infrastructure as Code Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-infrastructure-code-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-infrastructure-code-patterns.md`
 - **Output:** `analyze-infrastructure-code-patterns.md`
 - **Description:** Analyzes infrastructure automation and patterns
 

@@ -12,17 +12,17 @@ Documents system architecture, component relationships, design patterns, databas
 ## Tasks in This Phase
 
 ### Task 13: Database Architecture Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-database-architecture-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-database-architecture-patterns.md`
 - **Output:** `analyze-database-architecture-patterns.md`
 - **Description:** Analyzes database design, schemas, and data patterns
 
 ### Task 14: API Design Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-api-design-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-api-design-patterns.md`
 - **Output:** `analyze-api-design-patterns.md`
 - **Description:** Documents API design patterns and interfaces, request/response formats, and integration patterns
 
 ### Task 15: Architecture Pattern Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/identify-architecture-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/identify-architecture-patterns.md`
 - **Output:** `identify-architecture-patterns.md`
 - **Description:** Identifies architectural patterns and design principles, component relationships, and design consistency
 

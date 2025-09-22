@@ -85,7 +85,7 @@ Additional options:
 ## Integration with OLAF Prompts
 
 These scripts are designed to work seamlessly with the OLAF project onboarding prompts located in:
-`olaf-core/prompts/common/project-onboarding/`
+`olaf-core/prompts/onboard/prompts/`
 
 Each prompt references the corresponding Python script for automated analysis execution.
 

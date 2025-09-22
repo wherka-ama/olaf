@@ -32,70 +32,70 @@ Orchestrates systematic project analysis for onboarding purposes by executing sp
 
 ### Phase 1: Foundation Workflow
 - **Type:** Sequential (Must Execute First)
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-1-foundation.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-1-foundation.md`
 - **Tasks:** Workspace analysis, repo classification, language analysis, size metrics
 - **Dependencies:** None
 - **Output:** Foundation analysis documents
 
 ### Phase 2: Technology Understanding Workflow
 - **Type:** Sequential
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-2-technology.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-2-technology.md`
 - **Tasks:** Technology stack analysis
 - **Dependencies:** Phase 1 complete
 - **Output:** Technology analysis documents
 
 ### Phase 3: Testing and Quality Workflow
 - **Type:** Parallel Execution Possible
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-3-testing-quality.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-3-testing-quality.md`
 - **Tasks:** Unit testing, integration testing, code coverage, performance testing
 - **Dependencies:** Phase 1-2 complete
 - **Output:** Testing and quality analysis documents
 
 ### Phase 4: Build and Deployment Workflow
 - **Type:** Sequential
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-4-build-deployment.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-4-build-deployment.md`
 - **Tasks:** Build process, CI/CD, deployment strategy, infrastructure analysis
 - **Dependencies:** Phase 1-3 complete
 - **Output:** Build and deployment analysis documents
 
 ### Phase 5: Architecture and Data Workflow
 - **Type:** Parallel Execution Possible
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-5-architecture-data.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-5-architecture-data.md`
 - **Tasks:** Database architecture, API design, architecture patterns
 - **Dependencies:** Phase 1-4 complete
 - **Output:** Architecture and data analysis documents
 
 ### Phase 6: Security and Governance Workflow
 - **Type:** Sequential
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-6-security-governance.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-6-security-governance.md`
 - **Tasks:** Authentication, security patterns, data governance
 - **Dependencies:** Phase 1-5 complete
 - **Output:** Security and governance analysis documents
 
 ### Phase 7: Standards and Quality Workflow
 - **Type:** Parallel Execution Possible
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-7-standards-quality.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-7-standards-quality.md`
 - **Tasks:** Code style, complexity analysis, dependency analysis, licensing
 - **Dependencies:** Phase 1-6 complete
 - **Output:** Standards and quality analysis documents
 
 ### Phase 8: Documentation and Practices Workflow
 - **Type:** Sequential
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-8-documentation-practices.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-8-documentation-practices.md`
 - **Tasks:** Documentation analysis, spec-driven development, error handling
 - **Dependencies:** Phase 1-7 complete
 - **Output:** Documentation and practices analysis documents
 
 ### Phase 9: Risk Analysis Workflow
 - **Type:** Sequential (Requires Historical Data)
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-9-risk-analysis.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-9-risk-analysis.md`
 - **Tasks:** Hotspot analysis, critical contributors analysis
 - **Dependencies:** Phase 1-8 complete
 - **Output:** Risk analysis documents
 
 ### Phase 10: Synthesis Workflow
 - **Type:** Sequential (Final Phase)
-- **Sub-Workflow:** `[id:prompts_dir]common/workflows/phase-10-synthesis.md`
+- **Sub-Workflow:** `[id:prompts_dir]onboard/workflows/phase-10-synthesis.md`
 - **Tasks:** Business domain synthesis, final consolidation
 - **Dependencies:** All phases 1-9 complete
 - **Output:** `product-overview.md` and consolidated documentation

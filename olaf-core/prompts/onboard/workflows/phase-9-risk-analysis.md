@@ -12,13 +12,13 @@ Analyzes code hotspots and critical contributor patterns. Requires historical da
 ## Tasks in This Phase
 
 ### Task 18: Hotspot Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/identify-code-hotspot-patterns.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/identify-code-hotspot-patterns.md`
 - **Output:** `identify-code-hotspot-patterns.md`
 - **Python Script:** `hotspot_analyzer.py`
 - **Description:** Identifies code hotspots, frequently changed files, and risk areas
 
 ### Task 28: Critical Contributors Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-critical-contributor-impact.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-critical-contributor-impact.md`
 - **Output:** `analyze-critical-contributor-impact.md`
 - **Python Script:** `contributor_analyzer.py`
 - **Description:** Identifies key contributors and knowledge concentration risks, and bus factor risks

@@ -12,23 +12,23 @@ Analyzes code standards, complexity metrics, dependency management, and licensin
 ## Tasks in This Phase
 
 ### Task 19: Code Style Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-code-style-standards.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-code-style-standards.md`
 - **Output:** `analyze-code-style-standards.md`
 - **Description:** Analyzes code formatting, style guides, and conventions, and consistency
 
 ### Task 19: Complexity Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-cyclomatic-complexity-metrics.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-cyclomatic-complexity-metrics.md`
 - **Output:** `analyze-cyclomatic-complexity-metrics.md`
 - **Python Script:** `complexity_analyzer.py`
 - **Description:** Measures cyclomatic complexity and code quality metrics
 
 ### Task 21: Dependency Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-dependency-management.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-dependency-management.md`
 - **Output:** `analyze-dependency-management.md`
 - **Description:** Analyzes dependency management and version control update strategies
 
 ### Task 22: Licensing and Legal Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-licensing-legal-compliance.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-licensing-legal-compliance.md`
 - **Output:** `analyze-licensing-legal-compliance.md`
 - **Description:** Analyzes licensing, legal compliance, and intellectual property considerations
 

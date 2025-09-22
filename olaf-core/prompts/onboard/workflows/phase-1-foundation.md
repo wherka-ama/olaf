@@ -12,24 +12,24 @@ Foundation phase that must execute first. Establishes baseline understanding of 
 ## Tasks in This Phase
 
 ### Task 1: Workspace Content Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-workspace-content-structure.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-workspace-content-structure.md`
 - **Output:** `analyze-workspace-content-structure.md`
 - **Python Script:** `workspace_content_analyzer.py`
 - **Description:** Analyzes directory structure, file organization, and content patterns
 
 ### Task 2: Repository Application Classification
-- **Prompt:** `[id:prompts_dir]common/prompts/classify-repo-application-types.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/classify-repo-application-types.md`
 - **Output:** `classify-repo-application-types.md`
 - **Description:** Identifies application types, frameworks, and architectural patterns
 
 ### Task 3: Programming Language Analysis
-- **Prompt:** `[id:prompts_dir]common/prompts/analyze-repo-language-distribution.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/analyze-repo-language-distribution.md`
 - **Output:** `analyze-repo-language-distribution.md`
 - **Python Script:** `language_distribution_analyzer.py`
 - **Description:** Analyzes language distribution, file counts, and code metrics
 
 ### Task 4: Repository Size Metrics
-- **Prompt:** `[id:prompts_dir]common/prompts/measure-repo-size-metrics.md`
+- **Prompt:** `[id:prompts_dir]onboard/prompts/measure-repo-size-metrics.md`
 - **Output:** `measure-repo-size-metrics.md`
 - **Python Script:** `repo_size_metrics_calculator.py`
 - **Description:** Calculates repository size, file counts, and growth metrics

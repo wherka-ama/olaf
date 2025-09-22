@@ -80,7 +80,7 @@ To remove a competency:
   [["work on job", "start job", "process job"], "project-manager/work-on-job.md", "Act"],
   [["create job", "new job", "define job"], "project-manager/create-job.md", "Act"],
 
-  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "common/orchestrators/orchestrate-project-onboarding.md", "Propose-Act"],
+  [["project onboarding", "onboard project", "analyze project", "project analysis", "comprehensive project analysis", "understand project"], "onboard/orchestrators/orchestrate-project-onboarding.md", "Propose-Act"],
   [["find expert", "who to contact", "contact expert", "expertise lookup", "find contact"], "other-users/find-expert-contact.md", "Act"],
 
   [["fix code smells", "code smells"], "developer/fix-code-smells.md", "Act"],
