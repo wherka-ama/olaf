@@ -37,9 +37,11 @@ Use terminal commands, not training data.
    - Do not attempt to infer or guess AI model - get this information directly from user
 
 2. **Get Timestamp**:
-   - Execute script: `[id:tools_dir]get-conversation-timestamp.ps1` for current timestamp
+   - Get current time in YYYYMMDD-HHmm format using terminal commands:
+     - Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
+     - Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
    - Use MCP server tool: `mcp_get-local-time_get_local_time` as alternative
-   - Format timestamp as: `YYYYMMDD-HHMM`
+   - You WILL use terminal commands, not training data for timestamps
    - Ensure unique timestamp for each conversation record
 
 3. **Validate File Location Before Creation**:
