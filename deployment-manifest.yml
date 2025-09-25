@@ -1,0 +1,88 @@
+# OLAF Deployment Manifest
+# This file defines which files and directories should be included in installation bundles
+
+# Common components included in all installation bundles
+common:
+  # Core framework folders
+  directories:
+    - "olaf-core/"
+    - "olaf-data/"
+    - "docs/"
+  
+  # Root level files
+  # files:
+  #   - "README.md"
+  #   - "LICENSE"
+  
+  # Patterns for files to include (glob patterns)
+  include_patterns:
+    - "*.md"
+    - "docs/**/*"
+    - "olaf-core/**/*"
+    - "olaf-data/**/*"
+  
+  # Patterns for files to exclude from common bundle
+  exclude_patterns:
+    - ".git/**/*"
+    - ".github/workflows/**/*"
+    - ".github/actions/**/*"
+    - ".windsurf/**/*"
+    - "node_modules/**/*"
+    - "vscode-extension/**/*"
+    - "*.log"
+    - "*.tmp"
+    - ".DS_Store"
+
+# Environment-specific components
+environments:
+  vscode:
+    name: "GitHub Copilot Bundle"
+    description: "Installation bundle for GitHub Copilot environment"
+    directories:
+      - ".github/"
+    files: []
+    include_patterns:
+      - ".github/**/*"
+    exclude_patterns:
+      - ".github/workflows/**/*"
+      - ".github/actions/**/*"
+    bundle_structure:
+      preserve_paths: true
+      root_folder: ""
+
+  windsurf:
+    name: "Windsurf Bundle"
+    description: "Installation bundle for Windsurf IDE environment"
+    directories:
+      - ".windsurf/"
+    files: []
+    include_patterns:
+      - ".windsurf/**/*"
+    exclude_patterns: []
+    bundle_structure:
+      preserve_paths: true
+      root_folder: ""
+
+# Bundle generation settings
+bundle_settings:
+  # Whether to include common components in each environment bundle
+  include_common_in_environment_bundles: true
+  
+  # Whether to create a separate common bundle
+  create_common_bundle: true
+  
+  # Compression format
+  compression: "zip"
+  
+  # Bundle naming convention
+  naming:
+    common_bundle: "common-{version}.zip"
+    environment_bundle: "{environment}-{version}.zip"
+    full_bundle: "{environment}-installation-bundle-{version}.zip"
+
+# Metadata
+metadata:
+  manifest_version: "1.0"
+  olaf_version_compatibility: ">=1.0.0"
+  last_updated: "2025-09-20"
+  description: "OLAF deployment manifest for automated bundle generation"
