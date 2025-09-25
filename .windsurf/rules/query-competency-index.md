@@ -75,6 +75,8 @@ To remove a competency:
 
   [["questionnaire", "survey"], "business-analyst/generate-questionnaire.md", "Act"],
   [["write paper", "academic paper", "research paper"], "technical-writer/write-academic-paper.md", "Act"],
+   [["create presentation", "generate presentation", "presentation from conversation", "create pptx", "generate pptx", "presentation and posts"], "technical-writer/create-presentation-and-posts-workflow.md", "Act"],
+  [["step-by-step tutorial", "tutorial", "create tutorial", "generate tutorial", "step by step guide"], "prompt-engineer/generate-step-by-step-tutorial.md", "Act"],
   [["generate test plan", "test plan", "testing plan", "create test plan"], "tester/generate-test-plan.md", "Act"],
  [["create presentation", "pptx", "powerpoint", "slides", "blog post", "write blog", "brochure", "create brochure"], "technical-writer/create-presentation-and-posts-workflow.md", "Propose-Act"],
   [["generate tutorial", "create tutorial", "step by step tutorial", "tutorial from conversation", "conversation to tutorial"], "prompt-engineer/generate-step-by-step-tutorial.md", "Propose-Act"],

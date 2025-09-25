@@ -29,7 +29,7 @@ Use terminal commands, not training data.
 
 ## Process
 
-This process is fully automated using the PowerShell script at `[id:tools_dir]archive-changelog-entries.ps1`. The script will:
+This process is fully automated using the Python script at `[id:tools_dir]archive_changelog_entries.py`. The script will:
 
 1. Archive entries older than the specified number of days
 2. Maintain chronological order and formatting
@@ -69,17 +69,20 @@ The script will produce:
 4. Validate results
 5. Report outcomes
 
-## PowerShell Execution
-```powershell
-$changelogPath = "[id:changelog_register]"
-$archivePath = "[id:changelog_register_archive]"
-$daysToKeep = 7  # Default value, can be overridden
+## Python Execution
+```python
+import subprocess
 
-& "[id:tools_dir]archive-changelog-entries.ps1" `
-  -ChangelogPath $changelogPath `
-  -ArchivePath $archivePath `
-  -DaysToKeep $daysToKeep `
-  -AddMaintenanceEntry
+changelog_path = "[id:changelog_register]"
+archive_path = "[id:changelog_register_archive]"
+days_to_keep = 7  # Default value, can be overridden
+
+subprocess.run([
+    "python", "[id:tools_dir]archive_changelog_entries.py",
+    changelog_path,
+    archive_path,
+    "--days-to-keep", str(days_to_keep)
+], check=True)
 ```
 
 ⚠️ **Critical Notes**

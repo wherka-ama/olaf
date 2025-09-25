@@ -33,8 +33,10 @@ Create a comprehensive presentation plan based on the user's requirements. This 
 - Apply the calculated slide count based on presentation type
 - Structure the presentation with logical flow in the target language
 - Define slide titles, layouts, and content for each slide
+- **CRITICAL**: ONLY use content from provided source materials - NEVER invent, assume, or extrapolate beyond what was explicitly analyzed or documented
 - **IMPORTANT**: Do NOT use bullet point prefixes (•, -, *) in slide content - write content directly without prefixes
 - Ask user if they want image prompts for visual elements (do not include by default)
+- **SOURCE VALIDATION**: Each slide must reference actual findings from source documents - if content wasn't analyzed, state "Not covered in current analysis phase"
 
 ### Step 4: Save and Review
 - Save the plan as: `[id:findings_dir]pptx-folder/[presentation-name]-plan-YYYYMMDD-HHmm.md`
@@ -55,6 +57,8 @@ Create a comprehensive presentation plan based on the user's requirements. This 
 - Ensure logical flow between slides
 - Use appropriate slide layouts (Title, Content, etc.)
 - Focus on key messages and supporting details
+- **ACCURACY RULE**: Only include information that was explicitly documented in source materials
+- **NO SPECULATION**: If information wasn't covered in the analysis, clearly state this rather than making assumptions
 
 ## File Management
 - Create timestamped filenames using YYYYMMDD-HHmm format
