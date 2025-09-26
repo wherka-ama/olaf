@@ -278,7 +278,10 @@ export class InstallationManager {
                     // Skip common hidden files but allow important dot directories like .github
                     const isHiddenFile = fileName.startsWith('.') && 
                         !fileName.startsWith('.github/') && 
-                        !fileName.startsWith('.vscode/') && 
+                        !fileName.startsWith('.vscode/') &&
+                        !fileName.startsWith('.windsurf/') && 
+                        !fileName.startsWith('.kiro/') && 
+                        !fileName.startsWith('.cursor/') &&
                         !fileName.startsWith('.olaf/');
                     
                     if (isHiddenFile) {
