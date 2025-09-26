@@ -26,7 +26,6 @@ Use terminal commands, not training data.
 - **learning_objective**: string - Specific question, skill, problem, or topic to understand
 - **current_knowledge**: string - Current knowledge level and previous experience
 - **context**: string - Related skills, time constraints, and application context
-- **learning_methods**: string - Optional preferred learning approaches (visual, interactive, etc.)
 
 ## Process
 
@@ -67,6 +66,12 @@ Use terminal commands, not training data.
    - Identify areas needing clarification or deeper study
    - Connect to existing knowledge base
    - Document key insights and actionable takeaways
+
+6. **Save Learning Report**:
+   - **MANDATORY**: Save the complete learning report as an MD file
+   - Use timestamp format: `search-and-learn-[topic]-YYYYMMDD-HHmm.md`
+   - Save to `[id:findings_dir]` directory
+   - Include all sections: Learning Summary, Source Documentation, Application Examples, Knowledge Gaps, Next Steps
 
 ## Output Format
 Learning report including:
