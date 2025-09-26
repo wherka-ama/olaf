@@ -1,14 +1,5 @@
 # Open Lightweight Assistant Framework (OLAF)
 
-## Quick Installation
-
-Download the ZIP file and extract the framework folders:
-
-```
-https://github.com/AmadeusITGroup/olaf/archive/refs/heads/main.zip
-```
-
-See [Installation Guide](README-INSTALLATION.md) for detailed steps.
 
 ## Executive Summary
 OLAF is a simple assistant framework designed to enhance the interactions between users and AI agents through natural language interaction.
@@ -28,22 +19,18 @@ It can serve several needs:
 - **Use as is**: It delivers a set of features and prerecorded prompts and workflows that can be tested and used on your code or documentation
 - **Explore to learn or teach basics of prompting**: Interacting with an agent through exercising those predefined features or creating new ones
 - **Benchmark agents and LLMs**: By using the features with various combinations of these underlying components
-- **Help change management**: By assisting engineers to become more familiar with the notion and usage of agents and delegating part of their complex tasks to AI personas
+- **Help change management**: By assisting engineers to become more familiar with the notion and usage of agents and delegating part of their complex tasks to AI
 
-## How to install
-To use OLAF, you need to copy the `olaf-core` and `olaf-data` folders side by side with your project.
+## Quick Installation
+See [Installation Guide](README-INSTALLATION.md) for detailed steps.
 
-- **olaf-core for Assistant Core Knowledge** : this is the folder that contains all the artifacts that are used by the AI to perform their tasks. It is the core of OLAF.
-- **olaf-data for Assistant Data Store** : this is the folder that contains all the artifacts that are produced or used by OLAF to perform its tasks.
 
-Note: If you are working with a version control system (e.g.; GitLab, GitHub, etc.), you can (should) include this into your project.
-
-**📖 For detailed installation instructions, see [docs/installation.md](docs/installation.md)**
+**📖 For detailed instructions on getting started, see [docs/getting-started/getting-started.md](docs/getting-started/getting-started.md)**
 
 
 ## Key Features
 
-OLAF provides several key capabilities to enhance AI-human collaboration:
+OLAF provides several competencies to enhance AI-human collaboration:
 
 - **Interaction Protocols** - "Act", "Propose-Act", and "Propose-Confirm-Act" protocols for different safety levels
 - **Meta-prompting** - Generate custom prompts following OLAF structure
@@ -63,12 +50,12 @@ OLAF provides competencies across multiple categories including Code Analysis, D
 
 ## Integration with agents
 
-OLAF integrates with various AI agents through core configuration files and helper prompts. The framework has been tested with different models showing varying levels of compatibility.
+OLAF integrates with vscode copilot and windsurf agents through core configuration files and helper prompts. The framework has been tested with different models showing varying levels of compatibility.
 
 **📖 For detailed integration information, see [docs/integration.md](docs/integration.md)**
 
 
-## Step-by-Step Getting Started
+## Recommendations
 
 1. **Copy the `olaf-core` and `olaf-data` folders alongside a repository** - DO NOT change these folders' structure initially
 2. **Use windsurf (preferred) or GitHub Copilot in Agent Mode** - Configure agent-specific files carefully
@@ -76,16 +63,14 @@ OLAF integrates with various AI agents through core configuration files and help
 4. **Explore competencies** - Try simple tasks like research-and-report
 5. **Manage outputs** - Find and organize competency outputs appropriately
 6. **Create changelog and jobs** - Use project management features
-7. **You're ready to go!** - Explore other features and create new competencies
 
-**📖 For detailed getting started instructions, see [docs/installation.md](docs/installation.md)**
 
 
 ## Documentation
 
 **📖 Complete documentation is available in [docs/](docs/)**
 
-- [Installation Guide](docs/installation.md) - Setup and getting started
+- [Getting Started Guide](docs/getting-started/getting-started.md) - Complete setup and tutorial with live examples
 - [Key Features](docs/features.md) - Core OLAF capabilities  
 - [Competencies](docs/competencies.md) - Available workflows and competencies
 - [Project Organization](docs/organization.md) - Structure and organization principles
@@ -94,22 +79,11 @@ OLAF integrates with various AI agents through core configuration files and help
 - [Limitations](docs/limitations.md) - Known limitations and support
 
 ## Critical Notes
-- **This is a work in progress** and we are still exploring the best way to use OLAF. You need to **read carefully and understand what the AI answers**. Avoid just entering the 'YES/DO it/Correct/OK' without really reading. This is not a Genius, THIS is an Assistant.
+- **This is a work in progress** and we are still exploring the best way to use OLAF. You need to **read carefully and understand what the LLM answers**. Avoid just entering the 'YES/DO it/Correct/OK' without really reading. This is not a Genius, THIS is an Assistant for AI Agent.
 - Models may fail to answer (resource limit, latency, etc.). Most agents gracefully handle this but you may need to retry. Don't blame your OLAF assistant.
 
 **📖 For complete limitations and best practices, see [docs/best-practices.md](docs/best-practices.md) and [docs/limitations.md](docs/limitations.md)**
 
-
-## Best Practices
-Key practices for effective OLAF usage:
-
-1. **Maintain Clear Documentation** - Use consistent markdown formatting for all prompts
-2. **Document Prompt Authorship** - Include author and date information in prompts  
-3. **Version Control Everything** - Track all changes including OLAF-generated modifications
-4. **Use Standardized Templates** - Ensure consistency across competency outputs
-5. **Follow Persona-Specific Workflows** - Maintain engaging AI persona interactions
-
-**📖 For complete best practices, see [docs/best-practices.md](docs/best-practices.md)**
 
 
 ## Future Development and Support
@@ -117,14 +91,6 @@ This repository is not actively maintained or developed. The goal is to share a 
 
 No official support is provided. While we appreciate contributions, we cannot guarantee that any issues or pull requests will be addressed.
 
-**📖 For limitations and support details, see [docs/limitations.md](docs/limitations.md)**
-
-
-## Limitations (as of Q2 2025)
-
-Key limitations include competency stability, model compatibility, context management challenges, and directory structure dependencies.
-
-**📖 For complete limitations list, see [docs/limitations.md](docs/limitations.md)**
 
 ---
-*OLAF - Empowering Your Teams with Intelligent Assistance*
+*OLAF - Helping Your LLM to work better with you*

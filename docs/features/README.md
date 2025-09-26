@@ -34,11 +34,3 @@ This directory contains detailed documentation for each key feature of the Open 
 **For context management**: See [Memory-map](memory-map.md) and [Chapter Mode](chapter-mode.md)
 
 **For workflow understanding**: Explore [Competency-Driven Workflow](competency-driven-workflow.md)
-
-## New in v1.2.0
-
-- **XML Section Tagging**: Structured framework components for better LLM parsing and validation
-- **Advanced Prompt Testing**: Comprehensive testing framework for prompt quality assurance
-- **Enhanced Templates**: Improved prompt templates with detailed guidelines and best practices
-- **Framework Validation**: Automatic validation across all framework components
-- **Legacy Modernization**: Tools and processes for updating existing prompts to current standards

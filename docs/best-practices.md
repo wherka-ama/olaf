@@ -1,8 +1,8 @@
 # Best Practices
 
-## Framework Management Best Practices (v1.2.0+)
+## Framework Management Best Practices
 
-1. **Use XML Section Tagging**: Leverage the new XML section tagging system for better structure and LLM parsing
+1. **Use XML Section Tagging**: Leverage the XML section tagging system for better structure and LLM parsing
    ```xml
    <olaf-validation>
    <!-- Framework validation content -->
@@ -17,9 +17,9 @@
 
 ## Prompt Engineering Best Practices
 
-1. **Follow Enhanced Templates**: Use the improved prompt templates introduced in v1.2.0 for better structure and guidelines
+1. **Follow Enhanced Templates**: Use the improved prompt templates for better structure and guidelines
 
-2. **Implement Proper Testing**: Utilize the advanced testing framework for comprehensive prompt validation
+2. **Implement Proper Testing**: Utilize the testing framework for comprehensive prompt validation
 
 3. **Maintain Framework Compliance**: Ensure all prompts follow OLAF structure and validation requirements
 
@@ -33,7 +33,7 @@
    ```markdown
    <!--
    Author: John Doe
-   Date: 2025-06-24
+   Date: YYYY-MM-DD
    -->
    ```
 
@@ -56,4 +56,4 @@
 ## Critical Notes
 - **This is a work in progress** and we are still exploring the best way to use OLAF. You need to **read carefully and understand what the AI answers**. Avoid just entering the 'YES/DO it/Correct/OK' without really reading. This is not a Genius, THIS is an Assistant.
 - Models may fail to answer (resource limit, latency, etc.). Most agents gracefully handle this but you may need to retry. Don't blame your OLAF assistant.
-- **v1.2.0 Changes**: The framework has been significantly enhanced with XML tagging and validation. Take time to understand these new capabilities for optimal usage.
+- **Framework Features**: The framework includes XML tagging and validation capabilities. Take time to understand these features for optimal usage.

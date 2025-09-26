@@ -18,7 +18,7 @@ We provide:
 
 ## Models tested
 
-As of 2025-06-27: we don't have a model that works perfectly with OLAF.
+Currently, we don't have a model that works perfectly with OLAF.
 
 Context management done by the agent is significantly interfering with the interaction, hence we strongly encourage testing the competencies, and even improving them for a duo: Agent + Model.
 

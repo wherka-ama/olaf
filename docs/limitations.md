@@ -1,6 +1,6 @@
 # Limitations and Support
 
-## Limitations (as of Q2 2025)
+## Current Limitations
 
 - **Competency Stability**: Any competency may not always work the same way. Be extra careful and correct the behavior as needed.
 - **Model Compatibility**: Using models such as GPT 4.1 does not work well and may even break important files. There is no guarantee that it will work with other models either.
