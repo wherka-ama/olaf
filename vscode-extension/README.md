@@ -1,10 +1,10 @@
 # OLAF VSCode Extension
 
-A comprehensive Visual Studio Code extension for managing OLAF (Open-source Language Assistance Framework) installations across multiple IDE platforms including VSCode, Windsurf, Cursor, and Kiro.
+A comprehensive Visual Studio Code extension for managing OLAF (Open Lightweight Assistant Framework) installations across multiple IDE platforms including VSCode Copilot and Windsurf.
 
 ## Features
 
-- **Multi-Platform Support**: Automatically detects your IDE platform (VSCode, Windsurf, Cursor, Kiro) and provides platform-specific functionality
+- **Multi-Platform Support**: Automatically detects your IDE platform (VSCode Copilot, Windsurf) and provides platform-specific functionality
 - **Smart Installation Management**: Install OLAF components with multiple scope options (user, workspace, project)
 - **Automatic Updates**: Check for and install updates automatically with progress tracking
 - **GitHub Integration**: Direct integration with GitHub releases for seamless downloads
