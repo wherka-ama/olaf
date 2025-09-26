@@ -1,0 +1,172 @@
+name: Create Release Installation Bundles
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  create-bundles:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for changelog generation
+
+      - name: Get release information
+        id: release
+        run: |
+          echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          echo "release_id=${{ github.event.release.id }}" >> $GITHUB_OUTPUT
+
+      - name: Get previous release tag
+        id: previous_release
+        run: |
+          # Get all tags sorted by version, excluding the current one
+          CURRENT_TAG="${{ steps.release.outputs.tag_name }}"
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "^${CURRENT_TAG}$" | head -n 1)
+          echo "previous_tag=${PREVIOUS_TAG}" >> $GITHUB_OUTPUT
+          echo "Previous release tag: ${PREVIOUS_TAG}"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          CURRENT_TAG="${{ steps.release.outputs.tag_name }}"
+          PREVIOUS_TAG="${{ steps.previous_release.outputs.previous_tag }}"
+          
+          echo "## Changelog" > changelog.md
+          echo "" >> changelog.md
+          
+          if [ -n "$PREVIOUS_TAG" ]; then
+            echo "### Changes since $PREVIOUS_TAG" >> changelog.md
+            echo "" >> changelog.md
+            
+            # Get commit messages between tags
+            git log --pretty=format:"- %s" ${PREVIOUS_TAG}..${CURRENT_TAG} >> changelog.md
+            echo "" >> changelog.md
+            echo "" >> changelog.md
+            
+            # Get detailed diff stats
+            echo "### Files Changed" >> changelog.md
+            git diff --name-status ${PREVIOUS_TAG}..${CURRENT_TAG} | while read status file; do
+              case $status in
+                A) echo "- Added: $file" >> changelog.md ;;
+                M) echo "- Modified: $file" >> changelog.md ;;
+                D) echo "- Deleted: $file" >> changelog.md ;;
+                R*) echo "- Renamed: $file" >> changelog.md ;;
+              esac
+            done
+          else
+            echo "### Initial Release" >> changelog.md
+            echo "- First release of Olaf" >> changelog.md
+          fi
+          
+          echo "" >> changelog.md
+
+      - name: Get contributors
+        id: contributors
+        run: |
+          CURRENT_TAG="${{ steps.release.outputs.tag_name }}"
+          PREVIOUS_TAG="${{ steps.previous_release.outputs.previous_tag }}"
+          
+          echo "## Contributors" >> changelog.md
+          echo "" >> changelog.md
+          
+          if [ -n "$PREVIOUS_TAG" ]; then
+            # Get contributors for this release
+            git log --pretty=format:"%an (%ae)" ${PREVIOUS_TAG}..${CURRENT_TAG} | sort | uniq | while read contributor; do
+              echo "- $contributor" >> changelog.md
+            done
+          else
+            # Get all contributors for initial release
+            git log --pretty=format:"%an (%ae)" | sort | uniq | while read contributor; do
+              echo "- $contributor" >> changelog.md
+            done
+          fi
+
+      - name: Install yq (YAML processor)
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Validate deployment manifest
+        run: |
+          if [ ! -f "deployment-manifest.yml" ]; then
+            echo "Error: deployment-manifest.yml not found!"
+            exit 1
+          fi
+          echo "Deployment manifest found and validated"
+          
+          # Show manifest summary
+          echo "Bundle settings:"
+          yq eval '.bundle_settings' deployment-manifest.yml
+          echo ""
+          echo "Available environments:"
+          yq eval '.environments | keys' deployment-manifest.yml
+
+      - name: Create installation bundles using manifest
+        run: |
+          # Use the manifest parser script to create bundles
+          ./.github/workflows/parse-manifest.sh ${{ steps.release.outputs.tag_name }}
+          
+          # List created bundles
+          echo "Created bundles:"
+          ls -la *.zip
+
+      - name: Update release notes
+        run: |
+          # Get current release notes
+          CURRENT_BODY="${{ github.event.release.body }}"
+          
+          # Add bundle information
+          echo "## Installation Bundles" > bundle_info.md
+          echo "" >> bundle_info.md
+          echo "The following installation bundles are available as release assets:" >> bundle_info.md
+          echo "" >> bundle_info.md
+          
+          # List bundles with descriptions
+          for bundle in *.zip; do
+            echo "- **$bundle**: " >> bundle_info.md
+            if [[ $bundle == *"github-copilot"* ]]; then
+              echo "GitHub Copilot environment bundle including common OLAF components" >> bundle_info.md
+            elif [[ $bundle == *"windsurf"* ]]; then
+              echo "Windsurf IDE environment bundle including common OLAF components" >> bundle_info.md
+            elif [[ $bundle == *"common"* ]]; then
+              echo "Common OLAF components (olaf-core, olaf-data, docs, README files)" >> bundle_info.md
+            fi
+          done
+          echo "" >> bundle_info.md
+          
+          # Combine with generated changelog
+          {
+            echo "$CURRENT_BODY"
+            echo ""
+            echo "---"
+            echo ""
+            cat bundle_info.md
+            echo ""
+            cat changelog.md
+          } > updated_notes.md
+
+      - name: Update release with enhanced notes and upload assets
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Update release notes
+          gh release edit ${{ steps.release.outputs.tag_name }} --notes-file updated_notes.md
+          
+          # Upload all generated bundles as assets
+          for bundle in *.zip; do
+            echo "Uploading $bundle..."
+            gh release upload ${{ steps.release.outputs.tag_name }} "$bundle"
+          done
+
+      - name: Clean up
+        run: |
+          rm -rf temp-*-bundle
+          rm -f changelog.md updated_notes.md bundle_info.md
+          rm -f *.zip

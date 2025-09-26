@@ -1,0 +1,224 @@
+{
+  "name": "olaf",
+  "displayName": "Olaf",
+  "description": "Open Lightweight Assistant Framework - AI assistant framework for VSCode and its forks",
+  "version": "0.0.1",
+  "publisher": "AmadeusITGroup",
+  "author": {
+    "name": "Amadeus IT Group",
+    "email": "opensource@amadeus.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmadeusITGroup/olaf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AmadeusITGroup/olaf/issues"
+  },
+  "homepage": "https://github.com/AmadeusITGroup/olaf#readme",
+  "keywords": [
+    "ai",
+    "assistant",
+    "framework",
+    "llm",
+    "productivity",
+    "coding",
+    "automation"
+  ],
+  "categories": [
+    "Other",
+    "Machine Learning",
+    "Education"
+  ],
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "main": "./dist/extension.js",
+  "icon": "icon.png",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "olaf.install",
+        "title": "Install OLAF Components",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.installSpecificVersion",
+        "title": "Install Specific Version",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.selectVersion",
+        "title": "Select Version to Install",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.checkUpdates",
+        "title": "Check for Updates",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.update",
+        "title": "Update to Latest Version",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.uninstall",
+        "title": "Uninstall OLAF Components",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.showVersion",
+        "title": "Show Version Information",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.showHelp",
+        "title": "Show Help Documentation",
+        "category": "OLAF"
+      },
+      {
+        "command": "olaf.validateAccess",
+        "title": "Validate Repository Access",
+        "category": "OLAF"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "olaf.install"
+        },
+        {
+          "command": "olaf.installSpecificVersion"
+        },
+        {
+          "command": "olaf.selectVersion"
+        },
+        {
+          "command": "olaf.checkUpdates"
+        },
+        {
+          "command": "olaf.update"
+        },
+        {
+          "command": "olaf.uninstall"
+        },
+        {
+          "command": "olaf.showVersion"
+        },
+        {
+          "command": "olaf.showHelp"
+        },
+        {
+          "command": "olaf.validateAccess"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OLAF",
+      "properties": {
+        "olaf.autoCheckUpdates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check for updates on extension activation"
+        },
+        "olaf.installationScope": {
+          "type": "string",
+          "enum": [
+            "user",
+            "workspace",
+            "project"
+          ],
+          "default": "user",
+          "description": "Default installation scope for OLAF components"
+        },
+        "olaf.enableLogging": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable detailed logging for debugging purposes"
+        },
+        "olaf.githubApiUrl": {
+          "type": "string",
+          "default": "https://api.github.com",
+          "description": "GitHub API URL for fetching releases"
+        },
+        "olaf.repositoryOwner": {
+          "type": "string",
+          "default": "AmadeusITGroup",
+          "description": "GitHub repository owner"
+        },
+        "olaf.repositoryName": {
+          "type": "string",
+          "default": "olaf",
+          "description": "GitHub repository name"
+        },
+        "olaf.githubToken": {
+          "type": "string",
+          "default": "",
+          "description": "GitHub personal access token for private repositories (generate with 'gh auth token')"
+        },
+        "olaf.usePrivateRepository": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable access to private GitHub repositories using authentication"
+        },
+        "olaf.useGitHubCli": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use GitHub CLI (gh) for automatic token generation instead of manual token"
+        },
+        "olaf.defaultVersion": {
+          "type": "string",
+          "default": "latest",
+          "description": "Default version to install (use 'latest' for latest release or specific version like 'v1.0.0')"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "package:vsix": "vsce package",
+    "compile-tests": "tsc -p tsconfig.test.json",
+    "watch-tests": "tsc -p tsconfig.test.json -w",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "npm run test:integration",
+    "test:unit": "mocha --require ./test/mocha.setup.js --require ./test/unit.setup.js test-dist/src/test/suite/*.test.js --ignore test-dist/src/test/suite/integration.test.js",
+    "test:integration": "npm run compile-tests && node ./test/runExtensionTests.js",
+    "test:all": "npm run test:unit && npm run test:integration"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@types/yauzl": "^2.10.3",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/test-electron": "^2.2.0",
+    "@vscode/vsce": "^2.15.0",
+    "adm-zip": "^0.5.16",
+    "eslint": "^8.28.0",
+    "mocha": "^10.1.0",
+    "nock": "^14.0.10",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.4",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "@types/glob": "^8.1.0",
+    "axios": "^1.6.0",
+    "glob": "^11.0.3",
+    "semver": "^7.5.4",
+    "yauzl": "^2.10.0"
+  },
+  "extensionDependencies": []
+}

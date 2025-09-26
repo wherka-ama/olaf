@@ -16,9 +16,97 @@ yarn-error.log
 *.swp
 *.swo
 
+# VS Code Extension specific
+*.vsix
+.vscode-test/
+.vscode-test-web/
+vsce-*.log
+ovsx-*.log
+
+# Build outputs
+out/
+dist/
+lib/
+build/
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# Test outputs
+test-out/
+test-dist/
+coverage/
+.nyc_output/
+
+# TypeScript
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Archives and bundles
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Logs
+*.log
+logs/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+*.tmp
+*.temp
+*~
+.#*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+package_broken.json
+package_fixed.json
+
 # Conversation files
 olaf-data/handover-conversation*.md
 
+# Development tools
 
 # Project Folders
-
