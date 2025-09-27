@@ -5,6 +5,7 @@ import { selectVersionCommand } from './commands/selectVersionCommand';
 import { UpdateCommand } from './commands/updateCommand';
 import { StatusCommand } from './commands/statusCommand';
 import { ValidateAccessCommand } from './commands/validateAccessCommand';
+import { UninstallCommand } from './commands/uninstallCommand';
 import { StatusBar } from './ui/statusBar';
 import { Notifications } from './ui/notifications';
 import { UpdateManager } from './services/updateManager';
@@ -95,6 +96,7 @@ export class OlafExtension {
         const updateCommand = new UpdateCommand();
         const statusCommand = new StatusCommand();
         const validateAccessCommand = new ValidateAccessCommand();
+        const uninstallCommand = new UninstallCommand(this.installationManager, this.logger);
 
         // Register command handlers
         const commands = [
@@ -106,7 +108,8 @@ export class OlafExtension {
             vscode.commands.registerCommand('olaf.showVersion', () => statusCommand.showVersion()),
             vscode.commands.registerCommand('olaf.uninstall', () => statusCommand.uninstall()),
             vscode.commands.registerCommand('olaf.showHelp', () => statusCommand.showHelp()),
-            vscode.commands.registerCommand('olaf.validateAccess', () => validateAccessCommand.execute())
+            vscode.commands.registerCommand('olaf.validateAccess', () => validateAccessCommand.execute()),
+            vscode.commands.registerCommand('olaf.uninstallAll', () => uninstallCommand.executeUninstallAll()),
         ];
 
         // Add to disposables

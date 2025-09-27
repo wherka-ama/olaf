@@ -128,6 +128,139 @@ export class InstallationManager {
     }
 
     /**
+     * Prune empty directories from the extraction path as well as the metadata folder
+     * This method recursively removes empty directories after file removal to ensure
+     * no installation remnants are left behind.
+     */
+    public async pruneEmptyDirs(scope: InstallationScope): Promise<void> {
+        this.logger.info(`Starting to prune empty directories for scope: ${scope}`);
+
+        const platform = await this.platformDetector.detectPlatform();
+        const installationPath = this.platformDetector.getInstallationPath(platform.platform, scope);
+
+        // Check if installation exists
+        try {
+            await access(installationPath);
+        } catch {
+            this.logger.warn(`No installation found at: ${installationPath}`);
+            return; // Nothing to prune
+        }
+
+        let extractionPath = installationPath;
+        let installedFiles: string[] = [];
+
+        // Read installation metadata to get extraction path and installed files
+        try {
+            const metadata = await this.readInstallationMetadata(installationPath);
+            extractionPath = metadata.extractionPath ?? extractionPath;
+            installedFiles = metadata.installedFiles || [];
+            this.logger.info(`Extraction path: ${extractionPath}`);
+            this.logger.info(`Files that were installed: ${installedFiles.length} files`);
+        } catch {
+            this.logger.warn('Could not read installation metadata for pruning');
+        }
+
+        // Collect all directories that contained files
+        const directoriesToCheck = new Set<string>();
+
+        // Add directories from installed files
+        for (const file of installedFiles) {
+            const filePath = path.join(extractionPath, file);
+            let dir = path.dirname(filePath);
+            
+            // Add all parent directories up to the extraction path
+            while (dir !== extractionPath && dir !== path.dirname(dir)) {
+                directoriesToCheck.add(dir);
+                dir = path.dirname(dir);
+            }
+        }
+
+        // Also add the extraction path itself if it's different from installation path
+        if (extractionPath !== installationPath) {
+            directoriesToCheck.add(extractionPath);
+        }
+
+        // Convert to array and sort by depth (deepest first) for proper removal order
+        const sortedDirectories = Array.from(directoriesToCheck).sort((a, b) => {
+            const depthA = a.split(path.sep).length;
+            const depthB = b.split(path.sep).length;
+            return depthB - depthA; // Sort by depth, deepest first
+        });
+
+        this.logger.debug(`Checking ${sortedDirectories.length} directories for emptiness`);
+
+        // Remove empty directories, starting from the deepest
+        for (const dir of sortedDirectories) {
+            await this.removeIfEmpty(dir);
+        }
+
+        // Finally, remove the installation/metadata directory if it's different from extraction path
+        if (installationPath !== extractionPath) {
+            await this.removeIfEmpty(installationPath);
+        }
+
+        this.logger.info(`Completed pruning empty directories for scope: ${scope}`);
+    }
+
+    /**
+     * Helper method to remove a directory if it's empty
+     * @param dirPath - The directory path to check and potentially remove
+     */
+    private async removeIfEmpty(dirPath: string): Promise<void> {
+        try {
+            // Check if directory exists
+            await access(dirPath);
+            
+            // Read directory contents
+            const files = await fs.promises.readdir(dirPath);
+            
+            if (files.length === 0) {
+                // Directory is empty, remove it
+                await rmdir(dirPath);
+                this.logger.info(`Removed empty directory: ${dirPath}`);
+            } else {
+                this.logger.debug(`Directory not empty, keeping: ${dirPath} (${files.length} items)`);
+            }
+        } catch (error) {
+            if ((error as any).code === 'ENOENT') {
+                this.logger.debug(`Directory does not exist: ${dirPath}`);
+            } else if ((error as any).code === 'ENOTEMPTY') {
+                this.logger.debug(`Directory not empty: ${dirPath}`);
+            } else {
+                this.logger.debug(`Failed to check/remove directory: ${dirPath}`, error as Error);
+            }
+        }
+    }
+
+    /**
+     * Recursively remove empty parent directories up to a root path
+     * @param dirPath - Starting directory path
+     * @param rootPath - Root path to stop at (won't remove this)
+     */
+    private async removeEmptyParentsRecursively(dirPath: string, rootPath: string): Promise<void> {
+        if (dirPath === rootPath || dirPath === path.dirname(dirPath)) {
+            return; // Reached root or filesystem root
+        }
+
+        try {
+            await access(dirPath);
+            const files = await fs.promises.readdir(dirPath);
+            
+            if (files.length === 0) {
+                await rmdir(dirPath);
+                this.logger.info(`Removed empty parent directory: ${dirPath}`);
+                
+                // Recursively check parent directory
+                const parentDir = path.dirname(dirPath);
+                await this.removeEmptyParentsRecursively(parentDir, rootPath);
+            }
+        } catch (error) {
+            // Directory doesn't exist or can't be read/removed - stop recursion
+            this.logger.debug(`Stopped recursive removal at: ${dirPath}`, error as Error);
+        }
+    }
+
+    /**
      * Uninstall OLAF components
      */
     public async uninstall(scope: InstallationScope): Promise<boolean> {
@@ -148,10 +281,14 @@ export class InstallationManager {
             // Read installation metadata to get list of installed files
             const metadataPath = path.join(installationPath, '.olaf-metadata.json');
             let installedFiles: string[] = [];
+            let extractionPath = installationPath;
 
             try {
                 const metadata = await this.readInstallationMetadata(installationPath);
                 installedFiles = metadata.installedFiles || [];
+                this.logger.info(`Files to be removed: ${installedFiles.join(', ')}`);
+                this.logger.info(`Extraction path from metadata: ${metadata.extractionPath}`);
+                extractionPath = metadata.extractionPath ?? extractionPath;
             } catch {
                 this.logger.warn('Could not read installation metadata, removing entire directory');
             }
@@ -160,20 +297,25 @@ export class InstallationManager {
             if (installedFiles.length > 0) {
                 for (const file of installedFiles) {
                     try {
-                        await unlink(path.join(installationPath, file));
+                        await unlink(path.join(extractionPath, file));
                     } catch (error) {
                         this.logger.warn(`Failed to remove file: ${file}`, error as Error);
                     }
                 }
             }
 
-            // Remove installation directory
-            try {
-                await rmdir(installationPath, { recursive: true });
-            } catch (error) {
-                this.logger.error('Failed to remove installation directory', error as Error);
-                return false;
+            // Remove empty directories using the comprehensive pruning method
+            await this.pruneEmptyDirs(scope);
+
+            // Remove the installation path with metadata
+            try{
+                await access(installationPath);
+                await rmdir(installationPath, {recursive:true});
+
+            } catch(error) {
+                this.logger.error(`It was not possible to remove the installation path: ${installationPath}`, error as Error)
             }
+
 
             this.logger.info(`Uninstallation completed successfully from: ${installationPath}`);
             return true;

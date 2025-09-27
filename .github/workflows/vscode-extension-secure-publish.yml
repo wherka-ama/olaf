@@ -148,25 +148,24 @@ jobs:
             ${{ env.EXTENSION_DIR }}/olaf-${{ steps.version.outputs.version }}.vsix
             ${{ env.EXTENSION_DIR }}/checksums.txt
 
-  # Note: Uncomment to enable SLSA provenance generation(once it's published)
   # Generate SLSA provenance
-  # provenance:
-  #   name: Generate SLSA Provenance
-  #   needs: pre-publish-security
-  #   permissions:
-  #     actions: read
-  #     id-token: write
-  #     contents: write
-  #   uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.1.0
-  #   with:
-  #     base64-subjects: "${{ needs.pre-publish-security.outputs.sha256 }}:olaf-${{ needs.pre-publish-security.outputs.version }}.vsix"
-  #     upload-assets: true
+  provenance:
+    name: Generate SLSA Provenance
+    needs: pre-publish-security
+    permissions:
+      actions: read
+      id-token: write
+      contents: write
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v2.1.0
+    with:
+      base64-subjects: "${{ needs.pre-publish-security.outputs.sha256 }}:olaf-${{ needs.pre-publish-security.outputs.version }}.vsix"
+      upload-assets: true
 
   # Publish to VS Code Marketplace
   publish-marketplace:
     name: Publish to VS Code Marketplace
     runs-on: ubuntu-latest
-    needs: [pre-publish-security,] # provenance]
+    needs: [pre-publish-security, provenance]
     if: contains(github.event.inputs.target_registries, 'vscode-marketplace') || github.event_name == 'release'
     
     environment:
@@ -228,7 +227,7 @@ jobs:
   publish-openvsx:
     name: Publish to Open VSX Registry
     runs-on: ubuntu-latest
-    needs: [pre-publish-security,] # provenance]
+    needs: [pre-publish-security, provenance]
     if: contains(github.event.inputs.target_registries, 'open-vsx') || github.event_name == 'release'
     
     environment:
