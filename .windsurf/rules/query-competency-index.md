@@ -62,7 +62,6 @@ To remove a competency:
   [["tech stack", "technical stack"], "architect/analyze-technical-stack.md", "Act"],
   [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
-  [["evolve unit tests", "improve unit tests", "unit test evolution", "enhance test coverage"], "evolve-unit-tests/evolve-unit-tests-workflow.md", "Act"],
   [["augment unit tests", "augment code unit test", "unit test augmentation", "improve test coverage iteratively"], "developer/augment-code-unit-test.md", "Act"],
 
   [["search and learn", "learn and search", "search & learn"], "researcher/search-and-learn.md", "Act"],
