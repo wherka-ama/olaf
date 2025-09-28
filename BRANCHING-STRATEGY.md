@@ -50,7 +50,7 @@ graph LR
 
 ### For Users
 
-- **Stable Use**: Always use `main` branch
+- **Stable Use**: Always use `main` branch latest release
 - **Early Access**: Use `integration` for preview of upcoming features
 - **Avoid**: Never use `research-*` or `messy` branches for actual work
 
