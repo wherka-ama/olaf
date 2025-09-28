@@ -86,20 +86,35 @@ export class EnhancedInstallationManager {
 
             // 3. Calculate integrity information for installed files
             onProgress?.(80, 'Computing file integrity data...');
-            const installedFiles = this.getInstalledFilesList(scope);
-            const fileIntegrities = await this.calculateFileIntegrities(installedFiles);
+            const installedFiles = legacyResult.installedFiles || [];
+            const fileIntegrities = await this.calculateFileIntegrities(
+                installedFiles.map(file => path.join(legacyResult.installedPath, file))
+            );
 
             // 4. Create enhanced metadata
             onProgress?.(90, 'Saving enhanced metadata...');
+            
+            // Determine actual OS platform (Platform enum is for editors, not OS)
+            const currentOSPlatform = process.platform === 'win32' ? 'windows' :
+                                    process.platform === 'darwin' ? 'macos' :
+                                    process.platform === 'linux' ? 'linux' :
+                                    'unknown';
+            
+            // Extract version from bundle or use default
+            const bundleVersion = this.extractVersionFromBundle(bundlePath) || '1.0.0';
+            
             const enhancedMetadata: EnhancedInstallationMetadata = {
-                version: 'unknown',
-                platform: Platform.UNKNOWN, // Default platform
-                scope: scope.toString(),
+                version: bundleVersion,
+                platform: Platform.UNKNOWN, // Default to unknown editor platform
+                scope: scope === InstallationScope.PROJECT ? 'project' : 
+                       scope === InstallationScope.USER ? 'user' : 
+                       scope === InstallationScope.WORKSPACE ? 'workspace' : 'unknown',
                 installedAt: new Date().toISOString(),
+                osplatform: currentOSPlatform, // OS platform information
                 bundleInfo: {
                     filename: path.basename(bundlePath),
                     size: fs.statSync(bundlePath).size,
-                    platform: Platform.UNKNOWN,
+                    platform: Platform.UNKNOWN, // Editor platform, not OS platform
                     sha256: await this.calculateFileSHA256(bundlePath),
                     manifestVersion: '1.0.0'
                 },
@@ -205,23 +220,101 @@ export class EnhancedInstallationManager {
     }
 
     private getInstalledFilesList(scope: InstallationScope): string[] {
-        // This would need to be implemented to scan the installation directory
-        // For now, return an empty array as a placeholder
-        return [];
+        // Try to read files from existing metadata or scan directory
+        try {
+            const installationPath = this.getInstallationPath(scope);
+            const metadataPath = path.join(installationPath, '.olaf-metadata.json');
+            
+            if (fs.existsSync(metadataPath)) {
+                const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8'));
+                return (metadata.installedFiles || []).map((file: string) => 
+                    path.join(metadata.extractionPath || installationPath, file)
+                );
+            }
+            
+            // Fallback: scan directory for files (excluding metadata)
+            return this.scanDirectoryFiles(installationPath);
+        } catch (error) {
+            this.logger.warn(`Failed to get installed files list for scope ${scope}:`, error);
+            return [];
+        }
     }
 
-    private async calculateFileIntegrities(filePaths: string[]): Promise<FileIntegrityInfo[]> {
+    private scanDirectoryFiles(dirPath: string): string[] {
+        try {
+            if (!fs.existsSync(dirPath)) {
+                return [];
+            }
+
+            const files: string[] = [];
+            const scanRecursive = (currentPath: string) => {
+                const items = fs.readdirSync(currentPath);
+                for (const item of items) {
+                    if (item.startsWith('.olaf') && item.endsWith('.json')) {
+                        continue; // Skip metadata files
+                    }
+                    
+                    const fullPath = path.join(currentPath, item);
+                    const stat = fs.statSync(fullPath);
+                    
+                    if (stat.isFile()) {
+                        files.push(fullPath);
+                    } else if (stat.isDirectory()) {
+                        scanRecursive(fullPath);
+                    }
+                }
+            };
+            
+            scanRecursive(dirPath);
+            return files;
+        } catch (error) {
+            this.logger.warn(`Failed to scan directory ${dirPath}:`, error);
+            return [];
+        }
+    }
+
+        private async calculateFileIntegrities(filePaths: string[]): Promise<FileIntegrityInfo[]> {
         const integrities: FileIntegrityInfo[] = [];
 
-        for (const filePath of filePaths) {
+        this.logger.info(`Starting integrity calculation for ${filePaths.length} files`);
+        
+        for (let i = 0; i < filePaths.length; i++) {
+            const filePath = filePaths[i];
+            this.logger.info(`Processing file ${i + 1}/${filePaths.length}: ${filePath}`);
+            
             try {
+                // Check if file exists before calculating integrity
+                if (!fs.existsSync(filePath)) {
+                    this.logger.warn(`File does not exist: ${filePath}`);
+                    continue;
+                }
+                
+                this.logger.debug(`File exists, checking stats: ${filePath}`);
+                const stats = fs.statSync(filePath);
+                this.logger.debug(`File stats - size: ${stats.size}, isFile: ${stats.isFile()}`);
+                
+                if (!stats.isFile()) {
+                    this.logger.warn(`Skipping non-file: ${filePath}`);
+                    continue;
+                }
+                
+                this.logger.debug(`Calling integrityService.calculateFileIntegrity for: ${filePath}`);
                 const integrity = await this.integrityService.calculateFileIntegrity(filePath);
                 integrities.push(integrity);
+                this.logger.info(`Successfully calculated integrity for: ${filePath} (${integrities.length}/${filePaths.length})`);
             } catch (error) {
-                this.logger.warn(`Failed to calculate integrity for ${filePath}:`, error);
+                this.logger.error(`DETAILED ERROR for ${filePath}:`);
+                this.logger.error(`  Error type: ${typeof error}`);
+                this.logger.error(`  Error constructor: ${error?.constructor?.name}`);
+                this.logger.error(`  Error message: ${error instanceof Error ? error.message : 'No message'}`);
+                this.logger.error(`  Error stack: ${error instanceof Error ? error.stack : 'No stack'}`);
+                this.logger.error(`  Full error object keys: ${Object.keys(error || {})}`);
+                this.logger.error(`  File exists: ${fs.existsSync(filePath)}`);
+                this.logger.error(`  File readable: ${fs.constants && (fs.accessSync(filePath, fs.constants.R_OK), true) || 'unknown'}`);
             }
         }
 
+        this.logger.info(`Successfully calculated integrity for ${integrities.length}/${filePaths.length} files`);
         return integrities;
     }
 
@@ -255,8 +348,11 @@ export class EnhancedInstallationManager {
                 return path.join(os.homedir(), '.olaf');
             case InstallationScope.WORKSPACE:
                 return path.join(vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || '', '.olaf');
+            case InstallationScope.PROJECT:
+                return path.join(vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || os.homedir(), '.olaf');
             default:
-                return path.join('/usr/local/share', 'olaf');
+                // Fallback to user directory instead of system directory
+                return path.join(os.homedir(), '.olaf');
         }
     }
 
@@ -474,5 +570,28 @@ export class EnhancedInstallationManager {
             generatedAt: new Date().toISOString(),
             modifications
         };
+    }
+    
+    /**
+     * Extract version from bundle filename or manifest
+     * Falls back to default version if extraction fails
+     */
+    private extractVersionFromBundle(bundlePath: string): string | null {
+        try {
+            const filename = path.basename(bundlePath, '.zip');
+            
+            // Try to extract version from filename patterns like: 
+            // app-v1.2.3.zip, app_1.2.3.zip, app-1.2.3.zip
+            const versionMatch = filename.match(/[v_-]?(\d+\.\d+\.\d+)/);
+            if (versionMatch) {
+                return versionMatch[1];
+            }
+            
+            // Try reading package.json if it exists in extracted content
+            // For now, return null to use fallback
+            return null;
+        } catch (error) {
+            return null;
+        }
     }
 }

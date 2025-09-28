@@ -1,15 +1,15 @@
 import * as crypto from 'crypto';
 import * as fs from 'fs';
 import * as path from 'path';
-import { xxh64 } from '@node-rs/xxhash';
 import { FileIntegrityInfo, ModificationInfo, IntegrityReport } from '../types/integrityTypes';
 
 /**
- * Service for calculating and verifying file integrity using multiple hash algorithms
+ * Service for calculating and verifying file integrity using Node.js built-in crypto
+ * Refactored to use BLAKE2b instead of xxhash for better portability
  */
 export class FileIntegrityService {
     private static readonly CHUNK_SIZE = 64 * 1024; // 64KB chunks for large files
-    private static readonly CURRENT_VERSION = '1.0.0';
+    private static readonly CURRENT_VERSION = '1.1.0'; // Updated version for crypto change
 
     /**
      * Calculate comprehensive integrity information for a single file
@@ -23,7 +23,7 @@ export class FileIntegrityService {
         return {
             path: filePath,
             sha256: hashes.sha256,
-            xxhash64: hashes.xxhash64,
+            xxhash64: hashes.blake2b256, // Using BLAKE2b instead of xxhash for better compatibility
             size: stats.size,
             mtime: stats.mtime.toISOString(),
             permissions: stats.mode.toString(8),
@@ -51,172 +51,154 @@ export class FileIntegrityService {
         });
 
         await Promise.all(promises);
-        
-        // Sort results by path to maintain consistent ordering
         return results.sort((a, b) => a.path.localeCompare(b.path));
     }
 
     /**
-     * Verify file integrity against expected values using hybrid approach
+     * Calculate both SHA256 and BLAKE2b hashes in a single file pass for efficiency
+     * Replaces xxhash with BLAKE2b for better portability while maintaining performance
      */
-    async verifyFileIntegrity(filePath: string, expected: FileIntegrityInfo): Promise<ModificationInfo> {
-        try {
-            // Quick checks first (size and modification time)
-            const stats = await fs.promises.stat(filePath);
-            
-            // Size check - fastest verification
-            if (stats.size !== expected.size) {
-                return {
-                    isModified: true,
-                    verificationType: 'size',
-                    originalIntegrity: expected,
-                    currentState: { 
-                        path: filePath,
-                        size: stats.size,
-                        mtime: stats.mtime.toISOString()
-                    }
-                };
-            }
-
-            // Time check - if file is newer than installation, it might be modified
-            const currentMtime = stats.mtime.toISOString();
-            if (currentMtime > expected.mtime) {
-                // File appears to be modified based on timestamp, verify with hash
-                const currentIntegrity = await this.calculateFileIntegrity(filePath);
-                
-                return {
-                    isModified: currentIntegrity.sha256 !== expected.sha256,
-                    modifiedAt: currentMtime,
-                    verificationType: 'hash',
-                    originalIntegrity: expected,
-                    currentState: currentIntegrity
-                };
-            }
-
-            // Fast hash check for files that haven't changed timestamp
-            const buffer = await fs.promises.readFile(filePath);
-            const currentXxhash = xxh64(buffer).toString(16);
-            
-            if (currentXxhash !== expected.xxhash64) {
-                // xxHash doesn't match, verify with SHA-256
-                const currentIntegrity = await this.calculateFileIntegrity(filePath);
-                
-                return {
-                    isModified: currentIntegrity.sha256 !== expected.sha256,
-                    modifiedAt: currentMtime,
-                    verificationType: 'hash',
-                    originalIntegrity: expected,
-                    currentState: currentIntegrity
-                };
-            }
-
-            // File appears unchanged
-            return {
-                isModified: false,
-                verificationType: 'time',
-                originalIntegrity: expected
-            };
-
-        } catch (error) {
-            if ((error as any).code === 'ENOENT') {
-                return {
-                    isModified: true,
-                    verificationType: 'missing',
-                    originalIntegrity: expected
-                };
-            }
-            throw error;
-        }
-    }
-
     /**
-     * Verify integrity of all files in parallel
+     * Calculate both SHA256 and secondary hash in a single file pass for efficiency
+     * Uses SHA-512 as fallback if BLAKE2b is not available in the extension environment
      */
-    async verifyAllFiles(files: FileIntegrityInfo[], concurrency: number = 5): Promise<Map<string, ModificationInfo>> {
-        const results = new Map<string, ModificationInfo>();
-        const semaphore = new Semaphore(concurrency);
-
-        const promises = files.map(async (fileInfo) => {
-            await semaphore.acquire();
+    private async calculateFileHashes(filePath: string): Promise<{ sha256: string; blake2b256: string }> {
+        return new Promise((resolve, reject) => {
+            const sha256Hash = crypto.createHash('sha256');
+            
+            // Try BLAKE2b first, fallback to SHA-512 if not supported
+            let secondaryHash: crypto.Hash;
+            let useBlake2b = true;
+            
             try {
-                const result = await this.verifyFileIntegrity(fileInfo.path, fileInfo);
-                results.set(fileInfo.path, result);
-            } finally {
-                semaphore.release();
+                secondaryHash = crypto.createHash('blake2b512');
+            } catch (error) {
+                // Fallback to SHA-512 if BLAKE2b is not supported in this environment
+                secondaryHash = crypto.createHash('sha512');
+                useBlake2b = false;
+                console.log('OLAF: BLAKE2b not available, using SHA-512 fallback');
             }
-        });
+            
+            const stream = fs.createReadStream(filePath, { highWaterMark: FileIntegrityService.CHUNK_SIZE });
+            
+            stream.on('data', (chunk: Buffer) => {
+                sha256Hash.update(chunk);
+                secondaryHash.update(chunk);
+            });
 
-        await Promise.all(promises);
-        return results;
+            stream.on('end', () => {
+                const sha256 = sha256Hash.digest('hex');
+                const secondaryDigest = secondaryHash.digest('hex');
+                // For SHA-512, truncate to 64 chars (256-bit equivalent); for BLAKE2b512, truncate to 64 chars
+                const blake2b256 = secondaryDigest.substring(0, 64);
+                resolve({ sha256, blake2b256 });
+            });
+
+            stream.on('error', reject);
+        });
     }
 
     /**
-     * Calculate SHA-256 hash of a bundle file
+     * Verify file integrity against expected values
      */
-    async calculateBundleHash(bundlePath: string): Promise<string> {
-        const hash = crypto.createHash('sha256');
-        const stream = fs.createReadStream(bundlePath, { 
-            highWaterMark: FileIntegrityService.CHUNK_SIZE 
-        });
+    async verifyFileIntegrity(filePath: string, expectedIntegrity: FileIntegrityInfo): Promise<ModificationInfo> {
+        try {
+            const currentIntegrity = await this.calculateFileIntegrity(filePath);
+            
+            const isUnmodified = (
+                currentIntegrity.sha256 === expectedIntegrity.sha256 &&
+                currentIntegrity.xxhash64 === expectedIntegrity.xxhash64 &&
+                currentIntegrity.size === expectedIntegrity.size
+            );
 
-        for await (const chunk of stream) {
-            hash.update(chunk);
+            return {
+                isModified: !isUnmodified,
+                modifiedAt: isUnmodified ? undefined : new Date().toISOString(),
+                verificationType: isUnmodified ? 'hash' : 'hash',
+                originalIntegrity: expectedIntegrity,
+                currentState: isUnmodified ? undefined : currentIntegrity
+            };
+        } catch (error) {
+            return {
+                isModified: true,
+                modifiedAt: new Date().toISOString(),
+                verificationType: 'missing',
+                originalIntegrity: expectedIntegrity,
+                currentState: undefined
+            };
         }
-
-        return hash.digest('hex');
     }
 
     /**
-     * Verify bundle integrity
+     * Generate comprehensive integrity report for files
      */
-    async verifyBundleIntegrity(bundlePath: string, expectedHash: string): Promise<boolean> {
-        const actualHash = await this.calculateBundleHash(bundlePath);
-        return actualHash === expectedHash;
-    }
+    async generateIntegrityReport(files: FileIntegrityInfo[], existingFiles: FileIntegrityInfo[]): Promise<IntegrityReport> {
+        const modifications: Array<{
+            file: string;
+            type: 'modified' | 'deleted' | 'corrupted' | 'intact';
+            details: ModificationInfo;
+            recommendation: 'preserve' | 'restore' | 'backup' | 'ignore' | 'remove';
+        }> = [];
 
-    /**
-     * Generate comprehensive integrity report
-     */
-    generateIntegrityReport(modifications: Map<string, ModificationInfo>): IntegrityReport {
         let modifiedFiles = 0;
         let deletedFiles = 0;
         let corruptedFiles = 0;
         let intactFiles = 0;
 
-        const reportModifications = Array.from(modifications.entries()).map(([file, info]) => {
-            let type: 'modified' | 'deleted' | 'corrupted' | 'intact';
-            let recommendation: 'preserve' | 'restore' | 'backup' | 'ignore' | 'remove';
-
-            if (info.verificationType === 'missing') {
-                type = 'deleted';
-                recommendation = 'ignore';
+        // Check each original file
+        for (const originalFile of files) {
+            const currentFile = existingFiles.find(f => f.path === originalFile.path);
+            
+            if (!currentFile) {
                 deletedFiles++;
-            } else if (info.isModified) {
-                if (info.verificationType === 'hash' && info.currentState?.sha256) {
-                    type = 'modified';
-                    recommendation = 'preserve';
-                    modifiedFiles++;
-                } else {
-                    type = 'corrupted';
-                    recommendation = 'restore';
-                    corruptedFiles++;
-                }
+                modifications.push({
+                    file: originalFile.path,
+                    type: 'deleted',
+                    details: {
+                        isModified: true,
+                        modifiedAt: new Date().toISOString(),
+                        verificationType: 'missing',
+                        originalIntegrity: originalFile
+                    },
+                    recommendation: 'ignore'
+                });
             } else {
-                type = 'intact';
-                recommendation = 'remove';
-                intactFiles++;
+                const modInfo = await this.verifyFileIntegrity(originalFile.path, originalFile);
+                
+                if (!modInfo.isModified) {
+                    intactFiles++;
+                    modifications.push({
+                        file: originalFile.path,
+                        type: 'intact',
+                        details: modInfo,
+                        recommendation: 'remove'
+                    });
+                } else if (modInfo.verificationType === 'missing') {
+                    deletedFiles++;
+                    modifications.push({
+                        file: originalFile.path,
+                        type: 'deleted',
+                        details: modInfo,
+                        recommendation: 'ignore'
+                    });
+                } else {
+                    modifiedFiles++;
+                    modifications.push({
+                        file: originalFile.path,
+                        type: 'modified',
+                        details: modInfo,
+                        recommendation: 'preserve'
+                    });
+                }
             }
+        }
 
-            return {
-                file,
-                type,
-                details: info,
-                recommendation
-            };
-        });
-
-        const totalFiles = modifications.size;
-        const summary = this.generateSummaryText(totalFiles, intactFiles, modifiedFiles, deletedFiles, corruptedFiles);
+        const totalFiles = files.length;
+        let summary = `Integrity check completed: ${totalFiles} files tracked.`;
+        if (intactFiles > 0) {summary += ` ${intactFiles} intact,`;}
+        if (modifiedFiles > 0) {summary += ` ${modifiedFiles} modified,`;}
+        if (deletedFiles > 0) {summary += ` ${deletedFiles} deleted,`;}
+        if (corruptedFiles > 0) {summary += ` ${corruptedFiles} corrupted.`;}
 
         return {
             totalFiles,
@@ -224,62 +206,101 @@ export class FileIntegrityService {
             deletedFiles,
             corruptedFiles,
             intactFiles,
-            modifications: reportModifications,
+            modifications,
             summary,
             generatedAt: new Date().toISOString()
         };
     }
 
     /**
-     * Calculate file hashes efficiently in a single pass
+     * Quick integrity verification using fast hash comparison
+     * Uses BLAKE2b instead of xxhash for better portability
      */
-    private async calculateFileHashes(filePath: string): Promise<{sha256: string, xxhash64: string}> {
-        const sha256Hash = crypto.createHash('sha256');
-        
-        const stream = fs.createReadStream(filePath, { 
-            highWaterMark: FileIntegrityService.CHUNK_SIZE 
-        });
+    async quickVerifyFile(filePath: string, expectedSha256: string, expectedBlake2b?: string): Promise<boolean> {
+        try {
+            const buffer = await fs.promises.readFile(filePath);
+            
+            // Primary verification with SHA256
+            const currentSha256 = crypto.createHash('sha256').update(buffer).digest('hex');
+            if (currentSha256 !== expectedSha256) {
+                return false;
+            }
 
-        let xxhashBuffer = Buffer.alloc(0);
+            // Secondary verification with BLAKE2b if provided (replaces xxhash)
+            if (expectedBlake2b) {
+                const currentBlake2b = crypto.createHash('blake2b512').update(buffer).digest('hex').substring(0, 64);
+                if (currentBlake2b !== expectedBlake2b) {
+                    return false;
+                }
+            }
 
-        for await (const chunk of stream) {
-            sha256Hash.update(chunk);
-            xxhashBuffer = Buffer.concat([xxhashBuffer, chunk]);
+            return true;
+        } catch (error) {
+            return false;
         }
-
-        const xxhash64Value = xxh64(xxhashBuffer);
-
-        return {
-            sha256: sha256Hash.digest('hex'),
-            xxhash64: xxhash64Value.toString(16)
-        };
     }
 
     /**
-     * Generate human-readable summary text
+     * Find files in directory matching optional patterns
      */
-    private generateSummaryText(total: number, intact: number, modified: number, deleted: number, corrupted: number): string {
-        const parts = [];
-        
-        parts.push(`${total} total files tracked`);
-        
-        if (intact > 0) {
-            parts.push(`${intact} intact files (safe to remove)`);
-        }
-        
-        if (modified > 0) {
-            parts.push(`${modified} user-modified files (recommend preserving)`);
-        }
-        
-        if (deleted > 0) {
-            parts.push(`${deleted} files already deleted`);
-        }
-        
-        if (corrupted > 0) {
-            parts.push(`${corrupted} corrupted files (recommend restoring or removing)`);
+    async findFiles(directoryPath: string, patterns?: string[]): Promise<string[]> {
+        const glob = require('glob');
+        const files: string[] = [];
+
+        if (patterns && patterns.length > 0) {
+            for (const pattern of patterns) {
+                const matches = await glob.glob(pattern, { cwd: directoryPath, absolute: true });
+                files.push(...matches);
+            }
+        } else {
+            const matches = await glob.glob('**/*', { 
+                cwd: directoryPath, 
+                absolute: true, 
+                nodir: true 
+            });
+            files.push(...matches);
         }
 
-        return parts.join(', ') + '.';
+        return [...new Set(files)].sort();
+    }
+
+    /**
+     * Calculate directory summary statistics
+     */
+    async calculateDirectoryStats(directoryPath: string): Promise<{
+        totalFiles: number;
+        totalSize: number;
+        largestFile: string;
+        largestFileSize: number;
+        averageFileSize: number;
+    }> {
+        const files = await this.findFiles(directoryPath);
+        let totalSize = 0;
+        let largestFile = '';
+        let largestFileSize = 0;
+
+        for (const filePath of files) {
+            try {
+                const stats = await fs.promises.stat(filePath);
+                totalSize += stats.size;
+                
+                if (stats.size > largestFileSize) {
+                    largestFileSize = stats.size;
+                    largestFile = filePath;
+                }
+            } catch (error) {
+                // Skip files that can't be accessed
+                continue;
+            }
+        }
+
+        return {
+            totalFiles: files.length,
+            totalSize,
+            largestFile,
+            largestFileSize,
+            averageFileSize: files.length > 0 ? Math.round(totalSize / files.length) : 0
+        };
     }
 }
 
@@ -288,29 +309,29 @@ export class FileIntegrityService {
  */
 class Semaphore {
     private permits: number;
-    private waitQueue: Array<() => void> = [];
+    private waiting: Array<() => void> = [];
 
     constructor(permits: number) {
         this.permits = permits;
     }
 
     async acquire(): Promise<void> {
-        if (this.permits > 0) {
-            this.permits--;
-            return Promise.resolve();
-        }
-
         return new Promise<void>((resolve) => {
-            this.waitQueue.push(resolve);
+            if (this.permits > 0) {
+                this.permits--;
+                resolve();
+            } else {
+                this.waiting.push(resolve);
+            }
         });
     }
 
     release(): void {
-        this.permits++;
-        const next = this.waitQueue.shift();
-        if (next) {
-            this.permits--;
-            next();
+        if (this.waiting.length > 0) {
+            const resolve = this.waiting.shift()!;
+            resolve();
+        } else {
+            this.permits++;
         }
     }
 }

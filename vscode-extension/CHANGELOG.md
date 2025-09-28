@@ -1,108 +1,81 @@
 # Changelog
 
-All notable changes to the OLAF VSCode Extension will be documented in this file.
+All notable changes to the OLAF VS Code extension will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [0.0.4] - 2024-09-28
 
-## [Unreleased]
-
-### Added
-- **Private Repository Support**: Full authentication support for private GitHub repositories
-- **Repository Configuration**: Configurable GitHub organization and repository names
-- **Bearer Token Authentication**: Support for GitHub personal access tokens generated with `gh auth token`
-- **Repository Access Validation**: New command `OLAF: Validate Repository Access` for testing authentication and connectivity
-- **Enhanced Security**: Secure token handling with proper authorization headers
-- **Detailed Diagnostics**: Comprehensive validation reporting with troubleshooting recommendations
+### Fixed
+- **CRITICAL**: Fixed file inventory not being recorded during enhanced installation
+- Enhanced installation now properly tracks all installed files for uninstallation
+- File integrity verification now uses actual installed files instead of empty array
+- Improved `getInstalledFilesList()` method with proper file discovery and metadata reading
+- Added fallback directory scanning for file discovery when metadata is unavailable
 
 ### Enhanced
-- **GitHub Service**: Updated to support configurable repositories and authentication
-- **Configuration Options**: Added settings for repository owner, name, token, and private mode
-- **Error Handling**: Improved error messages for authentication and access issues
-- **Documentation**: Comprehensive authentication setup and troubleshooting guide
-
-### Technical
-- **Authentication Tests**: New test suite for private repository functionality
-- **Configuration Validation**: Runtime validation of repository access and token permissions
-- **Token Security**: Bearer token authentication following GitHub API best practices
-
-## [0.1.0] - 2024-12-19
-
-### Added
-- Initial release of OLAF VSCode Extension
-- Multi-platform support for VSCode, Windsurf, Cursor, and Kiro
-- Comprehensive platform detection with multiple detection methods
-- GitHub API integration for release management and downloads
-- Installation management with ZIP extraction and multi-scope support
-- Automatic update checking and installation
-- Status bar integration with real-time status display
-- Command palette integration with three main commands:
-  - `OLAF: Install` - Install OLAF components
-  - `OLAF: Update` - Update OLAF components  
-  - `OLAF: Status` - Show installation status
-- Progress tracking for downloads and installations
-- Comprehensive logging with multiple levels
-- User notifications and error handling
-- Configuration options for auto-updates and GitHub tokens
-- Network utilities for connectivity checking and file downloads
-- File utilities for cross-platform file operations
-- Unit tests for core components
-- GitHub Actions workflow for automated publishing
-- Complete TypeScript implementation with strict type checking
-- ESLint configuration for code quality
-- Webpack bundling for optimized distribution
-
-### Features
-- **Platform Detection**: Automatically detects your IDE platform using:
-  - Executable path analysis
-  - Environment variable detection
-  - Process information analysis
-  - Configuration file inspection
-  - VSCode API information
-- **Installation Scopes**: Support for multiple installation scopes:
-  - User-level installation
-  - Workspace-level installation
-  - Project-level installation
-- **Update Management**: Intelligent update system with:
-  - Automatic update checking
-  - Manual update triggers
-  - Version comparison and validation
-  - Progress tracking and user feedback
-- **GitHub Integration**: Direct integration with GitHub for:
-  - Release fetching and parsing
-  - Asset filtering by platform
-  - Download progress tracking
-  - Rate limiting support
-- **Status Monitoring**: Real-time status display showing:
-  - Current installation status
-  - Available updates
-  - Platform information
-  - Version details
+- Enhanced installation now uses `legacyResult.installedFiles` for accurate file tracking
+- Added recursive directory scanning capability for comprehensive file inventory
+- Better error handling and logging for file inventory operations
+- Metadata files (.olaf*.json) are properly excluded from inventory scans
 
 ### Technical Details
-- Built with TypeScript 4.9.4
-- Targets VSCode API 1.74.0+
-- Uses Webpack 5 for bundling
-- Includes comprehensive error handling
-- Supports Node.js 16.x+
-- Implements singleton patterns for services
-- Uses async/await for all asynchronous operations
-- Includes proper cleanup and disposal methods
+- Fixed empty `"files": []` array in `.olaf-enhanced-metadata.json`
+- Installation now calculates integrity for actual installed files
+- Uninstallation process can now properly identify which files to remove
+- Added `scanDirectoryFiles()` method for comprehensive file discovery
 
-### Documentation
-- Complete README with installation and usage instructions
-- API documentation for all public methods
-- Troubleshooting guide for common issues
-- Development setup instructions
-- Contributing guidelines
+## [0.0.3] - 2024-09-28
 
-## [Unreleased]
+### Fixed
+- **CRITICAL**: Fixed hardcoded system paths causing permission errors during installation
+- Installation no longer requires root privileges or access to `/usr/local/share/`
+- Added missing `InstallationScope.PROJECT` case in path resolution
+- All installation scopes now use user-accessible directories:
+  - USER: `~/.olaf`
+  - WORKSPACE: `<workspace>/.olaf`
+  - PROJECT: `<project>/.olaf` (fallback to `~/.olaf` if no workspace)
+  - Default fallback: `~/.olaf` instead of system directory
 
-### Planned
-- Support for additional IDE platforms
-- Enhanced configuration options
-- Plugin marketplace integration
-- Improved error reporting
-- Performance optimizations
-- Additional test coverage
-- Documentation improvements
+### Changed
+- Installation path logic now properly handles all defined scopes
+- Improved error handling for workspace-less environments
+
+## [0.0.2] - 2024-09-28
+
+### Fixed
+- **CRITICAL**: Replaced native dependency @node-rs/xxhash with Node.js built-in crypto module
+- Fixed runtime errors: "Error: Could not load the bindings file"
+- Eliminated all native binary dependencies for better cross-platform compatibility
+- VSIX size optimized from 600KB to 153KB (79% reduction)
+
+### Changed
+- File integrity verification now uses BLAKE2b-256 + SHA-256 dual hashing
+- Removed @node-rs/xxhash and related native dependencies
+- Updated webpack configuration to exclude native modules
+
+### Added
+- Comprehensive native dependency audit and removal
+- Portable hashing solution using Node.js crypto APIs
+- Enhanced cross-platform compatibility
+
+## [0.0.1] - 2024-09-27
+
+### Added
+- Phase 3 Smart Uninstallation with intelligent file categorization
+- Enhanced integrity verification with dual hash (BLAKE2b + SHA256)
+- User choice dialogs for modified files during uninstallation
+- Automatic backup functionality for user-modified files
+- Comprehensive file modification detection
+- Smart categorization: intact, modified, user-created, deleted
+- Advanced uninstall policies with customizable preservation rules
+
+### Enhanced
+- Installation Manager with enhanced metadata tracking
+- File Integrity Service with comprehensive verification
+- Comprehensive test coverage for all new functionality
+- Error handling and logging improvements
+
+### Fixed
+- All ESLint warnings and code quality issues
+- Webpack configuration for optimized bundling
+- Test execution and coverage reporting
+- Package structure and dependency management

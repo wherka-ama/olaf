@@ -65,6 +65,9 @@ export interface VerificationPolicy {
     /** Preserve user-modified files during uninstallation */
     preserveModified?: boolean;
     
+    /** Preserve user-created files during uninstallation */
+    preserveUserCreated?: boolean;
+    
     /** Report modifications to user */
     reportModifications?: boolean;
 
@@ -97,6 +100,7 @@ export interface EnhancedInstallationMetadata {
     platform: string;
     scope: string;
     installedAt: string;
+    osplatform?: string; // OS platform: windows/macos/linux/unknown
     
     // Enhanced bundle information
     bundleInfo: {

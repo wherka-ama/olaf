@@ -220,6 +220,7 @@
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/adm-zip": "^0.5.7",
+    "@types/fs-extra": "^11.0.4",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
     "@types/vscode": "^1.74.0",
@@ -230,6 +231,7 @@
     "@vscode/vsce": "^2.15.0",
     "adm-zip": "^0.5.16",
     "eslint": "^8.28.0",
+    "fs-extra": "^11.3.2",
     "mocha": "^10.1.0",
     "nock": "^14.0.10",
     "nyc": "^17.1.0",
@@ -240,11 +242,8 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@node-rs/xxhash": "^1.7.6",
-    "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "axios": "^1.6.0",
-    "fs-extra": "^11.3.2",
     "glob": "^11.0.3",
     "semver": "^7.5.4",
     "yauzl": "^2.10.0"
