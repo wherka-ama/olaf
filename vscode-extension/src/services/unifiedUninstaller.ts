@@ -192,10 +192,11 @@ export class UnifiedUninstaller {
         };
 
         if (!metadata) {
-            // If no metadata, scan directory and treat all as user-created files for smart uninstall to preserve
-            const files = await this.scanDirectory(targetDir);
-            categories.userCreated = files.map(f => ({ ...f, category: 'userCreated' as const }));
-            return categories;
+            // CRITICAL SAFETY: Never scan arbitrary directories without metadata!
+            // This prevents catastrophic deletion of entire workspaces including .git
+            throw new Error('SAFETY ERROR: Cannot uninstall without installation metadata. ' +
+                          'This prevents accidental deletion of non-OLAF files. ' + 
+                          'Installation metadata is required to identify which files were actually installed by OLAF.');
         }
 
         // Categorize based on metadata
