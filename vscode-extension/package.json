@@ -90,6 +90,11 @@
         "command": "olaf.uninstallAll",
         "title": "Uninstall All OLAF Components",
         "category": "OLAF"
+      },
+      {
+        "command": "olaf.enhancedInstall",
+        "title": "Enhanced Install with Integrity Verification",
+        "category": "OLAF"
       }
     ],
     "menus": {
