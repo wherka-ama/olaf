@@ -7,6 +7,7 @@ import { StatusCommand } from './commands/statusCommand';
 import { ValidateAccessCommand } from './commands/validateAccessCommand';
 import { UninstallCommand } from './commands/uninstallCommand';
 import { EnhancedInstallCommand } from './commands/enhancedInstallCommand';
+import { EnhancedUninstallCommand } from './commands/enhancedUninstallCommand';
 import { StatusBar } from './ui/statusBar';
 import { Notifications } from './ui/notifications';
 import { UpdateManager } from './services/updateManager';
@@ -99,6 +100,7 @@ export class OlafExtension {
         const validateAccessCommand = new ValidateAccessCommand();
         const uninstallCommand = new UninstallCommand(this.installationManager, this.logger);
         const enhancedInstallCommand = new EnhancedInstallCommand();
+        const enhancedUninstallCommand = new EnhancedUninstallCommand();
 
         // Register command handlers
         const commands = [
@@ -113,6 +115,7 @@ export class OlafExtension {
             vscode.commands.registerCommand('olaf.validateAccess', () => validateAccessCommand.execute()),
             vscode.commands.registerCommand('olaf.uninstallAll', () => uninstallCommand.executeUninstallAll()),
             vscode.commands.registerCommand('olaf.enhancedInstall', () => enhancedInstallCommand.execute()),
+            vscode.commands.registerCommand('olaf.enhancedUninstall', () => enhancedUninstallCommand.execute()),
         ];
 
         // Add to disposables

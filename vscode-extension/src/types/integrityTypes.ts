@@ -1,3 +1,4 @@
+import { InstallationScope } from "./platform";
 /**
  * Enhanced metadata types for file integrity verification and modification detection
  */
@@ -59,13 +60,32 @@ export interface ModificationInfo {
  */
 export interface VerificationPolicy {
     /** Automatically verify integrity during operations */
-    autoVerify: boolean;
+    autoVerify?: boolean;
     
     /** Preserve user-modified files during uninstallation */
-    preserveModified: boolean;
+    preserveModified?: boolean;
     
     /** Report modifications to user */
-    reportModifications: boolean;
+    reportModifications?: boolean;
+
+    // Phase 3: Smart Uninstallation policies
+    /** Enable strict mode for enhanced validation */
+    strictMode?: boolean;
+    
+    /** How to handle modified files: 'preserve', 'remove', 'ask' */
+    handleModified?: 'preserve' | 'remove' | 'ask';
+    
+    /** How to handle missing files: 'ignore', 'report', 'error' */
+    handleMissing?: 'ignore' | 'report' | 'error';
+    
+    /** How to handle corrupted files: 'remove', 'preserve', 'ask' */
+    handleCorrupted?: 'remove' | 'preserve' | 'ask';
+    
+    /** Create backup of modified files before removing */
+    backupModified?: boolean;
+    
+    /** Backup directory path for modified files */
+    backupPath?: string;
 }
 
 /**
@@ -237,6 +257,35 @@ export interface InstallationResult {
     /** Whether rollback is available */
     rollbackAvailable: boolean;
     
-    /** Any warnings or issues encountered */
     warnings?: string[];
+}
+
+// Remove duplicate InstallationScope interface and fix UninstallPreview
+// Use the existing InstallationScope enum from platform.ts
+
+// Phase 3: Smart Uninstallation Types
+export interface ScopeInfo {
+    name: string;
+    path: string;
+    type: 'global' | 'workspace' | 'project';
+}
+
+export interface InstallationAnalysis {
+    scopes: ScopeInfo[];
+    totalFiles: number;
+    modifiedFiles: string[];
+    userCreatedFiles?: string[];
+    estimatedSize?: number;
+    fileList?: string[];
+    modifiedFileList?: string[];
+    userCreatedFileList?: string[];
+}
+
+export type UninstallChoice = 'complete' | 'smart' | 'custom' | 'cancel';
+
+export interface UninstallPreview {
+    analysis: InstallationAnalysis;
+    scope: string;
+    recommendedAction: UninstallChoice;
+    message?: string;
 }

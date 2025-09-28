@@ -95,6 +95,11 @@
         "command": "olaf.enhancedInstall",
         "title": "Enhanced Install with Integrity Verification",
         "category": "OLAF"
+      },
+      {
+        "command": "olaf.enhancedUninstall",
+        "title": "Enhanced Uninstall with Smart File Handling",
+        "category": "OLAF"
       }
     ],
     "menus": {
@@ -205,9 +210,15 @@
     "test": "npm run test:integration",
     "test:unit": "mocha --require ./test/mocha.setup.js --require ./test/unit.setup.js test-dist/src/test/suite/*.test.js --ignore test-dist/src/test/suite/integration.test.js",
     "test:integration": "npm run compile-tests && node ./test/runExtensionTests.js",
-    "test:all": "npm run test:unit && npm run test:integration"
+    "test:all": "npm run test:unit && npm run test:integration",
+    "test:coverage": "nyc npm run test",
+    "test:coverage:report": "nyc report --reporter=html --reporter=text --reporter=json",
+    "test:coverage:unit": "nyc --reporter=html --reporter=text npm run test:unit",
+    "test:coverage:integration": "nyc --reporter=html --reporter=text npm run test:integration",
+    "coverage:clean": "rimraf coverage .nyc_output"
   },
   "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/adm-zip": "^0.5.7",
     "@types/mocha": "^10.0.1",
     "@types/node": "16.x",
@@ -221,6 +232,8 @@
     "eslint": "^8.28.0",
     "mocha": "^10.1.0",
     "nock": "^14.0.10",
+    "nyc": "^17.1.0",
+    "rimraf": "^6.0.1",
     "ts-loader": "^9.4.1",
     "typescript": "^4.9.4",
     "webpack": "^5.76.0",
@@ -228,11 +241,38 @@
   },
   "dependencies": {
     "@node-rs/xxhash": "^1.7.6",
+    "@types/fs-extra": "^11.0.4",
     "@types/glob": "^8.1.0",
     "axios": "^1.6.0",
+    "fs-extra": "^11.3.2",
     "glob": "^11.0.3",
     "semver": "^7.5.4",
     "yauzl": "^2.10.0"
   },
-  "extensionDependencies": []
+  "extensionDependencies": [],
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.d.ts",
+      "src/**/*.test.ts",
+      "**/*.d.ts",
+      "test/**/*",
+      "coverage/**/*",
+      "dist/**/*",
+      "out/**/*",
+      "node_modules/**/*"
+    ],
+    "reporter": [
+      "text",
+      "html",
+      "json",
+      "lcov"
+    ],
+    "report-dir": "coverage",
+    "temp-dir": ".nyc_output"
+  }
 }

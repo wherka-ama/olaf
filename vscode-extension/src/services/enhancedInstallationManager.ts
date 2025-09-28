@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
+import * as os from 'os';
 import * as path from 'path';
 import { GitHubAsset } from "../types/github";
 import { Platform, InstallationScope } from '../types/platform';
@@ -251,7 +252,7 @@ export class EnhancedInstallationManager {
     private getInstallationPath(scope: InstallationScope): string {
         switch (scope) {
             case InstallationScope.USER:
-                return path.join(require('os').homedir(), '.olaf');
+                return path.join(os.homedir(), '.olaf');
             case InstallationScope.WORKSPACE:
                 return path.join(vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || '', '.olaf');
             default:
@@ -350,33 +351,85 @@ export class EnhancedInstallationManager {
     ): Promise<number> {
         let removedCount = 0;
 
-        // Remove intact files
+        // Create backup directory if backup is requested
+        let backupDir: string | undefined;
+        if (policy?.backupModified && modifiedFiles.length > 0) {
+            backupDir = await this.createBackupDirectory(policy.backupPath);
+            this.logger.info(`Created backup directory: ${backupDir}`);
+        }
+
+        // Remove intact files first
         for (const intactFile of intactFiles) {
             try {
                 if (fs.existsSync(intactFile.path)) {
                     fs.unlinkSync(intactFile.path);
                     removedCount++;
+                    this.logger.info(`Removed intact file: ${intactFile.path}`);
                 }
             } catch (error) {
-                this.logger.warn(`Failed to delete file ${intactFile.path}:`, error);
+                this.logger.warn(`Failed to delete intact file ${intactFile.path}:`, error);
             }
         }
 
         // Handle modified files based on policy
-        if (policy && !policy.preserveModified) {
+        if (policy) {
             for (const modifiedFile of modifiedFiles) {
+                if (!fs.existsSync(modifiedFile)) {
+                    continue;
+                }
+
                 try {
-                    if (fs.existsSync(modifiedFile)) {
+                    // Create backup if requested
+                    if (policy.backupModified && backupDir) {
+                        await this.backupFile(modifiedFile, backupDir);
+                    }
+
+                    // Remove based on handleModified policy
+                    if (policy.handleModified === 'remove' || 
+                        (policy.handleModified !== 'preserve' && !policy.preserveModified)) {
                         fs.unlinkSync(modifiedFile);
                         removedCount++;
+                        this.logger.info(`Removed modified file: ${modifiedFile}`);
+                    } else {
+                        this.logger.info(`Preserved modified file: ${modifiedFile}`);
                     }
                 } catch (error) {
-                    this.logger.warn(`Failed to delete modified file ${modifiedFile}:`, error);
+                    this.logger.warn(`Failed to process modified file ${modifiedFile}:`, error);
                 }
             }
         }
 
         return removedCount;
+    }
+
+    /**
+     * Create backup directory for modified files
+     */
+    private async createBackupDirectory(customPath?: string): Promise<string> {
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        const backupDir = customPath || path.join(os.tmpdir(), `olaf-backup-${timestamp}`);
+        
+        if (!fs.existsSync(backupDir)) {
+            fs.mkdirSync(backupDir, { recursive: true });
+        }
+        
+        return backupDir;
+    }
+
+    /**
+     * Backup a single file to backup directory
+     */
+    private async backupFile(filePath: string, backupDir: string): Promise<void> {
+        const fileName = path.basename(filePath);
+        const backupPath = path.join(backupDir, fileName);
+        
+        try {
+            fs.copyFileSync(filePath, backupPath);
+            this.logger.info(`Backed up ${fileName} to ${backupPath}`);
+        } catch (error) {
+            this.logger.warn(`Failed to backup ${filePath}:`, error);
+            throw error;
+        }
     }
 
     private async cleanupEnhancedMetadata(scope: InstallationScope): Promise<void> {
