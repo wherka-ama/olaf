@@ -313,7 +313,7 @@ export class InstallationManager {
                 await rmdir(installationPath, {recursive:true});
 
             } catch(error) {
-                this.logger.error(`It was not possible to remove the installation path: ${installationPath}`, error as Error)
+                this.logger.error(`It was not possible to remove the installation path: ${installationPath}`, error as Error);
             }
 
 
