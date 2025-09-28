@@ -68,6 +68,7 @@ To remove a competency:
   [["autonomous research", "free research", "comprehensive research", "conduct research"], "researcher/autonomous-comprehensive-research.md", "Act"],
  [["research and report", "controlled research", "supervised research", "step by step research"], "researcher/research-and-report.md", "Propose-Confirm-Act"],
   [["tech spec from code", "spec from code"], "developer/generate-tech-spec-from-code.md", "Act"],
+[["release notes", "generate release notes", "professional release notes", "create release notes"], "project-manager/generate-professional-release-notes.md", "Act"],
 
   [["bootstrap functional spec", "func spec from code"], "business-analyst/bootstrap-functional-spec-from-code.md", "Act"],
   [["user story", "story review"], "business-analyst/review-user-story.md", "Act"],

@@ -50,12 +50,13 @@ To remove a competency:
   [["analyze changelog", "summarize changes"], "project-manager/analyze-changelog-and-report.md", "Act"],
   [["person record", "add team member"], "project-manager/create-person-record.md", "Act"],
   [["generate commits", "commits from changelog"], "project-manager/generate-commits-from-changelog.md", "Act"],
+  [["release notes", "generate release notes", "professional release notes", "create release notes"], "project-manager/generate-professional-release-notes.md", "Act"],
+
   [["review code", "check code", "code review", "examine code"], "developer/review-code.md", "Act"],
   [["review modified", "modified files", "review changes"], "developer/review-modified-files.md", "Act"],
   [["review pr", "pull request", "check pr"], "developer/review-github-pr.md", "Act"],
   [["accessibility review", "accessibility check", "wcag review", "accessibility compliance"], "developer/review-code-accessibility.md", "Act"],
   [["analyze function", "function analysis", "function complexity", "analyze function complexity"], "developer/analyze-function-complexity.md", "Act"],
-  [["improve complexity", "refactor complex", "cyclomatic"], "developer/improve-cyclomatic-complexity.md", "Act"],
   [["evolve code", "iterative development"], "developer/evolve-code-iteratively.md", "Act"],
   [["augment unit tests", "augment code unit test", "unit test augmentation", "improve test coverage iteratively"], "developer/augment-code-unit-test.md", "Act"],
 
