@@ -49,10 +49,23 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/contributor_analyzer.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/contributor_analyzer.py" "{workspace_path}" -m {analysis_period_months} -o "{output_location}/script-contributor-analysis.md" -v`
-- Read and parse the generated script output file
-- Extract key metrics: contributor statistics, bus factor, file ownership patterns
-- Parse risk assessment, commit patterns, and mitigation recommendations from script output
-- Integrate script data into comprehensive contributor analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-contributor-analysis.md`
+- **Extract structured data from script output**:
+  - Executive Summary: Commit distribution, bus factor, file ownership, risk assessment overview
+  - Contributor Statistics: Total commits, human vs automated commits, unique contributors, bus factor
+  - Top Human Contributors table: Rank, contributor names, commit counts, percentages, emails, risk levels
+  - Bus Factor Analysis: Critical contributors representing 50% of commits with detailed breakdown
+  - Automated Contributors table: Bot/service names, commit counts, purposes (CI/CD, Dependencies, Deployment)
+  - File Ownership Analysis: High ownership concentration files with primary owners and percentages
+  - Risk Assessment: Overall risk level, risk factors, recommendations, files requiring attention
+  - Commit Pattern Analysis: Activity patterns for top contributors with timing and frequency data
+- **Parse specific data points**:
+  - Bus factor number and critical contributor identification
+  - Risk level assessment (LOW/MEDIUM/HIGH/CRITICAL) with specific recommendations
+  - File ownership concentration patterns and single-owner file identification
+  - Contributor risk levels and commit distribution percentages
+  - Automated vs human contribution ratios and bot detection results
+- **Data Integration**: Combine parsed script metrics with additional manual analysis insights
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
@@ -71,28 +84,33 @@ You WILL verify all requirements:
 
 **Core Logic**: Execute following protocol requirements
 - Apply Act protocol for contributor analysis execution
-- Execute Python script and parse its output data
-- Read script-generated metrics: contributor statistics, bus factor, ownership patterns
-- Extract risk assessment, commit patterns, and succession planning data from script output
-- Combine script data with manual analysis for comprehensive contributor assessment
-- Document contributor analysis and risk mitigation using both data sources
-- Generate final contributor report integrating all collected data
+- Execute Python script as primary method for comprehensive analysis
+- If script succeeds, parse and integrate all structured data from output file
+- If script fails, perform manual analysis using fallback methods
+- Combine all data sources for comprehensive contributor assessment
+- Generate final analysis report with bus factor, risk assessment, and succession planning recommendations
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-contributor-analysis.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and sections from script output are included in final analysis
 - Confirm contributor impact analysis covers all critical areas
 - Verify bus factor calculations are accurate and actionable
 - Validate risk mitigation recommendations are comprehensive
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `analyze-critical-contributor-impact.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Top contributor statistics with commit counts and risk levels
-  - Bus factor analysis with critical contributor identification
-  - File ownership patterns with concentration risks
-  - Risk assessment with specific mitigation recommendations
-  - Commit pattern analysis with activity trends
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Executive Summary**: Include commit distribution, bus factor, file ownership, and risk assessment overview
+  - **Contributor Statistics**: Include total commits, human vs automated commits, unique contributors, and bus factor
+  - **Top Human Contributors**: Include complete table with rank, names, commit counts, percentages, emails, and risk levels
+  - **Bus Factor Analysis**: Include critical contributors representing 50% of commits with detailed breakdown
+  - **Automated Contributors**: Include bot/service table with names, commit counts, and purposes
+  - **File Ownership Analysis**: Include high ownership concentration files with primary owners and percentages
+  - **Risk Assessment**: Include overall risk level, risk factors, recommendations, and files requiring attention
+  - **Commit Pattern Analysis**: Include activity patterns for top contributors with timing and frequency data
 - Supporting files: Contributor impact matrix and knowledge distribution charts
 - Documentation: Structured markdown combining script data with manual analysis insights
 

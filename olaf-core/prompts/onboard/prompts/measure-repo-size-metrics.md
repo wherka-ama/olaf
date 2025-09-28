@@ -50,10 +50,21 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/repo_size_metrics_calculator.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/repo_size_metrics_calculator.py" "{workspace_path}" -o "{output_location}/script-size-metrics.md"`
-- Read and parse the generated script output file
-- Extract key metrics: total size, file counts, LOC statistics, Git repository metrics
-- Parse file category breakdowns, largest files data, and binary file analysis
-- Integrate script data into comprehensive size analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-size-metrics.md`
+- **Extract structured data from script output**:
+  - Overview Summary table: Repository size, Git directory size, file count, LOC, averages
+  - File Category Breakdown table: Categories, file counts, percentages, sizes, lines, avg size per file
+  - Git Repository Statistics table: Git directory size, commits, branches, tags, remotes
+  - Largest Files table: Top 20 files with paths, sizes, types, line counts
+  - Code Density Analysis table: File types with total lines, file counts, avg/max lines per file
+  - Repository Size Assessment: Size category, assessment, recommendations, next steps
+- **Parse specific data points**:
+  - Total repository size (including and excluding .git directory)
+  - File category distribution with size and line count breakdowns
+  - Git repository metrics (commits, branches, tags, remotes)
+  - Largest files identification with exact paths and sizes
+  - Size optimization recommendations and large file detection
+- **Data Integration**: Combine parsed script metrics with additional manual analysis insights
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
@@ -66,34 +77,37 @@ You WILL verify all requirements:
 - Document large file impact on repository size
 
 **Git Repository Metrics**:
-- Execute command: `git count-objects -vH` in each repository
-- Measure .git directory size and object count
-- Analyze repository history impact on size
+- Analyze .git directory size and repository statistics
+- Count commits, branches, tags, and remotes
+- Assess repository history impact on total size
 
 **Core Logic**: Execute following protocol requirements
 - Apply Act protocol for metrics calculation
-- Execute Python script and parse its output data
-- Read script-generated metrics: repository size tables, file category breakdowns, Git statistics
-- Extract largest files data, binary file analysis, and LOC statistics from script output
-- Combine script data with manual analysis for comprehensive size assessment
-- Document size distribution patterns using both data sources
-- Generate final metrics report integrating all collected data
+- Execute Python script as primary method for comprehensive analysis
+- If script succeeds, parse and integrate all structured data from output file
+- If script fails, perform manual analysis using fallback methods
+- Combine all data sources for comprehensive size assessment
+- Generate final metrics report with size analysis, file breakdowns, and optimization recommendations
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-size-metrics.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and sections from script output are included in final analysis
 - Confirm all metrics calculated accurately
 - Verify size calculations include all repository components
 - Validate baseline metrics are comprehensive
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `measure-repo-size-metrics.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Repository size overview tables with total sizes and file counts
-  - File category breakdowns with percentages and sizes
-  - Git repository statistics (commits, branches, tags)
-  - Largest files analysis with binary file identification
-  - LOC statistics and average file metrics
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Overview Summary**: Include complete table with repository size, Git directory size, file count, LOC, and averages
+  - **File Category Breakdown**: Include complete table with categories, file counts, percentages, sizes, lines, and avg size per file
+  - **Git Repository Statistics**: Include Git directory size, commit count, branches, tags, and remotes
+  - **Largest Files**: Include top 20 files table with paths, sizes, types, and line counts
+  - **Code Density Analysis**: Include file types with total lines, file counts, avg/max lines per file
+  - **Repository Size Assessment**: Include size category, assessment, recommendations, and next steps from script output
 - Supporting files: Size metrics charts and distribution analysis
 - Documentation: Structured markdown combining script data with manual analysis insights
 

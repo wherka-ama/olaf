@@ -53,10 +53,19 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/complexity_analyzer.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/complexity_analyzer.py" "{workspace_path}" -o "{output_location}/script-complexity-analysis.md" -t {complexity_threshold}`
-- Read and parse the generated script output file
-- Extract key metrics: complexity statistics, function-level analysis, complexity distribution
-- Parse most complex functions data, maintainability assessments, and risk categorizations
-- Integrate script data into comprehensive complexity analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-complexity-analysis.md`
+- **Extract structured data from script output**:
+  - Summary Statistics: Average complexity, maximum complexity, functions exceeding threshold
+  - Complexity Distribution table: Function counts and percentages by complexity ranges (Low 1-5, Moderate 6-10, High 11-20, Very High 21-50, Extremely High 50+)
+  - Most Complex Functions table: File paths, function names, line numbers, complexity scores, density metrics
+  - Functions Exceeding Threshold table: All functions with CC > threshold for refactoring prioritization
+  - Recommendations section: Refactoring guidance and risk categorizations
+- **Parse specific data points**:
+  - Files analyzed count and total functions analyzed
+  - Percentage of functions exceeding complexity threshold
+  - Top 20 most complex functions with exact file locations and line numbers
+  - All functions requiring immediate refactoring attention
+- **Data Integration**: Combine script metrics with manual analysis insights for comprehensive assessment
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
@@ -74,30 +83,26 @@ You WILL verify all requirements:
 - Assess code maintainability at file and repository levels
 - Identify areas requiring refactoring attention
 
-**Core Logic**: Execute following protocol requirements
-- Apply Act protocol for complexity analysis execution
-- Execute Python script and parse its output data
-- Read script-generated metrics: complexity statistics, function analysis, distribution tables
-- Extract most complex functions data, maintainability assessments, and risk categorizations from script output
-- Combine script data with manual analysis for comprehensive complexity assessment
-- Identify high-complexity areas using both data sources
-- Generate final complexity report integrating all collected data
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-complexity-analysis.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and statistics from script output are included in final analysis
 - Confirm complexity calculations are accurate
 - Verify high-complexity area identification is complete
 - Validate maintainability index calculations are consistent
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `analyze-cyclomatic-complexity-metrics.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Complexity statistics tables (average, maximum, distribution)
-  - Most complex functions analysis with file locations and line numbers
-  - Complexity distribution tables by range categories
-  - Function-level analysis with complexity scores and density metrics
-  - Maintainability assessments and refactoring recommendations
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Summary Statistics**: Include exact values for average complexity, maximum complexity, and percentage of functions exceeding threshold
+  - **Complexity Distribution**: Copy the complete table showing function counts and percentages for each complexity range (Low 1-5, Moderate 6-10, High 11-20, Very High 21-50, Extremely High 50+)
+  - **Most Complex Functions**: Include the complete table of top 20 functions with file paths, function names, line numbers, complexity scores, and density metrics
+  - **Functions Exceeding Threshold**: List all functions requiring refactoring with their exact file locations and complexity scores
+  - **Script Recommendations**: Incorporate the refactoring guidance and risk categorizations from the script output
+  - **Files Analyzed Count**: Include total number of files and functions analyzed by the script
 - Supporting files: Complexity distribution charts and high-complexity hotspot reports
 - Documentation: Structured markdown combining script data with manual analysis insights
 

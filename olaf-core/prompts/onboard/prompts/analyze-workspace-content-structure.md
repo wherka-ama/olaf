@@ -44,50 +44,57 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/workspace_content_analyzer.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/workspace_content_analyzer.py" "{workspace_path}" -o "{output_location}/script-workspace-structure.md"`
-- Read and parse the generated script output file
-- Extract key metrics: repository structure, dependency mappings, monorepo classification
-- Parse workspace organization, file counts, and relationship data from script output
-- Integrate script data into comprehensive workspace analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-workspace-structure.md`
+- **Extract structured data from script output**:
+  - Repository Overview table: Repository names, types, paths, sizes (MB), last modified dates
+  - Workspace Structure Analysis: Total repositories count, total size, repository types breakdown
+  - Common Directory Patterns table: Directory names, frequency counts, purposes
+  - Dependency Analysis section: Repository dependencies with package lists (top 10 per repo)
+  - Recommendations section: Organization, dependency management, documentation suggestions
+- **Parse specific data points**:
+  - Total number of repositories found and their technology types (Node.js, Python, Java, etc.)
+  - Repository size distribution and workspace total size in MB
+  - Common directory patterns and their frequencies across repositories
+  - Inter-repository dependencies and shared packages
+  - Repository classification (monorepo vs multi-repo patterns)
+- **Data Integration**: Combine parsed script metrics with additional manual analysis insights
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
-- Execute command: `Get-ChildItem -Path "{workspace_path}" -Recurse -Directory | Select-Object Name, FullName, @{Name="ItemCount";Expression={(Get-ChildItem $_.FullName -Recurse).Count}}`
-- Validate directory structure discovery success
-
-**Repository Identification**:
-- Scan for `.git` directories to identify repositories
-- Analyze repository structure and relationships
-- Identify monorepo vs multi-repo patterns
-
-**Dependency Mapping**:
-- Analyze configuration files (package.json, requirements.txt, pom.xml, etc.)
-- Map inter-repository dependencies
-- Generate dependency graph
+- Scan workspace directory structure recursively
+- Identify Git repositories by looking for `.git` directories
+- Analyze repository types based on configuration files (package.json, pom.xml, requirements.txt, etc.)
+- Count files and calculate directory sizes
+- Map inter-repository dependencies through configuration analysis
+- Document workspace organization patterns
 
 **Core Logic**: Execute following protocol requirements
-- Apply Act protocol for analysis execution
-- Execute Python script and parse its output data
-- Read script-generated metrics: workspace structure tables, repository classifications, dependency mappings
-- Extract monorepo indicators, file organization patterns, and relationship data from script output
-- Combine script data with manual analysis for comprehensive workspace assessment
-- Document workspace content and relationships using both data sources
-- Generate final workspace analysis report integrating all collected data
+- Apply Act protocol for workspace analysis execution
+- Execute Python script as primary method for comprehensive analysis
+- If script succeeds, parse and integrate all structured data from output file
+- If script fails, perform manual analysis using fallback methods
+- Combine all data sources for comprehensive workspace assessment
+- Generate final analysis report with repository structure, dependencies, and recommendations
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-workspace-structure.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and sections from script output are included in final analysis
 - Confirm all repositories identified correctly
 - Verify dependency mapping completeness
 - Validate output file structure and content
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `analyze-workspace-content-structure.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Workspace structure tables with directory organization and file counts
-  - Repository classification data (monorepo vs multi-repo indicators)
-  - Dependency mapping analysis with inter-repository relationships
-  - Technology stack detection and build system identification
-  - File organization patterns and development workflow analysis
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Repository Overview**: Include complete table with repository names, types, paths, sizes (MB), and last modified dates
+  - **Workspace Structure Analysis**: Include total repositories count, total size in MB, and repository types breakdown
+  - **Common Directory Patterns**: Copy complete table showing directory names, frequency counts, and purposes
+  - **Dependency Analysis**: Include repository dependencies with package lists (showing top 10 dependencies per repository)
+  - **Script Recommendations**: Incorporate organization, dependency management, and documentation suggestions from script output
+  - **Repository Classification**: Extract monorepo vs multi-repo patterns and technology stack distribution
 - Supporting files: Dependency graph visualization (if applicable)
 - Documentation: Structured markdown combining script data with manual analysis insights
 

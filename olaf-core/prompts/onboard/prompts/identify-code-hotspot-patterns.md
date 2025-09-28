@@ -52,10 +52,22 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/hotspot_analyzer.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/hotspot_analyzer.py" "{workspace_path}" -o "{output_location}/script-hotspot-analysis.md" -m {analysis_period_months}`
-- Read and parse the generated script output file
-- Extract key metrics: hotspot rankings, change frequency data, complexity correlations
-- Parse risk scores, modification patterns, and prioritization recommendations from script output
-- Integrate script data into comprehensive hotspot analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-hotspot-analysis.md`
+- **Extract structured data from script output**:
+  - Executive Summary: Total hotspots identified, analysis methodology, risk score explanation
+  - Top Complexity Hotspots table: File paths, change frequency, lines, conditionals, conditional density, complexity scores
+  - Analysis Statistics: Total files analyzed, average/maximum complexity scores, high-risk file counts
+  - Risk Categories table: Risk levels (Low/Medium/High/Critical) with score ranges, counts, recommendations
+  - Analysis Methodology: Change frequency calculation, conditional density metrics, complexity score formula
+  - Recommendations: Immediate actions, medium-term improvements, long-term strategy
+  - Hotspot Details: Critical files requiring immediate attention with specific metrics
+- **Parse specific data points**:
+  - Top 20 complexity hotspots with exact file paths and scores
+  - Risk categorization with score thresholds and file counts
+  - Analysis period and methodology used for calculations
+  - Specific recommendations for critical, high, medium, and low-risk files
+  - Git history analysis results and change frequency patterns
+- **Data Integration**: Combine parsed script metrics with additional manual analysis insights
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
@@ -76,28 +88,32 @@ You WILL verify all requirements:
 
 **Core Logic**: Execute following protocol requirements
 - Apply Act protocol for hotspot analysis execution
-- Execute Python script and parse its output data
-- Read script-generated metrics: hotspot rankings, change frequency tables, complexity correlations
-- Extract risk scores, modification patterns, and prioritization data from script output
-- Combine script data with manual analysis for comprehensive hotspot assessment
-- Document hotspot analysis and refactoring priorities using both data sources
-- Generate final hotspot report integrating all collected data
+- Execute Python script as primary method for comprehensive analysis
+- If script succeeds, parse and integrate all structured data from output file
+- If script fails, perform manual analysis using fallback methods
+- Combine all data sources for comprehensive hotspot assessment
+- Generate final analysis report with hotspot rankings, risk categories, and refactoring recommendations
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-hotspot-analysis.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and sections from script output are included in final analysis
 - Confirm hotspot identification covers all repositories
 - Verify modification pattern analysis provides actionable insights
 - Validate prioritization recommendations are based on data
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `identify-code-hotspot-patterns.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Top complexity hotspots tables with change frequency and risk scores
-  - Analysis statistics (total files analyzed, average complexity scores)
-  - Risk categorization data with high-risk file identification
-  - Modification pattern analysis with complexity correlations
-  - Prioritization recommendations based on combined metrics
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Executive Summary**: Include total hotspots identified, analysis methodology, and risk score explanation
+  - **Top Complexity Hotspots**: Include complete table with file paths, change frequency, lines, conditionals, conditional density, and complexity scores
+  - **Analysis Statistics**: Include total files analyzed, average/maximum complexity scores, and high-risk file counts
+  - **Risk Categories**: Include complete table with risk levels, score ranges, file counts, and recommendations
+  - **Analysis Methodology**: Include change frequency calculation, conditional density metrics, and complexity score formula
+  - **Recommendations**: Include immediate actions, medium-term improvements, and long-term strategy from script output
+  - **Hotspot Details**: Include critical files requiring immediate attention with specific metrics and remediation guidance
 - Supporting files: Hotspot heatmaps and modification pattern charts
 - Documentation: Structured markdown combining script data with manual analysis insights
 

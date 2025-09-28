@@ -50,9 +50,21 @@ You WILL verify all requirements:
 **Python Script Execution (Primary Method)**:
 - Check if `[id:tools_dir]commons/project-onboarding/language_distribution_analyzer.py` exists
 - If script exists, execute: `python "[id:tools_dir]commons/project-onboarding/language_distribution_analyzer.py" "{workspace_path}" -o "{output_location}/script-language-distribution.md"`
-- Read and parse the generated script output file
-- Extract key metrics: language percentages, file counts, LOC statistics, project type detection
-- Integrate script data into comprehensive analysis combining both script results and manual insights
+- **CRITICAL**: Read and parse the generated script output file `{output_location}/script-language-distribution.md`
+- **Extract structured data from script output**:
+  - Language Distribution Overview table: Languages, file counts, percentages, LOC, avg lines per file
+  - Project Type Detection section: Detected project types with configuration files
+  - Technology Stack Details: Detailed info for Node.js, Python, Java (versions, dependencies, scripts)
+  - Project Structure Analysis: Monorepo detection, top-level directories with file counts
+  - Language-Specific File Examples: Sample files for each detected language
+  - Summary and Recommendations: Primary/secondary languages, polyglot assessment, next steps
+- **Parse specific data points**:
+  - Total files analyzed and total lines of code across all languages
+  - Language ranking by file count and LOC percentage
+  - Project type classifications (Node.js, Python, Java/Maven, etc.) with config files
+  - Monorepo indicators and directory structure analysis
+  - Technology stack details including dependency counts and version information
+- **Data Integration**: Combine parsed script metrics with additional manual analysis insights
 - If script execution fails, fall back to manual analysis
 
 **Manual Analysis (Fallback Method)**:
@@ -71,27 +83,31 @@ You WILL verify all requirements:
 
 **Core Logic**: Execute following protocol requirements
 - Apply Act protocol for language analysis execution
-- Execute Python script and parse its output data
-- Read script-generated metrics: language distribution tables, file counts, LOC statistics
-- Extract project type detection and technology stack details from script output
-- Combine script data with manual analysis for comprehensive language assessment
-- Identify mixed-language patterns and polyglot architectures using both data sources
-- Generate final analysis report integrating all collected data
+- Execute Python script as primary method for comprehensive analysis
+- If script succeeds, parse and integrate all structured data from output file
+- If script fails, perform manual analysis using fallback methods
+- Combine all data sources for comprehensive language assessment
+- Generate final analysis report with language distribution, project types, and polyglot assessment
 
 ### 3. Validation Phase
 You WILL validate results:
+- **CRITICAL**: Confirm the script output file `{output_location}/script-language-distribution.md` was successfully read and parsed
+- **Verify data extraction**: Ensure all tables and sections from script output are included in final analysis
 - Confirm language detection accuracy across all repositories
 - Verify prevalence rankings are correctly calculated
 - Validate polyglot architecture patterns are properly identified
+- **Cross-reference**: Ensure script data matches manual analysis where applicable
 
 ## Output Format
 You WILL generate outputs following this structure:
 - Primary deliverable: `analyze-repo-language-distribution.md` in `[id:ads_dir]product/context/{repository-name}/`
-- **Data Integration Requirements**: Parse script output and incorporate:
-  - Language distribution tables with percentages and file counts
-  - Technology stack details and project type detection
-  - LOC statistics and file category breakdowns
-  - Monorepo structure analysis from script
+- **MANDATORY Data Integration Requirements**: Parse script output file and incorporate ALL structured data:
+  - **Language Distribution Overview**: Include complete table with languages, file counts, percentages, LOC, and avg lines per file
+  - **Project Type Detection**: Include detected project types with their configuration files (package.json, pom.xml, etc.)
+  - **Technology Stack Details**: Include detailed information for Node.js, Python, Java including versions, dependency counts, and scripts
+  - **Project Structure Analysis**: Include monorepo detection results and top-level directories with file counts
+  - **Language-Specific File Examples**: Include sample file paths for each detected language
+  - **Summary and Recommendations**: Include primary/secondary language identification, polyglot assessment, and next steps from script output
 - Supporting files: Language distribution charts and polyglot architecture diagrams
 - Documentation: Structured markdown combining script data with manual analysis insights
 
