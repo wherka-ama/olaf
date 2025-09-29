@@ -1,13 +1,11 @@
 import * as vscode from 'vscode';
-import { InstallCommand } from './commands/installCommand';
-import { InstallSpecificVersionCommand } from './commands/installSpecificVersionCommand';
 import { selectVersionCommand } from './commands/selectVersionCommand';
 import { UpdateCommand } from './commands/updateCommand';
 import { StatusCommand } from './commands/statusCommand';
 import { ValidateAccessCommand } from './commands/validateAccessCommand';
 import { UninstallCommand } from './commands/uninstallCommand';
-import { EnhancedInstallCommand } from './commands/enhancedInstallCommand';
 import { RefactoredUninstallCommand } from './commands/refactoredUninstallCommand';
+import { EnhancedInstallCommand } from './commands/enhancedInstallCommand';
 import { StatusBar } from './ui/statusBar';
 import { Notifications } from './ui/notifications';
 import { UpdateManager } from './services/updateManager';
@@ -93,8 +91,7 @@ export class OlafExtension {
      * Register all extension commands
      */
     private registerCommands(): void {
-        const installCommand = new InstallCommand();
-        const installSpecificVersionCommand = InstallSpecificVersionCommand.getInstance();
+
         const updateCommand = new UpdateCommand();
         const statusCommand = new StatusCommand();
         const validateAccessCommand = new ValidateAccessCommand();
@@ -104,8 +101,6 @@ export class OlafExtension {
 
         // Register command handlers
         const commands = [
-            vscode.commands.registerCommand('olaf.install', () => installCommand.execute()),
-            vscode.commands.registerCommand('olaf.installSpecificVersion', () => installSpecificVersionCommand.execute()),
             vscode.commands.registerCommand('olaf.selectVersion', () => selectVersionCommand()),
             vscode.commands.registerCommand('olaf.update', () => updateCommand.execute()),
             vscode.commands.registerCommand('olaf.checkUpdates', () => statusCommand.checkUpdates()),

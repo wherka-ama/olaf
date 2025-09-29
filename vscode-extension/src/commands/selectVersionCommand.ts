@@ -75,7 +75,7 @@ export async function selectVersionCommand(): Promise<void> {
             GitHubService.resetInstance();
             
             // Execute install command
-            await vscode.commands.executeCommand('olaf.install');
+            await vscode.commands.executeCommand('olaf.enhancedInstall');
         }
 
     } catch (error) {

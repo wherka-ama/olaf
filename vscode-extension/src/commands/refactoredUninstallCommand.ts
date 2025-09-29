@@ -70,7 +70,31 @@ export class RefactoredUninstallCommand {
             const errorMessage = error instanceof Error ? error.message : String(error);
             this.outputChannel.appendLine(`Error: ${errorMessage}`);
             this.logger.error('Uninstall failed', error as Error);
-            vscode.window.showErrorMessage(`Uninstall failed: ${errorMessage}`);
+            
+            // Check if this is a safety error about missing metadata
+            if (errorMessage.includes('SAFETY ERROR: Cannot uninstall without installation metadata')) {
+                // Provide helpful guidance for metadata-related safety errors
+                const helpMessage = 'OLAF installation metadata not found. This is a safety protection to prevent accidental deletion of non-OLAF files.\n\nThe smart uninstall feature requires installation metadata to safely identify which files belong to OLAF.';
+                const actions = ['Try Legacy Uninstall', 'Show Details', 'Cancel'];
+                
+                vscode.window.showWarningMessage(helpMessage, ...actions).then(choice => {
+                    if (choice === 'Try Legacy Uninstall') {
+                        // Offer alternative uninstall method
+                        vscode.window.showInformationMessage('Would you like to try the legacy uninstall method instead? This will use the basic uninstall approach.');
+                        vscode.commands.executeCommand('olaf.uninstall');
+                    } else if (choice === 'Show Details') {
+                        this.outputChannel.show(true);
+                    }
+                });
+                return;
+            }
+            
+            const actions = ['Show Details', 'OK'];
+            vscode.window.showErrorMessage(`Uninstall failed: ${errorMessage}`, ...actions).then(choice => {
+                if (choice === 'Show Details') {
+                    this.outputChannel.show(true);
+                }
+            });
         }
     }
 
@@ -193,13 +217,42 @@ export class RefactoredUninstallCommand {
             
             vscode.window.showInformationMessage(message, 'Show Details').then(choice => {
                 if (choice === 'Show Details') {
-                    this.outputChannel.show();
+                    // Ensure output channel is visible and focused
+                    this.outputChannel.clear();
+                    this.outputChannel.show(true); // true = preserveFocus: false (will focus the output channel)
+                    
+                    // Add a summary at the top for quick reference
+                    this.outputChannel.appendLine('='.repeat(80));
+                    this.outputChannel.appendLine('UNINSTALL DETAILS - ' + new Date().toLocaleString());
+                    this.outputChannel.appendLine('='.repeat(80));
+                    this.outputChannel.appendLine('');
                 }
             });
         } else {
             vscode.window.showErrorMessage(`Uninstall completed with ${result.errors.length} errors. See output for details.`, 'Show Details').then(choice => {
                 if (choice === 'Show Details') {
-                    this.outputChannel.show();
+                    // Ensure output channel is visible and focused
+                    this.outputChannel.clear();
+                    this.outputChannel.show(true); // true = preserveFocus: false (will focus the output channel)
+                    
+                    // Add a clear header for error details
+                    this.outputChannel.appendLine('='.repeat(80));
+                    this.outputChannel.appendLine('UNINSTALL ERROR DETAILS - ' + new Date().toLocaleString());
+                    this.outputChannel.appendLine('='.repeat(80));
+                    this.outputChannel.appendLine('');
+                    
+                    // Add detailed console logging for debugging
+                    console.error(`[${new Date().toISOString()}] ERROR in refactoredUninstallCommand:`);
+                    console.error('='.repeat(60));
+                    if (result.errors && result.errors.length > 0) {
+                        console.error(`Found ${result.errors.length} error(s):`);
+                        result.errors.forEach((error, index) => {
+                            console.error(`  ${index + 1}. ${error}`);
+                        });
+                    } else {
+                        console.error('No specific error details available');
+                    }
+                    console.error('='.repeat(60));
                 }
             });
         }

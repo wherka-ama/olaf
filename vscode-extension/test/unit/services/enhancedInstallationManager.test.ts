@@ -63,12 +63,12 @@ class MockLogger {
     error(message: string) { console.log(`ERROR: ${message}`); }
 }
 
-suite('EnhancedInstallationManager Tests', () => {
+describe('EnhancedInstallationManager Tests', () => {
     let enhancedManager: EnhancedInstallationManager;
     let tempDir: string;
     let mockBundlePath: string;
 
-    setup(async () => {
+    beforeEach(async () => {
         // Create temporary directory for test files
         tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'olaf-enhanced-test-'));
         mockBundlePath = path.join(tempDir, 'mock-bundle.zip');
@@ -88,7 +88,7 @@ suite('EnhancedInstallationManager Tests', () => {
         enhancedManager = EnhancedInstallationManager.getInstance();
     });
 
-    teardown(async () => {
+    afterEach(async () => {
         // Clean up temporary directory
         try {
             await fs.promises.rm(tempDir, { recursive: true, force: true });

@@ -31,7 +31,7 @@ export class StatusCommand {
                     'Install OLAF'
                 ).then((action) => {
                     if (action === 'Install OLAF') {
-                        vscode.commands.executeCommand('olaf.install');
+                        vscode.commands.executeCommand('olaf.enhancedInstall');
                     }
                 });
                 return;
@@ -94,7 +94,7 @@ export class StatusCommand {
                     'Install OLAF'
                 ).then((action) => {
                     if (action === 'Install OLAF') {
-                        vscode.commands.executeCommand('olaf.install');
+                        vscode.commands.executeCommand('olaf.enhancedInstall');
                     }
                 });
                 return;

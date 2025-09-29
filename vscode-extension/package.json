@@ -42,16 +42,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "olaf.install",
-        "title": "Install OLAF Components",
-        "category": "OLAF"
-      },
-      {
-        "command": "olaf.installSpecificVersion",
-        "title": "Install Specific Version",
-        "category": "OLAF"
-      },
-      {
         "command": "olaf.selectVersion",
         "title": "Select Version to Install",
         "category": "OLAF"
@@ -93,23 +83,17 @@
       },
       {
         "command": "olaf.enhancedInstall",
-        "title": "Enhanced Install with Integrity Verification",
+        "title": "Install OLAF Components",
         "category": "OLAF"
       },
       {
         "command": "olaf.enhancedUninstall",
-        "title": "Enhanced Uninstall with Smart File Handling",
+        "title": "Uninstall OLAF Components",
         "category": "OLAF"
       }
     ],
     "menus": {
       "commandPalette": [
-        {
-          "command": "olaf.install"
-        },
-        {
-          "command": "olaf.installSpecificVersion"
-        },
         {
           "command": "olaf.selectVersion"
         },

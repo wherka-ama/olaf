@@ -359,9 +359,14 @@ export class EnhancedInstallCommand {
      * Show basic installation report
      */
     private async showInstallationReport(installResult: any): Promise<void> {
-        const report = installResult.integrityReport;
-        if (report) {
-            this.logger.info(`Installation Report: ${report.totalFiles} files processed, ${report.intactFiles} intact`);
+        const integrityInfo = installResult.integrityInfo || [];
+        const totalFiles = integrityInfo.length;
+        const intactFiles = integrityInfo.filter((f: any) => f.status === 'intact').length;
+        
+        if (integrityInfo.length > 0) {
+            this.logger.info(`Installation Report: ${totalFiles} files processed, ${intactFiles} intact`);
+        } else {
+            this.logger.info('Installation completed - no integrity info available');
         }
     }
 
@@ -369,23 +374,29 @@ export class EnhancedInstallCommand {
      * Show detailed installation report
      */
     private async showDetailedReport(installResult: any): Promise<void> {
-        const report = installResult.integrityReport;
         const metadata = installResult.metadata;
+        const integrityInfo = installResult.integrityInfo || [];
+
+        // Calculate integrity summary from integrityInfo
+        const totalFiles = integrityInfo.length;
+        const intactFiles = integrityInfo.filter((f: any) => f.status === 'intact').length;
+        const modifiedFiles = integrityInfo.filter((f: any) => f.status === 'modified').length;
+        const corruptedFiles = integrityInfo.filter((f: any) => f.status === 'corrupted').length;
 
         const details = [
             '# Enhanced OLAF Installation Report',
             '',
             '## Installation Details',
-            `- **Version**: ${metadata.version}`,
-            `- **Platform**: ${metadata.platform}`, 
-            `- **Scope**: ${metadata.scope}`,
-            `- **Installation Date**: ${new Date(metadata.installedAt).toLocaleString()}`,
+            `- **Version**: ${metadata?.version || 'Unknown'}`,
+            `- **Platform**: ${metadata?.platform || 'Unknown'}`, 
+            `- **Scope**: ${metadata?.scope || 'Unknown'}`,
+            `- **Installation Date**: ${metadata?.installedAt ? new Date(metadata.installedAt).toLocaleString() : 'Unknown'}`,
             '',
             '## File Integrity Summary',
-            `- **Total Files**: ${report.totalFiles}`,
-            `- **Intact Files**: ${report.intactFiles}`,
-            `- **Modified Files**: ${report.modifiedFiles}`,
-            `- **Corrupted Files**: ${report.corruptedFiles}`,
+            `- **Total Files**: ${totalFiles}`,
+            `- **Intact Files**: ${intactFiles}`,
+            `- **Modified Files**: ${modifiedFiles}`,
+            `- **Corrupted Files**: ${corruptedFiles}`,
             '',
             '## Bundle Information',
             `- **Filename**: ${metadata.bundleInfo.filename}`,

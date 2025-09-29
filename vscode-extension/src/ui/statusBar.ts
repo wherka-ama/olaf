@@ -58,7 +58,7 @@ export class StatusBar {
             if (installedScopes.length === 0) {
                 this.statusBarItem.text = '$(cloud-download) OLAF';
                 this.statusBarItem.tooltip = 'OLAF - Not installed. Click to install.';
-                this.statusBarItem.command = 'olaf.install';
+                this.statusBarItem.command = 'olaf.enhancedInstall';
                 this.statusBarItem.backgroundColor = undefined;
                 return;
             }

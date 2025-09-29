@@ -143,7 +143,7 @@ export class Notifications {
         
         switch (action) {
             case 'Retry':
-                vscode.commands.executeCommand('olaf.install');
+                vscode.commands.executeCommand('olaf.enhancedInstall');
                 return 'retry';
             case 'Show Logs':
                 this.logger.show();
@@ -207,7 +207,7 @@ export class Notifications {
         
         switch (action) {
             case 'Install Now':
-                vscode.commands.executeCommand('olaf.install');
+                vscode.commands.executeCommand('olaf.enhancedInstall');
                 return 'install';
             case 'Learn More':
                 vscode.commands.executeCommand('olaf.showHelp');

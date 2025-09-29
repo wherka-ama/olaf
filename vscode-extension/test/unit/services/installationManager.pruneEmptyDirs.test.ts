@@ -51,13 +51,13 @@ class MockPlatformDetector {
     }
 }
 
-suite('InstallationManager.pruneEmptyDirs Test Suite', () => {
+describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
     let tempDir: string;
     let installationManager: InstallationManager;
     let mockLogger: MockLogger;
     let mockPlatformDetector: MockPlatformDetector;
 
-    setup(async () => {
+    beforeEach(async () => {
         // Create temporary directory for testing
         tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'olaf-test-'));
         
@@ -71,14 +71,14 @@ suite('InstallationManager.pruneEmptyDirs Test Suite', () => {
         (installationManager as any).platformDetector = mockPlatformDetector;
     });
 
-    teardown(async () => {
+    afterEach(async () => {
         // Clean up temporary directory
         if (fs.existsSync(tempDir)) {
             await fs.promises.rmdir(tempDir, { recursive: true });
         }
     });
 
-    suite('pruneEmptyDirs - Directory Structure Cleanup', () => {
+    describe('pruneEmptyDirs - Directory Structure Cleanup', () => {
         test('should remove empty directories after file removal', async () => {
             // Arrange - create test structure
             const installPath = path.join(tempDir, '.olaf-user');
@@ -221,7 +221,7 @@ suite('InstallationManager.pruneEmptyDirs Test Suite', () => {
         });
     });
 
-    suite('Helper Methods', () => {
+    describe('Helper Methods', () => {
         test('removeIfEmpty should work correctly', async () => {
             // This tests the private method indirectly through the public interface
             // by setting up scenarios that would call it

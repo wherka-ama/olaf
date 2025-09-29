@@ -62,7 +62,7 @@ class MockLogger {
     }
 }
 
-suite('UninstallCommand Test Suite', () => {
+describe('UninstallCommand Test Suite', () => {
     let uninstallCommand: UninstallCommand;
     let mockInstallationManager: MockInstallationManager;
     let mockLogger: MockLogger;
@@ -71,7 +71,7 @@ suite('UninstallCommand Test Suite', () => {
     let originalShowErrorMessage: any;
     let originalWithProgress: any;
 
-    setup(() => {
+    beforeEach(() => {
         // Create mocks
         mockInstallationManager = new MockInstallationManager();
         mockLogger = new MockLogger();
@@ -86,7 +86,7 @@ suite('UninstallCommand Test Suite', () => {
         originalWithProgress = vscode.window.withProgress;
     });
 
-    teardown(() => {
+    afterEach(() => {
         // Restore original VSCode API methods
         if (originalShowWarningMessage) {
             (vscode.window as any).showWarningMessage = originalShowWarningMessage;
@@ -102,7 +102,7 @@ suite('UninstallCommand Test Suite', () => {
         }
     });
 
-    suite('getInstalledFiles', () => {
+    describe('getInstalledFiles', () => {
         test('should return empty array when no scopes are installed', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
@@ -166,7 +166,7 @@ suite('UninstallCommand Test Suite', () => {
         });
     });
 
-    suite('executeUninstallAll - Core Logic Tests', () => {
+    describe('executeUninstallAll - Core Logic Tests', () => {
         test('should handle no installations correctly', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
@@ -213,7 +213,7 @@ suite('UninstallCommand Test Suite', () => {
         });
     });
 
-    suite('showRemovalPreview', () => {
+    describe('showRemovalPreview', () => {
         test('should show message when no files are found', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
@@ -264,7 +264,7 @@ suite('UninstallCommand Test Suite', () => {
         });
     });
 
-    suite('Class Construction', () => {
+    describe('Class Construction', () => {
         test('should create instance with dependencies', () => {
             // Arrange & Act
             const command = new UninstallCommand(mockInstallationManager as any, mockLogger as any);
