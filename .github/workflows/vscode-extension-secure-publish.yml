@@ -119,13 +119,17 @@ jobs:
         run: |
           npm run compile
           npm install -g @vscode/vsce
-          
+
+          npm run package:prepare
+
           # Package with integrity verification
           if [ "${{ steps.version.outputs.is_prerelease }}" = "true" ]; then
             vsce package --pre-release --out olaf-${{ steps.version.outputs.version }}.vsix
           else
             vsce package --out olaf-${{ steps.version.outputs.version }}.vsix
           fi
+
+          npm run package:cleanup
 
       - name: Generate package checksums and attestation
         id: package

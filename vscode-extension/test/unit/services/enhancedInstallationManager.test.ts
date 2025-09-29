@@ -97,19 +97,19 @@ describe('EnhancedInstallationManager Tests', () => {
         }
     });
 
-    test('getInstance should return singleton instance', () => {
+    it('getInstance should return singleton instance', () => {
         const instance1 = EnhancedInstallationManager.getInstance();
         const instance2 = EnhancedInstallationManager.getInstance();
         
         assert.strictEqual(instance1, instance2);
     });
 
-    test('getEnhancedMetadata should return null for non-existent metadata', async () => {
+    it('getEnhancedMetadata should return null for non-existent metadata', async () => {
         const metadata = await enhancedManager.getEnhancedMetadata(InstallationScope.USER);
         assert.strictEqual(metadata, null);
     });
 
-    test('Enhanced metadata path generation should work for different scopes', async () => {
+    it('Enhanced metadata path generation should work for different scopes', async () => {
         // Test that the path generation doesn't throw errors
         try {
             await enhancedManager.getEnhancedMetadata(InstallationScope.USER);
@@ -123,7 +123,7 @@ describe('EnhancedInstallationManager Tests', () => {
         }
     });
 
-    test('Enhanced metadata should have correct structure', () => {
+    it('Enhanced metadata should have correct structure', () => {
         // Test that we can create a valid enhanced metadata object
         const mockMetadata: EnhancedInstallationMetadata = {
             version: '1.0.0',
@@ -171,7 +171,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(typeof mockMetadata.rollbackSupported, 'boolean');
     });
 
-    test('File integrity info should have correct structure', () => {
+    it('File integrity info should have correct structure', () => {
         const mockFileInfo = {
             path: '/mock/file.txt',
             sha256: 'a'.repeat(64), // SHA-256 is 64 hex chars
@@ -194,7 +194,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(typeof mockFileInfo.isSymlink, 'boolean');
     });
 
-    test('Verification policy should have correct structure', () => {
+    it('Verification policy should have correct structure', () => {
         const policy = {
             autoVerify: true,
             preserveModified: true,
@@ -206,7 +206,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(typeof policy.reportModifications, 'boolean');
     });
 
-    test('Installation result should have correct enhanced structure', () => {
+    it('Installation result should have correct enhanced structure', () => {
         const mockResult = {
             success: true,
             metadata: {} as EnhancedInstallationMetadata,
@@ -222,7 +222,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(Array.isArray(mockResult.warnings), true);
     });
 
-    test('Uninstallation result should have correct structure', () => {
+    it('Uninstallation result should have correct structure', () => {
         const mockResult = {
             success: true,
             report: {
@@ -248,7 +248,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(Array.isArray(mockResult.removedFiles), true);
     });
 
-    test('Smart removal result should have correct structure', () => {
+    it('Smart removal result should have correct structure', () => {
         const mockResult = {
             removedFiles: ['/mock/file1.txt'],
             preservedFiles: ['/mock/modified.txt'],
@@ -262,7 +262,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(Array.isArray(mockResult.errors), true);
     });
 
-    test('File categories should have correct structure for smart uninstallation', () => {
+    it('File categories should have correct structure for smart uninstallation', () => {
         const mockCategories = {
             intact: [{
                 file: '/mock/intact.txt',
@@ -306,7 +306,7 @@ describe('EnhancedInstallationManager Tests', () => {
         assert.strictEqual(mockCategories.corrupted[0].recommendation, 'restore');
     });
 
-    test('User decision should have correct structure', () => {
+    it('User decision should have correct structure', () => {
         const mockDecision = {
             action: 'safe' as const,
             timestamp: new Date().toISOString(),

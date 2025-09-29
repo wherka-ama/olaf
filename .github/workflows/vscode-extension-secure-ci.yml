@@ -11,6 +11,7 @@ on:
     paths:
       - 'vscode-extension/**'
       - '.github/workflows/vscode-extension*.yml'
+  workflow_dispatch:
 
 # Security: Restrict permissions to minimum necessary (SLSA Level 2)
 permissions: read-all
@@ -120,6 +121,11 @@ jobs:
             ${{ env.EXTENSION_DIR }}/license-report.csv
 
   # Multi-platform validation
+# VSIX Packaging with Production Configuration:
+# - Automatically switches to .vscodeignore.production before packaging
+# - Creates optimized VSIX with minimal size (excludes dev files, tests, sources)
+# - Restores original .vscodeignore after packaging
+# - Ensures consistent production packaging regardless of development state
   validate:
     name: Validate Extension
     runs-on: ${{ matrix.os }}
@@ -167,8 +173,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y xvfb libnss3-dev libatk-bridge2.0-dev libdrm2 libxkbcommon-dev libxss1 libasound2-dev
-
       - name: Apply post-compilation fixes
+        if: runner.os != 'Windows'
         working-directory: ${{ env.EXTENSION_DIR }}
         shell: bash
         run: |
@@ -197,13 +203,53 @@ jobs:
             npm test
           fi
 
+      - name: Switch to production .vscodeignore for packaging
+        if: matrix.node-version == 20
+        working-directory: ${{ env.EXTENSION_DIR }}
+        shell: bash
+        run: |
+          echo "🔄 Switching to production .vscodeignore for VSIX packaging..."
+          # Backup current .vscodeignore if it exists
+          if [ -f ".vscodeignore" ]; then
+            cp .vscodeignore .vscodeignore.ci-backup
+            echo "✅ Backed up current .vscodeignore to .vscodeignore.ci-backup"
+          fi
+          
+          # Use production .vscodeignore for packaging (creates smaller, proper VSIX)
+          if [ -f ".vscodeignore.production" ]; then
+            cp .vscodeignore.production .vscodeignore
+            echo "✅ Switched to production .vscodeignore for optimal VSIX packaging"
+            echo "📦 Production mode excludes: source files, tests, dev tools, CI files"
+          else
+            echo "⚠️ Warning: .vscodeignore.production not found, using current .vscodeignore"
+          fi
+
       - name: Package extension
         if: matrix.node-version == 20
         working-directory: ${{ env.EXTENSION_DIR }}
         shell: bash
         run: |
           npm install -g @vscode/vsce
+          echo "📦 Creating VSIX package with production .vscodeignore..."
           vsce package --out olaf-${{ matrix.os }}-${{ matrix.node-version }}.vsix
+          
+          # Show package size for verification
+          if [ -f "olaf-${{ matrix.os }}-${{ matrix.node-version }}.vsix" ]; then
+            PACKAGE_SIZE=$(ls -lh olaf-${{ matrix.os }}-${{ matrix.node-version }}.vsix | awk '{print $5}')
+            echo "✅ VSIX package created successfully (size: $PACKAGE_SIZE)"
+          fi
+
+      - name: Restore original .vscodeignore after packaging
+        if: matrix.node-version == 20
+        working-directory: ${{ env.EXTENSION_DIR }}
+        shell: bash
+        run: |
+          # Restore the original .vscodeignore if backup exists
+          if [ -f ".vscodeignore.ci-backup" ]; then
+            cp .vscodeignore.ci-backup .vscodeignore
+            rm .vscodeignore.ci-backup
+            echo "✅ Restored original .vscodeignore from backup"
+          fi
 
       - name: Validate VSIX package
         if: matrix.node-version == 20
@@ -260,6 +306,12 @@ jobs:
         working-directory: ${{ env.EXTENSION_DIR }}
         run: npm ci --fund=false
 
+      - name: Apply essential fixes (all platforms)
+        working-directory: ${{ env.EXTENSION_DIR }}
+        run: |
+          npm run compile-tests
+          node post-compile-fixes-essential.js
+
       - name: Install VS Code and dependencies (Linux)
         if: runner.os == 'Linux'
         working-directory: ${{ env.EXTENSION_DIR }}
@@ -267,8 +319,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libnss3-dev libatk-bridge2.0-dev libdrm2 libxkbcommon-dev libxss1 libasound2-dev
-
       - name: Apply post-compilation fixes
+        if: runner.os != 'Windows'
         working-directory: ${{ env.EXTENSION_DIR }}
         shell: bash
         run: |

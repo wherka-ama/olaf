@@ -1,5 +1,6 @@
 import * as assert from 'assert';
 import * as vscode from 'vscode';
+import * as path from 'path';
 import { UninstallCommand } from '../../../src/commands/uninstallCommand';
 
 /**
@@ -103,7 +104,7 @@ describe('UninstallCommand Test Suite', () => {
     });
 
     describe('getInstalledFiles', () => {
-        test('should return empty array when no scopes are installed', async () => {
+        it('should return empty array when no scopes are installed', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
 
@@ -114,7 +115,7 @@ describe('UninstallCommand Test Suite', () => {
             assert.strictEqual(result.length, 0);
         });
 
-        test('should aggregate files from all scopes correctly', async () => {
+        it('should aggregate files from all scopes correctly', async () => {
             // Arrange
             const installedScopes = ['user', 'workspace'];
             mockInstallationManager.setMockScopes(installedScopes);
@@ -139,10 +140,11 @@ describe('UninstallCommand Test Suite', () => {
             
             // Check that full paths are constructed correctly
             const userFile1 = result.find(f => f.scope === 'user' && f.path === 'olaf-core/file1.txt');
-            assert.strictEqual(userFile1?.fullPath.includes('/home/user/.olaf'), true);
+            const expectedPath = path.join('/home/user/.olaf', 'olaf-core/file1.txt');
+            assert.strictEqual(userFile1?.fullPath, expectedPath);
         });
 
-        test('should handle scopes with no installation info gracefully', async () => {
+        it('should handle scopes with no installation info gracefully', async () => {
             // Arrange
             const installedScopes = ['user', 'workspace'];
             mockInstallationManager.setMockScopes(installedScopes);
@@ -167,7 +169,7 @@ describe('UninstallCommand Test Suite', () => {
     });
 
     describe('executeUninstallAll - Core Logic Tests', () => {
-        test('should handle no installations correctly', async () => {
+        it('should handle no installations correctly', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
             let informationMessageCalled = false;
@@ -190,7 +192,7 @@ describe('UninstallCommand Test Suite', () => {
             assert.strictEqual(logs.some(log => log.message === 'No OLAF installations found'), true);
         });
 
-        test('should construct correct confirmation message', async () => {
+        it('should construct correct confirmation message', async () => {
             // Arrange
             const installedScopes = ['user', 'workspace'];
             mockInstallationManager.setMockScopes(installedScopes);
@@ -214,7 +216,7 @@ describe('UninstallCommand Test Suite', () => {
     });
 
     describe('showRemovalPreview', () => {
-        test('should show message when no files are found', async () => {
+        it('should show message when no files are found', async () => {
             // Arrange
             mockInstallationManager.setMockScopes([]);
             let informationMessageCalled = false;
@@ -234,7 +236,7 @@ describe('UninstallCommand Test Suite', () => {
             assert.strictEqual(messageContent, 'No OLAF files found to remove.');
         });
 
-        test('should display grouped file preview', async () => {
+        it('should display grouped file preview', async () => {
             // Arrange
             const installedScopes = ['user'];
             mockInstallationManager.setMockScopes(installedScopes);
@@ -265,7 +267,7 @@ describe('UninstallCommand Test Suite', () => {
     });
 
     describe('Class Construction', () => {
-        test('should create instance with dependencies', () => {
+        it('should create instance with dependencies', () => {
             // Arrange & Act
             const command = new UninstallCommand(mockInstallationManager as any, mockLogger as any);
 
