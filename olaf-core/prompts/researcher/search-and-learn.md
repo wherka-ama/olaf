@@ -7,27 +7,35 @@ tags: [research, learning, information, knowledge, search]
 
 ## Framework Validation
 You MUST apply the <olaf-work-instructions> framework.
-You MUST pay special attention to**:
+You MUST pay special attention to:
 - <olaf-general-role-and-behavior> - Expert domain approach
 - <olaf-interaction-protocols> - Appropriate execution protocol
 You MUST strictly apply <olaf-framework-validation>.
 
 ## Time Retrieval
-You MUST get current time in YYYYMMDD-HHmm format using terminal commands:
-- Windows: `Get-Date -Format "yyyyMMdd-HHmm"`
-- Unix/Linux/macOS: `date +"%Y%m%d-%H%M"`
 
-Use terminal commands, not training data.
+You MUST get current time in YYYYMMDD-HHmm format using the appropriate terminal command for the user's environment:
 
-Use terminal commands, not training data.
+- **Windows PowerShell**: `Get-Date -Format "yyyyMMdd-HHmm"`
+- **Unix/Linux/macOS**: `date +"%Y%m%d-%H%M"`
+
+**IMPORTANT**: Use ONLY the command that matches the user's current shell environment. Do not run both commands.
 
 ## Input Parameters
-**IMPORTANT**: When you don't have entries provided, ask the USER to provide them.
+
+**CRITICAL REQUIREMENT**: You MUST ask the USER to provide ALL three parameters below before proceeding. DO NOT assume or infer these parameters from context. STOP and ask if any parameter is missing.
+
+**Required Parameters (ALL must be provided by USER):**
+
 - **learning_objective**: string - Specific question, skill, problem, or topic to understand
 - **current_knowledge**: string - Current knowledge level and previous experience
 - **context**: string - Related skills, time constraints, and application context
 
+**VALIDATION CHECKPOINT**: Before starting the Process section, verify you have explicit USER input for all three parameters above. If ANY parameter is missing, ask the USER to provide it.
+
 ## Process
+
+**MANDATORY FIRST STEP**: Verify you have received USER input for all three required parameters (learning_objective, current_knowledge, context). If ANY are missing, STOP and ask the USER before proceeding.
 
 1. **Define Learning Goals**:
    - Clarify specific learning objectives from user input
@@ -74,7 +82,9 @@ Use terminal commands, not training data.
    - Include all sections: Learning Summary, Source Documentation, Application Examples, Knowledge Gaps, Next Steps
 
 ## Output Format
+
 Learning report including:
+
 - **Learning Summary**: Key concepts and insights discovered
 - **Source Documentation**: Credible references with quality assessments
 - **Application Examples**: Practical use cases or implementations
@@ -82,6 +92,7 @@ Learning report including:
 - **Next Steps**: Recommended follow-up learning or actions
 
 ## Output to USER
+
 - Learning objectives achieved: [list completed goals]
 - Key insights discovered: [summarized findings]
 - Sources consulted: [number and types of authoritative sources]
@@ -89,6 +100,7 @@ Learning report including:
 - Next recommended learning steps: [if applicable]
 
 ## Learning Rules
+
 - Rule 1: Prioritize authoritative and credible sources over popular but unverified content
 - Rule 2: Balance theoretical knowledge with practical application examples
 - Rule 3: Always validate understanding through multiple source cross-references
