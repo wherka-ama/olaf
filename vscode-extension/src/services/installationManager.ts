@@ -13,7 +13,7 @@ const writeFile = promisify(fs.writeFile);
 const mkdir = promisify(fs.mkdir);
 const access = promisify(fs.access);
 const unlink = promisify(fs.unlink);
-const rmdir = promisify(fs.rmdir);
+// const rmdir = promisify(fs.rmdir); // Deprecated - using fs.promises.rmdir directly
 
 /**
  * Installation result information
@@ -196,6 +196,15 @@ export class InstallationManager {
 
         // Finally, remove the installation/metadata directory if it's different from extraction path
         if (installationPath !== extractionPath) {
+            // Remove metadata file first if it exists
+            try {
+                const metadataPath = path.join(installationPath, '.olaf-metadata.json');
+                await fs.promises.unlink(metadataPath);
+                this.logger.info(`Removed metadata file: ${metadataPath}`);
+            } catch (error) {
+                // Metadata file might not exist or already removed, which is fine
+                this.logger.debug(`Metadata file not found or already removed: ${installationPath}`);
+            }
             await this.removeIfEmpty(installationPath);
         }
 
@@ -216,7 +225,7 @@ export class InstallationManager {
             
             if (files.length === 0) {
                 // Directory is empty, remove it
-                await rmdir(dirPath);
+                await fs.promises.rmdir(dirPath);
                 this.logger.info(`Removed empty directory: ${dirPath}`);
             } else {
                 this.logger.debug(`Directory not empty, keeping: ${dirPath} (${files.length} items)`);
@@ -247,7 +256,7 @@ export class InstallationManager {
             const files = await fs.promises.readdir(dirPath);
             
             if (files.length === 0) {
-                await rmdir(dirPath);
+                await fs.promises.rmdir(dirPath);
                 this.logger.info(`Removed empty parent directory: ${dirPath}`);
                 
                 // Recursively check parent directory
@@ -310,7 +319,7 @@ export class InstallationManager {
             // Remove the installation path with metadata
             try{
                 await access(installationPath);
-                await rmdir(installationPath, {recursive:true});
+                await fs.promises.rm(installationPath, { recursive: true });
 
             } catch(error) {
                 this.logger.error(`It was not possible to remove the installation path: ${installationPath}`, error as Error);

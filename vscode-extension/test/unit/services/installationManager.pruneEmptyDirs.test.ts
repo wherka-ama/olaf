@@ -74,12 +74,12 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
     afterEach(async () => {
         // Clean up temporary directory
         if (fs.existsSync(tempDir)) {
-            await fs.promises.rmdir(tempDir, { recursive: true });
+            await fs.promises.rm(tempDir, { recursive: true });
         }
     });
 
     describe('pruneEmptyDirs - Directory Structure Cleanup', () => {
-        test('should remove empty directories after file removal', async () => {
+        it('should remove empty directories after file removal', async () => {
             // Arrange - create test structure
             const installPath = path.join(tempDir, '.olaf-user');
             const extractionPath = path.join(tempDir, 'extracted');
@@ -117,7 +117,7 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
             assert.strictEqual(removedDirLogs.length > 0, true, 'Should log removed directories');
         });
 
-        test('should not remove directories that contain other files', async () => {
+        it('should not remove directories that contain other files', async () => {
             // Arrange - create test structure with some files remaining
             const installPath = path.join(tempDir, '.olaf-user');
             const extractionPath = path.join(tempDir, 'extracted');
@@ -159,7 +159,7 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
             assert.strictEqual(keptDirLogs.length > 0, true, 'Should log kept directories');
         });
 
-        test('should handle metadata directory removal when separate from extraction', async () => {
+        it('should handle metadata directory removal when separate from extraction', async () => {
             // Arrange - metadata directory separate from extraction
             const installPath = path.join(tempDir, '.olaf-user');
             const extractionPath = path.join(tempDir, 'extracted');
@@ -188,7 +188,7 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
             assert.strictEqual(fs.existsSync(installPath), false, 'Installation/metadata path should be removed');
         });
 
-        test('should gracefully handle non-existent installation', async () => {
+        it('should gracefully handle non-existent installation', async () => {
             // Arrange - no installation exists
             
             // Act
@@ -200,7 +200,7 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
             assert.strictEqual(warningLogs.length, 1, 'Should log warning about missing installation');
         });
 
-        test('should handle corrupted metadata gracefully', async () => {
+        it('should handle corrupted metadata gracefully', async () => {
             // Arrange - create installation with corrupted metadata
             const installPath = path.join(tempDir, '.olaf-user');
             await fs.promises.mkdir(installPath, { recursive: true });
@@ -222,7 +222,7 @@ describe('InstallationManager.pruneEmptyDirs Test Suite', () => {
     });
 
     describe('Helper Methods', () => {
-        test('removeIfEmpty should work correctly', async () => {
+        it('removeIfEmpty should work correctly', async () => {
             // This tests the private method indirectly through the public interface
             // by setting up scenarios that would call it
             

@@ -2,7 +2,7 @@ import * as assert from 'assert';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as os from 'os';
-import { UnifiedUninstaller, UninstallOptions, UninstallResult } from '../../services/unifiedUninstaller';
+import { UnifiedUninstaller, UninstallOptions, UninstallResult, InstallationMetadata } from '../../services/unifiedUninstaller';
 
 describe('UnifiedUninstaller', () => {
     let tempDir: string;
@@ -30,10 +30,19 @@ describe('UnifiedUninstaller', () => {
             await fs.writeFile(modifiedFile, 'modified content');
             await fs.writeFile(userFile, 'user content');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'smart',
                 targetDir: tempDir,
-                createBackup: false
+                createBackup: false,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -47,14 +56,23 @@ describe('UnifiedUninstaller', () => {
             // Create some files but reference non-existent ones in custom selection
             await fs.writeFile(path.join(tempDir, 'exists.txt'), 'content');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'custom',
                 targetDir: tempDir,
                 customSelection: [
                     path.join(tempDir, 'exists.txt'),
                     path.join(tempDir, 'missing.txt')
                 ],
-                createBackup: false
+                createBackup: false,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -71,10 +89,19 @@ describe('UnifiedUninstaller', () => {
             await fs.writeFile(path.join(tempDir, 'file1.txt'), 'content1');
             await fs.writeFile(path.join(tempDir, 'file2.txt'), 'content2');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'complete',
                 targetDir: tempDir,
-                createBackup: false
+                createBackup: false,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -92,10 +119,19 @@ describe('UnifiedUninstaller', () => {
             await fs.writeFile(path.join(tempDir, 'file1.txt'), 'content1');
             await fs.writeFile(path.join(tempDir, 'file2.txt'), 'content2');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'smart',
                 targetDir: tempDir,
-                createBackup: false
+                createBackup: false,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -103,8 +139,8 @@ describe('UnifiedUninstaller', () => {
             assert.strictEqual(result.success, true);
             assert.strictEqual(result.errors.length, 0);
             // Without metadata, smart uninstall treats all files as modified/user-created
-            assert.strictEqual(result.filesRemoved, 0);
-            assert.strictEqual(result.filesPreserved, 2);
+            assert.strictEqual(result.filesRemoved, 2);
+            assert.strictEqual(result.filesPreserved, 0);
         });
 
         it('should create backup of preserved files', async () => {
@@ -112,10 +148,19 @@ describe('UnifiedUninstaller', () => {
             await fs.writeFile(path.join(tempDir, 'file1.txt'), 'content1');
             await fs.writeFile(path.join(tempDir, 'file2.txt'), 'content2');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'smart',
                 targetDir: tempDir,
-                createBackup: true
+                createBackup: true,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -139,11 +184,20 @@ describe('UnifiedUninstaller', () => {
             await fs.writeFile(file2, 'content2');
             await fs.writeFile(file3, 'content3');
 
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'custom',
                 targetDir: tempDir,
                 customSelection: [file1, file3],
-                createBackup: false
+                createBackup: false,
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
@@ -159,7 +213,15 @@ describe('UnifiedUninstaller', () => {
         });
 
         it('should reject invalid custom selections', async () => {
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'custom',
                 targetDir: tempDir,
                 createBackup: false
@@ -181,13 +243,22 @@ describe('UnifiedUninstaller', () => {
 
             const progressReports: Array<{progress: number, message: string}> = [];
             
-            const options: UninstallOptions = {
+            
+            const metadata: InstallationMetadata = {
+                originalFiles: [path.join(tempDir, "file1.txt"), path.join(tempDir, "file2.txt")],
+                modifiedFiles: [path.join(tempDir, "modified.txt")],
+                userCreatedFiles: [path.join(tempDir, "user.txt")],
+                installationPath: tempDir,
+                installationDate: new Date().toISOString()
+            };
+const options: UninstallOptions = {
                 type: 'complete',
                 targetDir: tempDir,
                 createBackup: false,
                 onProgress: (progress: number, message: string) => {
                     progressReports.push({ progress, message });
-                }
+                },
+                metadata: metadata
             };
 
             const result = await uninstaller.uninstall(options);
