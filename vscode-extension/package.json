@@ -32,7 +32,7 @@
     "Education"
   ],
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.99.3"
   },
   "main": "./dist/extension.js",
   "icon": "icon.png",
@@ -199,15 +199,25 @@
     "test:coverage:report": "nyc report --reporter=html --reporter=text --reporter=json",
     "test:coverage:unit": "nyc --reporter=html --reporter=text npm run test:unit",
     "test:coverage:integration": "nyc --reporter=html --reporter=text npm run test:integration",
-    "coverage:clean": "rimraf coverage .nyc_output"
+    "coverage:clean": "rimraf coverage .nyc_output",
+    "ignore:status": "node scripts/package-helpers.js status",
+    "ignore:dev": "node scripts/package-helpers.js dev",
+    "ignore:prod": "node scripts/package-helpers.js prod",
+    "ignore:restore": "node scripts/package-helpers.js restore",
+    "package:prepare": "node scripts/package-helpers.js prod && npm run compile",
+    "package:cleanup": "node scripts/package-helpers.js dev",
+    "package:full": "npm run package:prepare && npm run package:vsix && npm run package:cleanup",
+    "package:production": "npm run package:prepare && npm run package:vsix && npm run package:cleanup && echo \"📦 Production package created with optimized size\"",
+    "dev:setup": "npm run ignore:dev && echo \"🔧 Development mode activated - Copilot friendly\"",
+    "dev:package-test": "npm run package:prepare && echo \"📋 Switched to production mode - check file exclusions\" && npm run ignore:status"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/adm-zip": "^0.5.7",
     "@types/fs-extra": "^11.0.4",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.74.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.99.3",
     "@types/yauzl": "^2.10.3",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",

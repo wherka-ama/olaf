@@ -152,7 +152,7 @@ export class UnifiedUninstaller {
             
             // Step 2: Determine what to remove/preserve based on type
             options.onProgress?.(30, 'Determining file actions...');
-            const actions = this.planActions(categories, options);
+            const actions = await this.planActions(categories, options);
             
             // Step 3: Create backup if needed
             if (options.createBackup && actions.preserve.length > 0) {
@@ -168,11 +168,13 @@ export class UnifiedUninstaller {
             // Step 5: Update counts
             result.filesRemoved = result.details.removed.length;
             result.filesPreserved = actions.preserve.length;
+            result.details.preserved = actions.preserve.map(f => f.path);
             result.success = true;
             
             options.onProgress?.(100, 'Uninstallation completed');
             
         } catch (error) {
+            console.error('[UnifiedUninstaller] Error during uninstall:', error);
             result.errors.push(error instanceof Error ? error.message : String(error));
             result.success = false;
         }
@@ -233,7 +235,7 @@ export class UnifiedUninstaller {
     /**
      * Plan what actions to take on each file category
      */
-    private planActions(categories: FileCategorization, options: UninstallOptions) {
+    private async planActions(categories: FileCategorization, options: UninstallOptions) {
         const remove: FileCategory[] = [];
         const preserve: FileCategory[] = [];
 
@@ -256,11 +258,29 @@ export class UnifiedUninstaller {
                 
                 // Only remove files in custom selection
                 const allFiles = [...categories.original, ...categories.modified, ...categories.userCreated];
+                const metadataFiles = new Set(allFiles.map(f => f.path));
                 for (const file of allFiles) {
                     if (options.customSelection.includes(file.path)) {
                         remove.push(file);
                     } else {
                         preserve.push(file);
+                    }
+                }
+
+                // Handle files in customSelection that are not in metadata
+                for (const filePath of options.customSelection) {
+                    if (!metadataFiles.has(filePath)) {
+                        try {
+                            const stats = await fs.stat(filePath);
+                            remove.push({
+                                path: filePath,
+                                size: stats.size,
+                                mtime: stats.mtime,
+                                category: 'original'
+                            });
+                        } catch {
+                            // File does not exist, skip silently
+                        }
                     }
                 }
                 break;
@@ -370,7 +390,7 @@ export class UnifiedUninstaller {
             return 'Target directory is required';
         }
         
-        if (!fs.existsSync(options.targetDir)) {
+        if (!fs.pathExistsSync(options.targetDir)) {
             return 'Target directory is required';
         }
         
