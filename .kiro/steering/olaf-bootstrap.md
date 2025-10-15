@@ -1,8 +1,4 @@
----
-trigger: always_on
----
-
-# OLAF Framework - Windsurf Bootstrap
+# OLAF Framework - Kiro Bootstrap
 
 **CRITICAL: ALWAYS LOAD FIRST**
 
