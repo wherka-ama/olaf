@@ -1,4 +1,8 @@
-# OLAF Framework - GitHub Copilot Instructions
+---
+trigger: always_on
+---
+
+# OLAF Framework - Windsurf Bootstrap
 
 **CRITICAL: ALWAYS LOAD FIRST**
 
@@ -8,10 +12,10 @@ The framework contains essential competency patterns, protocols, and behavioral 
 
 **LOAD THIS IMMEDIATELY AT SESSION START:**
 
-`olaf-core/reference/.condensed/olaf-framework-condensed.md`
+#[[file:olaf-core/reference/.condensed/olaf-framework-condensed.md]]
 
 **THEN LOAD PROJECT CONTEXT (if exists):**
 
-`olaf-data/projects/project-context.md`
+#[[file:olaf-data/projects/project-context.md]]
 
 **DO NOT proceed with any task until the condensed framework is loaded and available.**
