@@ -15,22 +15,22 @@ This directory contains detailed documentation for the Open Lightweight Assistan
 - **[Limitations and Support](limitations.md)** - Known limitations and support information
 - **[Release Notes](release-notes/)** - Version history and changes
 
-## What's New in v1.2.0
+## Key Capabilities
 
-### Framework Management Enhancements
-- **XML Section Tagging**: Structured framework components for better LLM parsing
-- **Framework Validation**: Automatic validation across all prompts for consistency
-- **Enhanced References**: Standardized `olaf-` references for better navigation
+### Framework Management
+- **Structured Components**: Well-organized framework components for better LLM parsing
+- **Validation System**: Automatic validation across all prompts for consistency
+- **Enhanced Navigation**: Standardized references for better framework navigation
 
 ### Advanced Prompt Engineering
-- **Testing Framework**: Dedicated `test-prompt` functionality for validation
-- **Enhanced Templates**: Improved prompt templates with comprehensive guidelines
-- **Legacy Modernization**: Tools to convert existing prompts to OLAF standards
+- **Testing Framework**: Dedicated prompt testing functionality for validation
+- **Comprehensive Templates**: Improved prompt templates with detailed guidelines
+- **Modernization Tools**: Tools to convert and update prompts to current standards
 
-### Infrastructure Improvements
-- **Better Organization**: Improved `.windsurf` configuration structure
-- **Standardized Wording**: Consistent time retrieval and framework references
-- **Reduced Duplication**: Cleaned up redundant configurations
+### Infrastructure Features
+- **Organized Structure**: Well-structured configuration and organization
+- **Standardized Approach**: Consistent patterns and framework references
+- **Streamlined Setup**: Clean and efficient configuration management
 
 ## Quick Navigation
 
