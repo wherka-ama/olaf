@@ -63,6 +63,19 @@ environments:
       preserve_paths: true
       root_folder: ""
 
+  kiro:
+    name: "Kiro Bundle"
+    description: "Installation bundle for Kiro IDE environment"
+    directories:
+      - ".kiro/"
+    files: []
+    include_patterns:
+      - ".kiro/**/*"
+    exclude_patterns: []
+    bundle_structure:
+      preserve_paths: true
+      root_folder: ""
+
 # Bundle generation settings
 bundle_settings:
   # Whether to include common components in each environment bundle
