@@ -33,6 +33,8 @@ common:
     - "*.tmp"
     - ".DS_Store"
 
+  dest_root_folder: "./olaf"
+
 # Environment-specific components
 environments:
   vscode:
