@@ -33,6 +33,10 @@ create_bundle() {
     
     # Create temporary directory
     mkdir -p "$temp_dir"
+
+    # Get destination root folder
+    dest_root_folder=$(yq eval ".common.dest_root_folder" "$MANIFEST_FILE" 2>/dev/null)
+    mkdir -p "$temp_dir/$dest_root_folder"
     
     # Include common components if specified
     if [ "$include_common" = "true" ]; then
@@ -63,7 +67,7 @@ create_bundle() {
         yq eval ".environments.${bundle_type}.directories[]" "$MANIFEST_FILE" | while read -r dir; do
             if [ -d "$dir" ]; then
                 echo "Copying environment directory: $dir"
-                cp -r "$dir" "$temp_dir/"
+                cp -r "$dir" "$temp_dir/$dest_root_folder"
             fi
         done
         
